@@ -14,7 +14,8 @@ export const authOptions = {
     ],
     pages: {
         signIn: '/auth'
-    }
+    },
+    secret: process.env.JWT_SECRET,
 } as AuthOptions
 
 export default NextAuth(authOptions)
