@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-
-import { PrismaClient } from "@prisma/client";
 import { stripe } from "@/lib/stripe";
 import { randomUUID } from "crypto";
-const prisma = new PrismaClient();
+import prismadb from "@/lib/prismadb";
+
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -15,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
     }
 
-    const user = await prisma.user.findFirst({
+    const user = await prismadb.user.findFirst({
         where: {
             api_key: String(api_key)
         }
@@ -49,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const data = randomUUID();
 
-    const log = await prisma.log.create({
+    const log = await prismadb.log.create({
         data: {
             userId: String(user?.id),
             status: 200,
