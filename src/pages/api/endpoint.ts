@@ -45,20 +45,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             quantity: 1
         })
 
-
-    const data = randomUUID();
-
-    const log = await prismadb.log.create({
-        data: {
-            userId: String(user?.id),
-            status: 200,
-            method: "GET",
-        }
-    })
-
-    res.status(200).json({
-        status: true,
-        special_key: data,
-        log: log
-    })
 }
