@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSession } from 'next-auth/react';
 
- const HeaderClient = ()=> {
+ const Header = ()=> {
   const { data: session } = useSession();
  
   const generateDashboardLink = () => {
@@ -21,14 +21,14 @@ import { useSession } from 'next-auth/react';
   return (
     <nav className="max-w-5xl m-auto w-full px-4">
       <div className="flex items-center gap-8 justify-between py-6">
-        <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-90">
+        <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-80">
           Logo
         </Link>
         <div className="flex items-center gap-4">
-          <Link href="/events" className="font-medium text-sm text-black hover:opacity-90">
+          <Link href="/events" className="font-medium text- text-black hover:opacity-80">
             Events
           </Link>
-          <Link href="/pricing" className="font-medium text-sm text-black hover:opacity-90">
+          <Link href="/pricing" className="font-medium text- text-black hover:opacity-90">
             Pricing
           </Link>
           <Link href={generateDashboardLink()} className="font-medium text-sm text-white bg-black px-4 py-2 rounded-lg hover:opacity-90">
@@ -40,4 +40,4 @@ import { useSession } from 'next-auth/react';
   );
 }
 
-export default HeaderClient;
+export default Header;
