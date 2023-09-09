@@ -1,10 +1,11 @@
-import { Header } from "@/components/Header"
+import Container from "@/components/Container"
 
 
 const PricingPage = () => {
   return (
-    <div>
-    </div>
+  <Container>
+    Pricing Page
+  </Container>
   )
 }
 

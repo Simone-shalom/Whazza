@@ -1,10 +1,11 @@
+import Container from "@/components/Container"
 
 
 const EventsPage = () => {
   return (
-    <div>
-      
-    </div>
+    <Container>
+    Events Page
+    </Container>
   )
 }
 
