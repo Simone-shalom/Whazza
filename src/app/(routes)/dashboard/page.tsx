@@ -11,6 +11,9 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import prismadb from "@/lib/prismadb";
 import LogoutBtn from "@/components/LogoutBtn";
 import { Button } from "@/components/ui/button";
+import Container from "@/components/Container";
+import Image from "next/image";
+import { PageWrapper } from "@/components/animations/pageWrapper";
 ;
 
 export default async function Page() {
@@ -40,24 +43,20 @@ export default async function Page() {
   }
 
   return (
-    <main>
-       <LogoutBtn />
+    <Container>
+      <PageWrapper>
+      <div className="flex flex-col lg:flex-row items-center pt-20 ">
+      <p className="text-3xl font-semibold text-black">
+        hello {session?.user?.name}
+      </p>
+    <main className="w-full lg:w-1/2 flex flex-col items-center">
       {hasSub ? (
         <>
-          <div className="flex flex-col gap-4">
-            <div className="rounded-md px-4 py-2 bg-emerald-400 font-medium text-sm text-white">
+          <div className="flex flex-col gap-4 items-center justify-center">
+            <div className="rounded-md px-4 py-2 max-w-xl bg-emerald-400 font-medium text-sm text-white">
               You have a subscription!
             </div>
-
-            <div className="divide-y divide-zinc-200 border border-zinc-200 rounded-md">
-              <p className="text-sm text-black px-6 py-4 font-medium">
-                API Key
-              </p>
-              <p className="text-sm font-mono text-zinc-800 px-6 py-4">
-                {user?.api_key}
-              </p>
-            </div>
-            <Button variant='secondary'>
+            <Button variant='default' className="opacity-60 max-w-xl">
               <Link href={String(customerPortal)}>
                 Manage subscription
               </Link>
@@ -77,5 +76,17 @@ export default async function Page() {
         </>
       )}
     </main>
+    <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
+        <div className="flex items-center pb-5 space-x-5">
+        <LogoutBtn />
+        <Button variant="outline">
+          Collect prizes
+        </Button>
+        </div>
+      <Image src='/images/clip_image002_thumb.png' alt="" width={300} height={300}/>
+     </div>
+     </div>
+     </PageWrapper>
+  </Container>
   );
 }

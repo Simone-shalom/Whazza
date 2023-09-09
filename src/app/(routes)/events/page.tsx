@@ -1,15 +1,19 @@
 import Container from "@/components/Container"
 import Footer from "@/components/Footer"
 import RelatedEvents from "@/components/RelatedEvents"
+import { PageWrapper } from "@/components/animations/pageWrapper"
 
 
 const EventsPage = () => {
   return (
-  <Container>
-    <div className='pt-10 h-screen overflow-y-hidden flex px-5 lg:px-10 items-center justify-center'>
-        <RelatedEvents />
-    </div>
-  </Container>
+      <Container>
+        <div className='pt-24 min-h-screen '>
+          <div className="flex justify-center items-center pt-32">
+            <RelatedEvents />
+          </div>
+            <Footer />
+        </div>
+      </Container>
   )
 }
 

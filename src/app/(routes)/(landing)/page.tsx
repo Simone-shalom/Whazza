@@ -18,6 +18,7 @@ export default function Home() {
           <RelatedEvents />
         </div>
         <Testimonials />
+        <Footer />
       </Container>
     </PageWrapper>
   )
