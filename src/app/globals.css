@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+#ffffff, #e6e6ff
+html, body {
+  background: linear-gradient(to bottom,  #ffffff, #e6e6ff, #e6e6ff, #ccf2ff );
+}
+
 @layer base {
     :root {
       --background: 0 0% 100%;

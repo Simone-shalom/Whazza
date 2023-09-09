@@ -11,7 +11,7 @@ export default async function DashboardLayout({
   const customer = await createCustomerIfNull();
 
   return (
-    <div className="">
+    <div className="pt-20 h-screen overflow-y-hidden">
       <div className="max-w-5xl m-auto w-full px-4">{children}</div>
     </div>
   );

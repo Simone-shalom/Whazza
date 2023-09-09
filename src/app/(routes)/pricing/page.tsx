@@ -3,9 +3,14 @@ import Container from "@/components/Container"
 
 const PricingPage = () => {
   return (
-  <Container>
-    Pricing Page
-  </Container>
+    <div className="h-screen overflow-y-hidden">
+    <Container>
+        <p>
+        Pricing Page
+          </p>
+    </Container>
+    </div>
+
   )
 }
 
