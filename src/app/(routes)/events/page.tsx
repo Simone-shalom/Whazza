@@ -1,10 +1,10 @@
-import { Header } from "@/components/header"
+import { Header } from "@/components/Header"
 
 
 const EventsPage = () => {
   return (
     <div>
-        <Header />
+      
     </div>
   )
 }

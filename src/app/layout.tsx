@@ -1,5 +1,7 @@
+import { NextAuthProvider } from "@/providers/SessionProvidert";
 import "./globals.css";
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -19,7 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <NextAuthProvider>
+          {children}
+        </NextAuthProvider>
+      </body>
     </html>
   );
 }

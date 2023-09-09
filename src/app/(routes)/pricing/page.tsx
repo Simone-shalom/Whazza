@@ -1,10 +1,9 @@
-import { Header } from "@/components/header"
+import { Header } from "@/components/Header"
 
 
 const PricingPage = () => {
   return (
     <div>
-      <Header />
     </div>
   )
 }
