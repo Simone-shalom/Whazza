@@ -1,8 +1,14 @@
 
+import Container from "@/components/Container";
+import Footer from "@/components/Footer";
 import LeaderboardsAuth from "@/components/LeaderboardsAuth";
 import RelatedEvents from "@/components/RelatedEvents";
 import SiginBtn from "@/components/SiginBtn";
+import SiginEmailBtn from "@/components/SiginEmailBtn";
+import { PageWrapper } from "@/components/animations/pageWrapper";
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { SparkleIcon } from "lucide-react";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
@@ -15,18 +21,44 @@ const SignIn = async() => {
   }
 
   return (
-    <div className="flex h-screen overflow-y-hidden items-center justify-center flex-col space-y-6">
-    
-        <SiginBtn />
-        <p className='text-center text-4xl text-black font-extrabold pt-8'>
-          Our Leaderboards are waiting for you to join 
-        </p>
-        <p className='text-center text-3xl text-black font-semibold '>
-          Special prizes every month
-        </p>
-        <LeaderboardsAuth />
-        
+      <Container>
+      <div className="min-h-screen">
+        <PageWrapper>
+            <div className="flex min-h-[800px] items-center justify-center flex-col space-y-6">
+            <p className='text-center text-4xl text-black font-extrabold  '>
+              Our Leaderboards are waiting for you to join 
+            </p>
+            <div className="flex">
+            <p className='text-center text-3xl text-black font-semibold pb-8 '>
+              Special prizes every month
+            </p>
+            <SparkleIcon size={32}/>
+            </div>
+          
+              <Card className="relative flex items-center justify-center flex-col z-50 px-10 pt-8 pb-4 rounded-xl shadow-xl hover:shadow-2xl transition  cursor-pointer">
+              <p className="text-black font-extrabold text-xl absolute right-2 top-2">Logo</p>
+                <CardContent>
+                  <CardTitle className='flex justify-center items-center flex-col
+                    space-y-2 pb-1'>
+                    <div className='flex items-center gap-x-2 font-bold text-2xl py-1'>
+                    Became a member
+                    </div>
+                  </CardTitle>
+                  <CardDescription className='px-6 pb-5 text-center text-lg text-gray-500 font-semibold flex w-full justify-center items-center'>
+                  Get started for free. No card required.
+                  </CardDescription>
+                  <SiginBtn />
+                  <SiginEmailBtn />
+                  <p className="text-sm font-italic pt-1 text-black text-center">
+                    First time? dont be shy, show yourself
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </PageWrapper>
+      <Footer />
     </div>
+    </Container>
   )
 }
 

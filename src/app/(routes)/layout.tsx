@@ -15,8 +15,8 @@ const RoutesLayout = ({children}: {children: React.ReactNode}) => {
       <Header/>
       </div>
       <div className='fixed w-full'>
-        <div className={`md:hidden flex justify-between py-6 px-4`}>
-        <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-90">
+        <div className={`md:hidden flex bg-zinc-100 justify-between py-4 px-4 rounded-b-xl`}>
+        <Link href={"/"} className="text-2xl  font-semibold text-black hover:opacity-90">
             Logo
           </Link>
           <MobileSidebar />
