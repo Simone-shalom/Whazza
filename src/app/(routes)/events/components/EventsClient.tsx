@@ -30,8 +30,6 @@ const EventsClient = ({events}: EventsClientProps) => {
       
   // }
 
-  console.log(events)
-
   return (
   
     <Container>

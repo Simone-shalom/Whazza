@@ -65,7 +65,7 @@ export default async function Page() {
         </>
       ) : (
         <>
-          <div className="min-h-[60vh] grid place-items-center rounded-lg px-6 py-10 bg-slate-100">
+          <div className="min-h-[60vh] grid place-items-center rounded-lg px-6 py-10 ">
             <Link
               href={String(checkoutLink)}
               className="font-medium text-base hover:underline"

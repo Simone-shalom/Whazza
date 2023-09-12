@@ -14,7 +14,7 @@ export default function Home() {
     <PageWrapper>
       <Container>
         <LandingHero />
-        <div className='pt-20 flex px-5 lg:px-10 items-center justify-center'>
+        <div className=' flex px-5 lg:px-10 items-center justify-center'>
           <RelatedEvents />
         </div>
         <Testimonials />
