@@ -9,10 +9,6 @@ import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -25,20 +21,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import Modal from "./Modal";
-import { useEventsModal } from "@/hooks/use-events-modal";
 import { useEventsModal2 } from "@/hooks/use-events-modal2";
 import { ImageUpload } from "../ImageUpload";
 import toast from "react-hot-toast";
 import Image from "next/image";
-import { CldUploadButton, CldUploadWidget } from "next-cloudinary";
 
 const formSchema = z.object({
   name: z.string().min(1, {
     message: "name is required."
-  }),
-  time: z.string().min(1, {
-    message: "Time is required."
   }),
   desc: z.string().min(1, {
     message: "Description is required."
@@ -78,10 +68,9 @@ export const InitialModal = () => {
       await axios.post("/api/create", values);
 
       form.reset();
-      toast.success("Event created")
       router.push('/events');
-      window.location.reload();
-      console.log(values)
+      router.refresh()
+      toast.success("Event created")
     } catch (error) {
       console.log(error);
       toast.error('something went wrong')

@@ -1,5 +1,5 @@
 
-import getCurrentUser from "@/actions/getCurrentUse";
+import getCurrentUser from "@/actions/getCurrentUser";
 import prismadb from "@/lib/prismadb";
 import { NextResponse } from "next/server";
 
@@ -35,6 +35,7 @@ export async function POST(req: Request, res: Response) {
                 time: time,
                 amount: amount,
                 userId: currentUser.id,
+                createdBy: currentUser.name,
                 leaderboard: {
                     create: {}
                 }

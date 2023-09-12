@@ -4,16 +4,19 @@ import RelatedEvents from "@/components/RelatedEvents"
 import { PageWrapper } from "@/components/animations/pageWrapper"
 import { Button } from "@/components/ui/button"
 import EventsClient from "./components/EventsClient"
+import getEvents from "@/actions/getEvents"
+import getCurrentUser from "@/actions/getCurrentUser"
 
 
-const EventsPage = () => {
+const EventsPage = async() => {
+
+  const events = await getEvents()
+  const currentUser = await getCurrentUser()
+
   return (
       <Container>
         <div className='pt-24 min-h-screen '>
-          <EventsClient />
-          <div className="flex justify-center items-center pt-32">
-            <RelatedEvents />
-          </div>
+          <EventsClient events={events}/>
             <Footer />
         </div>
       </Container>

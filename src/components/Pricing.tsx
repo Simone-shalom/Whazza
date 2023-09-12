@@ -27,7 +27,7 @@ export const Pricing = () => {
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                   <path d="M20 6L9 17l-5-5"></path>
                 </svg>
-              </span>Create and join events
+              </span>Join events
             </p>
             <p className="flex items-center text-gray-600 mb-2">
               <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
@@ -60,7 +60,7 @@ export const Pricing = () => {
             <span className="bg-purple-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
             <h2 className="text-sm tracking-widest title-font mb-1 font-medium">PRO</h2>
             <h1 className="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-              <span>$19.99</span>
+              <span>19.99</span>
               <span className="text-lg ml-1 font-normal text-gray-500">/mo</span>
             </h1>
             <p className="flex items-center text-gray-600 mb-2">

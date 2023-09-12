@@ -48,6 +48,7 @@ model User {
   api_key                  String?
 
   events Event[]
+  times Time[]
 }
 
 
@@ -57,7 +58,7 @@ model VerificationToken {
   token      String   @unique
   expires    DateTime
 
-  @@unique([identifier, token])
+  @@index([identifier, token])
 }
 
 
@@ -71,11 +72,12 @@ model Event {
   amount String?
   createdAt DateTime @default(now())
   userId String
-
-  participants User @relation(fields: [userId], references: [id])
+  createdBy String?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  participants String[]
   leaderboard Leaderboard[]
 
-  @@unique([userId])
+  @@index([userId])
 }
 
 model Leaderboard {
@@ -95,7 +97,8 @@ model Time {
   imageSrc String
   leaderboardId String
 
-  leaderboard Leaderboard @relation(fields: [leaderboardId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  leaderboard Leaderboard @relation(fields: [leaderboardId], references: [id], onDelete: Cascade)
 
-  @@unique([leaderboardId])
+  @@index([leaderboardId])
 }

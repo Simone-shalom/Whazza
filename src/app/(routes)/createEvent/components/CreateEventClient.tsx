@@ -1,7 +1,7 @@
 'use client'
 
-import AnimatedBlob from "@/components/AnimatedBlob";
 import Container from "@/components/Container";
+import { PageWrapper } from "@/components/animations/pageWrapper";
 import { InitialModal } from "@/components/modals/EventModal2"
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -27,10 +27,8 @@ const CreateEventClient = () => {
       
   }
 
-  console.log(session)
-
   return (
-
+    <PageWrapper>
     <Container>
       <h1 className="text-3xl text-center pb-2 font-bold">
         Event creation form
@@ -45,6 +43,7 @@ const CreateEventClient = () => {
         </div>
       </Card>
     </Container>
+    </PageWrapper>
   )
 }
 
