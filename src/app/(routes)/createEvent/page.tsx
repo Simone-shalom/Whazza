@@ -2,6 +2,7 @@ import { mustBeLoggedIn } from "@/lib/auth"
 import CreateEventClient from "./components/CreateEventClient"
 import Container from "@/components/Container"
 import Footer from "@/components/Footer"
+import AnimatedBlob from "@/components/AnimatedBlob"
 
 
 const CreateEvent = async() => {

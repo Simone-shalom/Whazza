@@ -63,15 +63,13 @@ model VerificationToken {
 
 model Event {
   id String @id @default(uuid()) @map("_id")
-  date DateTime
   name String
-  desc String?
+  desc String
   imageSrc String
   time String?
   distance String?
   amount String?
   createdAt DateTime @default(now())
-  createdBy String
   userId String
 
   participants User @relation(fields: [userId], references: [id])
@@ -91,7 +89,7 @@ model Leaderboard {
 model Time {
   id String @id @default(uuid()) @map("_id")
   userId String
-  time String
+  time String?
   distance String?
   amount String?
   imageSrc String

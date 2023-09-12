@@ -1,8 +1,10 @@
 'use client'
 
+import AnimatedBlob from "@/components/AnimatedBlob";
 import Container from "@/components/Container";
 import { InitialModal } from "@/components/modals/EventModal2"
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { useEventsModal2 } from "@/hooks/use-events-modal2";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -25,9 +27,15 @@ const CreateEventClient = () => {
       
   }
 
+  console.log(session)
+
   return (
-  
+
     <Container>
+      <h1 className="text-3xl text-center pb-2 font-bold">
+        Event creation form
+      </h1>
+      <Card className="px-20 py-5 bg-transparent border-black border-2 border-dotted">
       <div className="flex flex-col items-center justify-center">
         <Button className="text-xl font-semibold pb-2" variant='default'
             onClick={OpenEventModal}>
@@ -35,6 +43,7 @@ const CreateEventClient = () => {
         </Button>
         <InitialModal />
         </div>
+      </Card>
     </Container>
   )
 }

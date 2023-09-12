@@ -35,19 +35,16 @@ import { CldUploadButton, CldUploadWidget } from "next-cloudinary";
 
 const formSchema = z.object({
   name: z.string().min(1, {
-    message: "Server name is required."
-  }),
-  distance: z.string().min(1, {
-    message: "Server name is required."
-  }),
-  amount: z.string().min(1, {
-    message: "Server name is required."
+    message: "name is required."
   }),
   time: z.string().min(1, {
-    message: "Server name is required."
+    message: "Time is required."
   }),
-  imageUrl: z.string().min(1, {
-    message: "Server image is required."
+  desc: z.string().min(1, {
+    message: "Description is required."
+  }),
+  imageSrc: z.string().min(1, {
+    message: "image is required."
   })
 });
 
@@ -65,10 +62,11 @@ export const InitialModal = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      imageUrl: "",
+      imageSrc: "",
       time: '',
       distance: '',
-      amount: ''
+      amount: '',
+      desc: ''
 
     }
   });
@@ -77,11 +75,12 @@ export const InitialModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // await axios.post("/api/servers", values);
+      await axios.post("/api/create", values);
 
-      // form.reset();
-      // router.refresh();
-      // window.location.reload();
+      form.reset();
+      toast.success("Event created")
+      router.push('/events');
+      window.location.reload();
       console.log(values)
     } catch (error) {
       console.log(error);
@@ -138,6 +137,29 @@ export const InitialModal = () => {
                 )}
               />
 
+              <FormField
+                control={form.control}
+                name="desc"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel
+                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
+                    >
+                      Description
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={isLoading}
+                        className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
+                        placeholder="Enter event name"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
             <FormField
                 control={form.control}
                 name="time"
@@ -146,11 +168,11 @@ export const InitialModal = () => {
                     <FormLabel
                       className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
                     >
-                      Time 
+                      Time <span>MIN</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        disabled={isLoading} type="time"
+                        disabled={isLoading} type="number"
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                         placeholder="Time for a challenge"
                         {...field}
@@ -169,7 +191,7 @@ export const InitialModal = () => {
                     <FormLabel
                       className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
                     >
-                      Distance
+                      Distance <span>KM</span> - optional
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -198,7 +220,7 @@ export const InitialModal = () => {
                       <Input
                         disabled={isLoading} type="number"
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-                        placeholder="Time for a challenge"
+                        placeholder="Reps requiered for a challenge"
                         {...field}
                       />
                     </FormControl>
@@ -211,7 +233,7 @@ export const InitialModal = () => {
         </Dialog>
         <FormField
                 control={form.control}
-                name="imageUrl"
+                name="imageSrc"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel
