@@ -3,17 +3,36 @@
 import { useRouter } from "next/navigation"
 import { Button } from "./ui/button"
 import { GithubIcon } from "lucide-react"
+import { useSession } from "next-auth/react"
 
 const LandingButtons = () => {
+
+    const { data: session } = useSession();
     const router = useRouter()
+
+    const githubLink = 'https://github.com/Simone-shalom/Whazza' 
+
+    const goToGitHub = () => {
+      window.open(githubLink, "_blank")
+    }
     
+   const goAuthOrDashboard = () => {
+    if(session){
+      router.push('/dashboard')
+    }else {
+      router.push('/auth')
+    }
+   }
+
   return (
     <div className='flex items-center justify-center space-x-5'>
         <Button className='hover:opacity-80 hover:scale-110 transition'
-        onClick={()=> router.push('/auth')}>
+        onClick={goAuthOrDashboard}>
         Get started
         </Button>
-        <Button variant='secondary' className='hover:opacity-80 hover:scale-110 transition'>
+        <Button
+          onClick={goToGitHub} 
+          variant='secondary' className='hover:opacity-80 hover:scale-110 transition'>
         Github
         <GithubIcon size={32}/>
         </Button>

@@ -1,5 +1,6 @@
 
 import getEvents from '@/actions/getEvents'
+import getNewEvents from '@/actions/getNewEvents'
 import AnimatedBlob from '@/components/AnimatedBlob'
 import Container from '@/components/Container'
 import EventsDisplay from '@/components/EventsDisplay'
@@ -13,14 +14,14 @@ import { PageWrapper } from '@/components/animations/pageWrapper'
 
 export default async function Home() {
 
-  const events = await getEvents()
+  const newEvents = await getNewEvents()
 
   return (
     <PageWrapper>
       <Container>
         <LandingHero />
         <div className=' flex px-5 lg:px-10 items-center justify-center'>
-          <EventsDisplay events={events} landing/>
+          <EventsDisplay events={newEvents} landing/>
         </div>
         <Testimonials />
         <Footer />

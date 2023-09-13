@@ -27,7 +27,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
   return (
     <>
     <div
-        onClick={()=> router.push(`/listings/${data.id}`)}
+        onClick={()=> router.push(`/events/${data.id}`)}
         className={`${landingRotate} col-span-1 cursor-pointer rounded-xl transition duration-1000 hover:scale-110  md:hover:scale-110`} >
         <div className='flex flex-col  w-full'>
             <div className='w-full relative overflow-hidden rounded-top-xl h-[160px]'>
@@ -37,7 +37,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
                         <ChevronLeftCircleIcon size={32} color="white" fill="" />
                     </div>
             </div>
-            <Card className=" rounded-t-none rounded-b-xl px-5 py-5">
+            <Card className=" rounded-t-none rounded-b-xl px-5 py-3">
             <div className='text-xl font-semibold'>
                  {data.name}
             </div>
@@ -46,7 +46,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
             </div>
             <Separator />
             <Progress value={33}/>
-            <div className="flex justify-between font-semibold pt-5 pb-1">
+            <div className="flex justify-between font-semibold pt-3 pb-1">
                 <p>
                     Your place
                 </p>
@@ -55,14 +55,14 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
                 </p>
             </div>
             <Separator />
-            <div className="flex justify-between font-semibold pt-5 pb-1">
+            <div className="flex justify-between font-semibold pt-3 pb-1">
                 <p>
                     View Leaderboard
                 </p>
                 <ArrowRightIcon size={24}/>
             </div>
             <Separator />
-            <div className="flex pt-5 pb-1">
+            <div className="flex pt-3 pb-1">
                 <p className="font-semibold">
                     Challenge details
                 </p>
