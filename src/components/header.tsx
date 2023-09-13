@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
 
- const Header = ()=> {
+ const HeaderClient = ()=> {
   const { data: session } = useSession();
   const [showBackground, setShowBackground] = useState(false)
  
@@ -64,4 +64,4 @@ return() =>{
   );
 }
 
-export default Header;
+export default HeaderClient;
