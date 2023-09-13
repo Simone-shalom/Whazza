@@ -1,5 +1,4 @@
 
-import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import MobileSidebar from '@/components/MobileSidebar'
 import Link from 'next/link'
@@ -12,7 +11,6 @@ const RoutesLayout = ({children}: {children: React.ReactNode}) => {
   return (
     <div className=''>
       <div className='hidden md:block'>
-      <Header/>
       </div>
       <div className='fixed w-full z-50'>
         <div className={`md:hidden flex bg-zinc-100 justify-between py-4 px-4 rounded-b-xl`}>
