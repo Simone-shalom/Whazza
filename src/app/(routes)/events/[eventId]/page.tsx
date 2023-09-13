@@ -1,8 +1,6 @@
 import Container from "@/components/Container"
 import { PageWrapper } from "@/components/animations/pageWrapper"
-import EventsClient from "../components/EventsClient"
 import Footer from "@/components/Footer"
-import getEvents from "@/actions/getEvents"
 import EventByIdClient from "./components/EventByIdClient"
 import getEventById from "@/actions/getEventById"
 
@@ -23,7 +21,7 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
     <Container>
     <PageWrapper>
     <div className='pt-24 min-h-screen '>
-      <EventByIdClient  event={event}/>
+      <EventByIdClient event={event}/>
         <Footer />
     </div>
     </PageWrapper>

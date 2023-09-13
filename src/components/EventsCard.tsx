@@ -41,8 +41,8 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
             <div className='text-xl font-semibold'>
                  {data.name}
             </div>
-            <div className='text-md text-gray-700 pb-2'>
-                 {data.desc}
+            <div className='text-md text-gray-700 pb-2 truncate'>
+                 {data.desc} 
             </div>
             <Separator />
             <Progress value={33}/>
