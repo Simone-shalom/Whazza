@@ -1,6 +1,6 @@
 
 import Footer from '@/components/Footer'
-import Header from '@/components/Header'
+import Header from '../../components/Header'
 import MobileSidebar from '@/components/MobileSidebar'
 import Link from 'next/link'
 import React from 'react'
