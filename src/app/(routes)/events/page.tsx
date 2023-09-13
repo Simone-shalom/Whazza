@@ -15,10 +15,12 @@ const EventsPage = async() => {
 
   return (
       <Container>
+        <PageWrapper>
         <div className='pt-24 min-h-screen '>
-          <EventsClient events={events}/>
+          <EventsClient events={events} />
             <Footer />
         </div>
+        </PageWrapper>
       </Container>
   )
 }

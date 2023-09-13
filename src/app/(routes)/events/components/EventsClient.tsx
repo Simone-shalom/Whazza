@@ -33,13 +33,13 @@ const EventsClient = ({events}: EventsClientProps) => {
   return (
   
     <Container>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center ">
       <Button className="text-xl font-semibold  pb-2"
         onClick={()=> router.push('/createEvent')}>
         Create an Event
       </Button>
       </div>
-      <div className="flex flex-row justify-center items-center">
+      <div className="flex flex-row justify-center items-center pb-20 pt-20">
          <EventsDisplay events={events}/>
       </div>
         {/* {session && (
