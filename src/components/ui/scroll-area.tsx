@@ -31,11 +31,11 @@ const ScrollBar = React.forwardRef<
     ref={ref}
     orientation={orientation}
     className={cn(
-      "flex touch-none select-none transition-colors bg-black",
+      "flex touch-none select-none transition-colors bg-black/80",
       orientation === "vertical" &&
-        "h-full w-1.5 border-l border-l-black p-[1px]",
+        "h-full w-1 border-l border-l-black p-[1px]",
       orientation === "horizontal" &&
-        "h-1.5 border-t border-t-black p-[1px]",
+        "h-1 border-t border-t-black p-[1px]",
       className
     )}
     {...props}

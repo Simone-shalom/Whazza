@@ -40,10 +40,10 @@ return() =>{
 
 
   return (
-    <nav className=" w-full px-4 fixed z-50">
+    <nav className= {`  ${showBackground ? ' bg-gradient-to-b from-white to-purple-100' : ''} 
+      w-full px-4 fixed z-50 border-collapse border-b  `}>
       <div className={`flex  items-center gap-8 px-5 rounded-xl justify-between 
-        py-6 max-w-5xl m-auto transition duration-500 
-        ${showBackground ? 'bg-zinc-100' : ''}`}>
+        py-6 max-w-6xl m-auto transition duration-500`}>
         <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-80">
           Logo
         </Link>

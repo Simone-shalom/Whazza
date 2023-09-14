@@ -21,31 +21,31 @@ const EventByIdClient = ({event}: EventByIdClientProps) => {
   const tags: Tag[] = [
     {
       name: 'david',
-      time: '1:30'
+      time: '1:33'
     },
     {
       name: 'david',
-      time: '1:30'
+      time: '2:30'
     },
     {
       name: 'david',
-      time: '1:30'
+      time: '3:30'
     },
     {
       name: 'david',
-      time: '1:30'
+      time: '5:30'
     },
     {
       name: 'david',
-      time: '1:30'
+      time: '1:20'
     },
     {
       name: 'david',
-      time: '1:30'
+      time: '1:15'
     },
     {
       name: 'david',
-      time: '1:30'
+      time: '1:20'
     },
     {
       name: 'david',
