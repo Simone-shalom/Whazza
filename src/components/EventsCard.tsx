@@ -22,17 +22,17 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
     const date = new Date(data.createdAt)
     const formatedCreatedAt = format(date,'HH:mm PP' )
 
-    const landingRotate = landing ? 'hover:rotate-0 rotate-180' : ''
+    const landingBlur = landing ? 'blur-sm' : ''
 
   return (
     <>
     <div
         onClick={()=> router.push(`/events/${data.id}`)}
-        className={`${landingRotate} col-span-1 cursor-pointer rounded-xl transition duration-1000 hover:scale-110  md:hover:scale-110`} >
+        className={` col-span-1 cursor-pointer rounded-xl transition duration-1000 hover:scale-110  md:hover:scale-110`} >
         <div className='flex flex-col  w-full'>
             <div className='w-full relative overflow-hidden rounded-top-xl h-[160px]'>
                 <Image src={data.imageSrc} alt="Image url"  fill
-                    className='object-cover h-full w-full  transition ease-in '/>
+                    className= {`${landingBlur} object-cover h-full w-full  transition ease-in `}/>
                     <div className="absolute left-1 top-5">
                         <ChevronLeftCircleIcon size={32} color="white" fill="" />
                     </div>
@@ -50,7 +50,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
                 <p>
                     Your place
                 </p>
-                <p className="font-bold ">
+                <p className={`${landingBlur} font-bold`}>
                     3/10
                 </p>
             </div>

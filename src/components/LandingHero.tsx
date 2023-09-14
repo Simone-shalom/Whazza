@@ -8,7 +8,7 @@ export const LandingHero = () => {
     <div className='flex items-center justify-center pt-20'>
     <AnimatedBlob>
     <div className="m-8 relative space-y-4">
-      <div className="flex items-center justify-center text-4xl xl:text-5xl 2xl:text-6xl font-semibold pb-2">
+      <div className="flex items-center text-center justify-center text-4xl xl:text-5xl 2xl:text-6xl font-semibold pb-2">
         Your best events app
         </div>
         <div className="flex items-center justify-center text-3xl xl:text-4xl 2xl:text-5xl font-semibold text-orange-700">

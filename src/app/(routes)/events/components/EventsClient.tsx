@@ -38,8 +38,9 @@ const EventsClient = ({events}: EventsClientProps) => {
         onClick={()=> router.push('/createEvent')}>
         Create an Event
       </Button>
+      <h1 className="text-black text-4xl font-semibold pt-10">All available events</h1>
       </div>
-      <div className="flex flex-row justify-center items-center pb-20 pt-20">
+      <div className="flex flex-row justify-center items-center pb-20">
          <EventsDisplay events={events}/>
       </div>
         {/* {session && (
