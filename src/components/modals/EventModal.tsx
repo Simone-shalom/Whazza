@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation"
 import { toast } from "react-hot-toast"
 import { Separator } from "../ui/separator"
 import { Input } from "../ui/input"
-import { useEventsModal } from "@/hooks/use-events-modal"
 import Modal from "./Modal"
 import { ImageUpload } from "../ImageUpload"
 
@@ -43,7 +42,6 @@ const formSchema = z.object({
 
 const EventsModal = () => {
 
-    const eventsModal = useEventsModal()
     const router = useRouter()
     const [step, setStep] = useState(STEPS.CATEGORY)
 
@@ -186,9 +184,9 @@ const EventsModal = () => {
     )
 
   return (
-    <Modal disabled={isLoading} isOpen={eventsModal.isOpen} title='Create Listing'
-        onClose={eventsModal.onClose} 
-        onSubmit={()=>{}} body={bodyContent} />
+   <div>
+    
+   </div>
   )
 }
 

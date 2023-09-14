@@ -6,6 +6,8 @@ import { ScrollArea } from "./ui/scroll-area"
 import { Tag } from "@/app/(routes)/events/[eventId]/components/EventByIdClient"
 import { Separator } from "./ui/separator"
 import { Button } from "./ui/button"
+import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal"
+import { LeaderBoardModal } from "./modals/LeaderboardModal"
 
 interface EventByIdCardProps {
     event: Event
@@ -14,6 +16,9 @@ interface EventByIdCardProps {
 
 
 const EventByIdCard = ({event, tags}: EventByIdCardProps) => {
+
+  const leaderBoardModal = useLeaderboardModal()
+
   return (
     <div className="flex flex-row justify-center items-center">
       <section className="text-gray-600 body-font">
@@ -65,9 +70,12 @@ const EventByIdCard = ({event, tags}: EventByIdCardProps) => {
                 </div>
               </ScrollArea>
               <div className="pt-5 flex items-center pb-10 md:pb-0 justify-center">
-              <Button className="text-center px-5  text-lg hover:scale-110 transition duration-300">
+              <Button 
+                onClick={leaderBoardModal.onOpen}
+                className="text-center px-5  text-lg hover:scale-110 transition duration-300">
                 Join
                </Button>
+               <LeaderBoardModal />
               </div>
               </div>
             </div>

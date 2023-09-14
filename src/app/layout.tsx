@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Footer from "@/components/Footer";
 import ToasterProvider from "@/providers/ToasterProvider";
-import EventsModal from "@/components/modals/EventModal";
 
 const montse = Montserrat({
   subsets: ["latin"],
@@ -26,7 +25,6 @@ export default function RootLayout({
       <body className={montse.className}>
         <NextAuthProvider>
         <ToasterProvider />
-        <EventsModal />
           {children}
         </NextAuthProvider>
       </body>

@@ -28,7 +28,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
     <>
     <div
         onClick={()=> router.push(`/events/${data.id}`)}
-        className={` col-span-1 cursor-pointer  border-collapse shadow-xl border rounded-b-xl transition duration-1000 hover:scale-110 hover:translate-y-5 hover:translate-x-5`} >
+        className={` col-span-1 cursor-pointer  border-collapse shadow-2xl border rounded-b-xl transition duration-1000 hover:scale-110 hover:translate-y-5 hover:translate-x-5`} >
         <div className='flex flex-col  w-full'>
             <div className='w-full relative overflow-hidden rounded-top-xl h-[160px]'>
                 <Image src={data.imageSrc} alt="Image url"  fill

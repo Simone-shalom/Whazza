@@ -1,13 +1,13 @@
 import {create} from 'zustand'
 
-interface useEventsModalStore {
+interface useLeaderboardModalStore {
     isOpen: boolean
     onOpen: () => void
     onClose: () => void
 }
 
-export const useEventsModal = create<useEventsModalStore>((set) => ({
-    isOpen: false,
+export const useLeaderboardModal = create<useLeaderboardModalStore>((set) => ({
+    isOpen: true,
     onOpen: () => set({isOpen: true}),
     onClose: () => set({isOpen: false})
 }))
