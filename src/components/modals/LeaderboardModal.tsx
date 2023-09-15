@@ -16,9 +16,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import {useParams, useRouter } from "next/navigation";
 import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal";
 import Modal from "./Modal";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   time: z.string().min(1, {
@@ -28,11 +29,15 @@ const formSchema = z.object({
   amount: z.string(),
 });
 
+
 export const LeaderBoardModal = () => {
   const [isMounted, setIsMounted] = useState(false);
   const leaderBoardModal = useLeaderboardModal()
 
   const router = useRouter();
+
+  const params = useParams()
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -51,17 +56,19 @@ export const LeaderBoardModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values)
-    // try {
-    // //   await axios.post("/api/leaderboard", values);
+    console.log(params)
+    try {
+      await axios.post(`/api/leaderboard/${params}`, values);
 
-    // //   form.reset();
-    // //   router.refresh()
-    // //   toast.success("Event created")
-    // console.log(values)
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error('something went wrong')
-    // }
+      form.reset();
+      leaderBoardModal.onClose()
+      router.refresh()
+      toast.success("Event created")
+    console.log(values)
+    } catch (error) {
+      console.log(error);
+      toast.error('something went wrong')
+    }
   }
 
   if (!isMounted) {
@@ -154,6 +161,7 @@ export const LeaderBoardModal = () => {
 
   return (
       <Modal disabled={isLoading} isOpen={leaderBoardModal.isOpen}
-        onClose={leaderBoardModal.onClose} body={bodyContent} title="Add your result"/>
+        onClose={leaderBoardModal.onClose} body={bodyContent} title="Add your result"
+          />
   )
 }

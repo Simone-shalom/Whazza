@@ -94,7 +94,6 @@ model Time {
   time String?
   distance String?
   amount String?
-  imageSrc String
   leaderboardId String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

@@ -2,11 +2,12 @@
 
 import Container from "@/components/Container"
 import EventByIdCard from "@/components/EventByIdCard"
-import { Event } from "@prisma/client"
+import { Event, Leaderboard } from "@prisma/client"
 import { redirect, useRouter } from "next/navigation"
 
 interface EventByIdClientProps {
   event: Event
+  leaderboard: Leaderboard[]
 }
 
 export interface Tag {
@@ -14,7 +15,7 @@ export interface Tag {
   time: string;
 }
 
-const EventByIdClient = ({event}: EventByIdClientProps) => {
+const EventByIdClient = ({event, leaderboard}: EventByIdClientProps) => {
 
     const router = useRouter()
 
@@ -56,7 +57,7 @@ const EventByIdClient = ({event}: EventByIdClientProps) => {
   return (
   
     <Container>
-     <EventByIdCard event={event} tags={tags}/>
+     <EventByIdCard event={event} tags={tags} leaderboard={leaderboard}/>
         {/* {session && (
           <ImageUpload onChange={()=>{}} value=""/>
         )} */}

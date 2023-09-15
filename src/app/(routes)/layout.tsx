@@ -15,7 +15,7 @@ const RoutesLayout = ({children}: {children: React.ReactNode}) => {
         <Navbar />
       </div>
       <div className='fixed w-full z-50'>
-        <div className={`md:hidden flex bg-gradient-to-b from-white to-purple-100  justify-between py-4 px-4 rounded-b-xl`}>
+        <div className={`md:hidden flex bg-gradient-to-b from-purple-100 to-purple-50  justify-between py-4 px-4 rounded-b-xl`}>
         <Link href={"/"} className="text-2xl  font-semibold text-black hover:opacity-90">
             Logo
           </Link>

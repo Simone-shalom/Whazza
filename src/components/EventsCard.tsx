@@ -37,7 +37,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
                         <ChevronLeftCircleIcon size={32} color="white" fill="" />
                     </div>
             </div>
-            <Card className=" rounded-t-none rounded-b-xl px-5 py-3 bg-transparent border-1">
+            <Card className=" rounded-t-none rounded-b-xl px-5 py-3 bg-gradient-to-b from-purple-50 to-purple-100 border-1">
             <div className='text-xl font-semibold'>
                  {data.name}
             </div>

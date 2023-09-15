@@ -1,6 +1,6 @@
 'use client'
 
-import { Event } from "@prisma/client"
+import { Event, Leaderboard } from "@prisma/client"
 import Image from "next/image"
 import { ScrollArea } from "./ui/scroll-area"
 import { Tag } from "@/app/(routes)/events/[eventId]/components/EventByIdClient"
@@ -11,10 +11,11 @@ import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal"
 interface EventByIdCardProps {
     event: Event
     tags: Tag[]
+    leaderboard: Leaderboard[]
 }
 
 
-const EventByIdCard = ({event, tags}: EventByIdCardProps) => {
+const EventByIdCard = ({event, tags, leaderboard}: EventByIdCardProps) => {
 
   const leaderBoardModal = useLeaderboardModal()
 
