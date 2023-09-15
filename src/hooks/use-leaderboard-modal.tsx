@@ -7,7 +7,7 @@ interface useLeaderboardModalStore {
 }
 
 export const useLeaderboardModal = create<useLeaderboardModalStore>((set) => ({
-    isOpen: true,
+    isOpen: false,
     onOpen: () => set({isOpen: true}),
     onClose: () => set({isOpen: false})
 }))

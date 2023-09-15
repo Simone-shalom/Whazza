@@ -24,11 +24,11 @@ const Modal = ({
 
   return (
  <Dialog open={isOpen} onOpenChange={onClose}>
-    <DialogContent className="flex items-center justify-center flex-col z-50">
+    <DialogContent className="flex items-center justify-center bg-gradient-to-b from-purple-100 to-white flex-col z-50">
         {/*Title*/}
          <DialogHeader>
              <DialogTitle className='flex justify-center items-center flex-col
-                 gap-y-2 pb-2'>
+                  pt-2'>
                  <div className='flex items-center gap-x-2 font-bold py-1'>
                     {title}
                  </div>
@@ -36,7 +36,7 @@ const Modal = ({
          </DialogHeader>
 
         {/*Body*/}
-            <div className='px-6 flex w-full justify-center items-center'>
+            <div className=' flex w-full justify-center items-center'>
                 {body}
             </div>
 

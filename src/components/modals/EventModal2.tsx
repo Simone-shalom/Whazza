@@ -35,7 +35,10 @@ const formSchema = z.object({
   }),
   imageSrc: z.string().min(1, {
     message: "image is required."
-  })
+  }),
+  time: z.string(),
+  distance: z.string(),
+  amount: z.string(),
 });
 
 export const InitialModal = () => {
