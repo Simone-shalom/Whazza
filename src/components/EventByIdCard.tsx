@@ -58,7 +58,11 @@ const EventByIdCard = ({event, tags, leaderboard, times}: EventByIdCardProps) =>
                 <div className="p-4">
                   {times.map((time, index) => (
                     <>
-                      <div key={time.id} className="text-lg flex justify-between">
+                      <div
+                        key={time.id}
+                        className={`text-lg flex justify-between ${
+                          index === 0 ? 'border-2 border-yellow-500' : index === 1 ? 'border-2 border-gray-700' : index === 2 ? 'border-2 border-orange-900' : ''
+                        }`}>
                         <p className="font-semibold">
                         #{index + 1} @{time.username}
                         </p>

@@ -1,28 +1,29 @@
 import prismadb from "@/lib/prismadb"
 
 
-interface ITimesParams {
+interface IWinnerTimesParams {
     leaderboardId?: string
 }
 
-export default async function getTimes (params: ITimesParams) {
+export default async function getWinnerTimes (params: IWinnerTimesParams) {
 
 
     const {leaderboardId}= params
 
     try {
 
-        const times = await prismadb.time.findMany({
+        const winnerTimes = await prismadb.time.findMany({
             where: {
                 leaderboardId: leaderboardId
             },
             orderBy: {
                 time: 'asc'
-            }
+            },
+            take: 3
         })
 
 
-        return times
+        return winnerTimes
 
     }catch(error: any){
         throw new Error(error)
