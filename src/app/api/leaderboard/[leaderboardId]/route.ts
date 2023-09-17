@@ -28,6 +28,7 @@ export async function POST(req: Request,{params}: {params: EParams}){
             data: {
                         leaderboardId: leaderboardId,
                         userId: currentUser.id,
+                        username: currentUser.name,
                         distance: distance,
                         time: time,
                         amount: amount,

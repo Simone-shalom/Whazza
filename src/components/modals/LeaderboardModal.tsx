@@ -21,6 +21,7 @@ import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
 import { Leaderboard } from "@prisma/client";
+import TimePicker from "react-time-picker";
 
 
 interface LeaderboardModalProps {
@@ -29,7 +30,7 @@ interface LeaderboardModalProps {
 
 const formSchema = z.object({
   time: z.string().min(1, {
-    message: "Set the time"
+    message: "add the time"
   }),
   distance: z.string(),
   amount: z.string(),
@@ -93,17 +94,26 @@ export const LeaderBoardModal = ({leaderboard}: LeaderboardModalProps) => {
               <FormLabel
                 className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
               >
-                Time <span>MIN</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  disabled={isLoading} type="number"
+                {/* <Input
+                  disabled={isLoading}     type="time"
+                  min="00:00"
+                  max="59:59"
+                  step="60"
+                  placeholder="00:00"
+                  pattern="[0-5][0-9]:[0-5][0-9]"
                   className="bg-zinc-300/50 border-b focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-                  placeholder="You time for completed challenge"
+                  
                   {...field}
-                />
+                /> */}
+                <div className='flex items-center justify-start'>
+                <p className="font-semibold  mr-3">Your time</p>
+                <TimePicker value={field.value} onChange={field.onChange}
+                  format="mm:ss" disableClock={true} maxDetail="second"/>
+                </div>
               </FormControl>
-              <FormMessage />
+              
             </FormItem>
           )}
         />

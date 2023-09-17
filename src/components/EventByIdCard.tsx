@@ -1,6 +1,6 @@
 'use client'
 
-import { Event, Leaderboard } from "@prisma/client"
+import { Event, Leaderboard, Time } from "@prisma/client"
 import Image from "next/image"
 import { ScrollArea } from "./ui/scroll-area"
 import { Tag } from "@/app/(routes)/events/[eventId]/components/EventByIdClient"
@@ -13,10 +13,11 @@ interface EventByIdCardProps {
     event: Event
     tags: Tag[]
     leaderboard: Leaderboard
+    times: Time[]
 }
 
 
-const EventByIdCard = ({event, tags, leaderboard}: EventByIdCardProps) => {
+const EventByIdCard = ({event, tags, leaderboard, times}: EventByIdCardProps) => {
 
   const leaderBoardModal = useLeaderboardModal()
 
@@ -55,14 +56,14 @@ const EventByIdCard = ({event, tags, leaderboard}: EventByIdCardProps) => {
                 <Separator className="bg-gray-500"/>
               <ScrollArea className="h-72 pt-2 rounded-md border ">
                 <div className="p-4">
-                  {tags.map((tag, index) => (
+                  {times.map((time, index) => (
                     <>
-                      <div key={tag.name} className="text-lg flex justify-between">
+                      <div key={time.id} className="text-lg flex justify-between">
                         <p className="font-semibold">
-                        #{index + 1} @{tag.name}
+                        #{index + 1} @{time.username}
                         </p>
                           <p className="font-bold text-xl ">
-                            {tag.time}
+                            {time.time}
                           </p>
                       </div>
                       <Separator className="my-2" />

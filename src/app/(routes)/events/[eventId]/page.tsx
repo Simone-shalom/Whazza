@@ -4,6 +4,7 @@ import Footer from "@/components/Footer"
 import EventByIdClient from "./components/EventByIdClient"
 import getEventById from "@/actions/getEventById"
 import getLeaderboard from "@/actions/getLeaderboard"
+import getTimes from "@/actions/getTImes"
 
 
 interface EventParams {
@@ -14,9 +15,7 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
 
   const event = await getEventById(params)
   const leaderboard = await getLeaderboard({eventId: event?.id})
-
-  console.log(leaderboard)
-  console.log(event)
+  const times = await getTimes({leaderboardId: leaderboard.id})
 
 
   if(!event){
@@ -35,7 +34,7 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
     <Container>
     <PageWrapper>
     <div className='pt-24 min-h-screen '>
-      <EventByIdClient event={event} leaderboard={leaderboard}/>
+      <EventByIdClient event={event} leaderboard={leaderboard} times={times}/>
         <Footer />
     </div>
     </PageWrapper>

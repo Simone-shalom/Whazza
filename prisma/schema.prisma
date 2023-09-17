@@ -95,6 +95,7 @@ model Time {
   distance String?
   amount String?
   leaderboardId String
+  username String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   leaderboard Leaderboard @relation(fields: [leaderboardId], references: [id], onDelete: Cascade)
