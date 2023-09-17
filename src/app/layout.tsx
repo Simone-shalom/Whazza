@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={montse.className}>
         <NextAuthProvider>
         <ToasterProvider />
-        <LeaderBoardModal />
+        
           {children}
         </NextAuthProvider>
       </body>
