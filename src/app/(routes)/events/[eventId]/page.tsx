@@ -13,9 +13,11 @@ interface EventParams {
 const EventsByIdPage = async({params}: {params: EventParams}) => {
 
   const event = await getEventById(params)
-  const leaderboard = await getLeaderboard({eventId:  event?.id})
+  const leaderboard = await getLeaderboard({eventId: event?.id})
 
   console.log(leaderboard)
+  console.log(event)
+
 
   if(!event){
     return null

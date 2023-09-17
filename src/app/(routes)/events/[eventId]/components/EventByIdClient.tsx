@@ -7,7 +7,7 @@ import { redirect, useRouter } from "next/navigation"
 
 interface EventByIdClientProps {
   event: Event
-  leaderboard: Leaderboard[]
+  leaderboard: Leaderboard
 }
 
 export interface Tag {

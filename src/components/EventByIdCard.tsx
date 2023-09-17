@@ -7,11 +7,12 @@ import { Tag } from "@/app/(routes)/events/[eventId]/components/EventByIdClient"
 import { Separator } from "./ui/separator"
 import { Button } from "./ui/button"
 import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal"
+import { LeaderBoardModal } from "./modals/LeaderboardModal"
 
 interface EventByIdCardProps {
     event: Event
     tags: Tag[]
-    leaderboard: Leaderboard[]
+    leaderboard: Leaderboard
 }
 
 
@@ -75,6 +76,7 @@ const EventByIdCard = ({event, tags, leaderboard}: EventByIdCardProps) => {
                 className="text-center px-5  text-lg hover:scale-110 transition duration-300">
                 Join
                </Button>
+               <LeaderBoardModal leaderboard={leaderboard}/>
               </div>
               </div>
             </div>

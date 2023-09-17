@@ -17,14 +17,14 @@ export default async function getLeaderboard(params: IleaderboardParams){
 
         const leaderboard = await prismadb.leaderboard.findMany({
             where : {
-                eventId: eventId
+                eventId: eventId,
             },
             include: {
                 times: true
             }
         })
 
-        return leaderboard
+        return leaderboard[0]
 
     }catch(error){
         throw new Error('Leaderboard, action')

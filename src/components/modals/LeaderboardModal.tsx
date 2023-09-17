@@ -20,6 +20,12 @@ import {useParams, useRouter } from "next/navigation";
 import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
+import { Leaderboard } from "@prisma/client";
+
+
+interface LeaderboardModalProps {
+  leaderboard: Leaderboard;
+}
 
 const formSchema = z.object({
   time: z.string().min(1, {
@@ -30,13 +36,11 @@ const formSchema = z.object({
 });
 
 
-export const LeaderBoardModal = () => {
+export const LeaderBoardModal = ({leaderboard}: LeaderboardModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const leaderBoardModal = useLeaderboardModal()
 
   const router = useRouter();
-
-  const params = useParams()
 
 
   useEffect(() => {
@@ -56,14 +60,14 @@ export const LeaderBoardModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values)
-    console.log(params)
+
     try {
-      await axios.post(`/api/leaderboard/${params}`, values);
+      await axios.post(`/api/leaderboard/${leaderboard.id}`, values);
 
       form.reset();
       leaderBoardModal.onClose()
       router.refresh()
-      toast.success("Event created")
+      toast.success("Leaderboard joined successfully")
     console.log(values)
     } catch (error) {
       console.log(error);

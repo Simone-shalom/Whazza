@@ -3,14 +3,14 @@ import prismadb from "@/lib/prismadb";
 import { NextResponse } from "next/server";
 
 interface EParams {
-    eventId: string;
+    leaderboardId: string;
 }
 
 export async function POST(req: Request,{params}: {params: EParams}){
 
     try {
 
-        const {eventId} = params;
+        const {leaderboardId} = params;
         const currentUser = await getCurrentUser()
         const body = await req.json()
         const {time, distance, amount} = body
@@ -20,13 +20,13 @@ export async function POST(req: Request,{params}: {params: EParams}){
             return new NextResponse("Unathenticated", {status: 403})
         }
 
-        if(!eventId || typeof eventId !== 'string'){
+        if(!leaderboardId || typeof leaderboardId !== 'string'){
             return new NextResponse("Event id is required", {status:400})
         }
 
         const leaderboardWithTimes = await prismadb.time.create({
             data: {
-                        leaderboardId: eventId,
+                        leaderboardId: leaderboardId,
                         userId: currentUser.id,
                         distance: distance,
                         time: time,
