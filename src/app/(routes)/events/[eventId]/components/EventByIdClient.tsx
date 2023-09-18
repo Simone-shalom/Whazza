@@ -20,7 +20,6 @@ const EventByIdClient = ({event, leaderboard, times}: EventByIdClientProps) => {
 
     const router = useRouter()
 
-    console.log(times)
 
   const tags: Tag[] = [
     {
