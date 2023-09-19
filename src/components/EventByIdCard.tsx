@@ -3,7 +3,6 @@
 import { Event, Leaderboard, Time } from "@prisma/client"
 import Image from "next/image"
 import { ScrollArea } from "./ui/scroll-area"
-import { Tag } from "@/app/(routes)/events/[eventId]/components/EventByIdClient"
 import { Separator } from "./ui/separator"
 import { Button } from "./ui/button"
 import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal"
@@ -11,13 +10,12 @@ import { LeaderBoardModal } from "./modals/LeaderboardModal"
 
 interface EventByIdCardProps {
     event: Event
-    tags: Tag[]
     leaderboard: Leaderboard
     times: Time[]
 }
 
 
-const EventByIdCard = ({event, tags, leaderboard, times}: EventByIdCardProps) => {
+const EventByIdCard = ({event, leaderboard, times}: EventByIdCardProps) => {
 
   const leaderBoardModal = useLeaderboardModal()
 
@@ -75,7 +73,7 @@ const EventByIdCard = ({event, tags, leaderboard, times}: EventByIdCardProps) =>
                   ))}
                 </div>
               </ScrollArea>
-              <div className="pt-5 flex items-center pb-10 md:pb-0 justify-center">
+              <div className="pt- flex items-center pb-10 md:pb-0 justify-center">
               <Button 
                 onClick={leaderBoardModal.onOpen}
                 className="text-center px-5  text-lg hover:scale-110 transition duration-300">
