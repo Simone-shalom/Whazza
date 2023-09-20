@@ -12,10 +12,11 @@ interface EventByIdCardProps {
     event: Event
     leaderboard: Leaderboard
     times: Time[]
+    participants: number | null
 }
 
 
-const EventByIdCard = ({event, leaderboard, times}: EventByIdCardProps) => {
+const EventByIdCard = ({event, leaderboard, times, participants}: EventByIdCardProps) => {
 
   const leaderBoardModal = useLeaderboardModal()
 
@@ -40,7 +41,7 @@ const EventByIdCard = ({event, leaderboard, times}: EventByIdCardProps) => {
                   </div>
                   <div>
                     <p className="text-lg font-semibold px-2 pt-2">Already joined by 
-                      <span className="text-xl mx-1 ">{event.participants.length}</span> 
+                      <span className="text-xl mx-1 ">{participants}</span> 
                       users
                     </p>
                   </div>

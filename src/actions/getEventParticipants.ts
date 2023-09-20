@@ -4,16 +4,9 @@ export default async function getEventParticipants(){
 
     try {
 
-        const events = await prismadb.event.findMany({
-            orderBy: {
-                createdAt: 'desc'
-            },
-            include: {
-                leaderboard: true
-            }
-        })
+        const participants = await prismadb.user.count()
 
-        return events
+        return participants
 
     }catch(error: any){
         throw new Error(error)

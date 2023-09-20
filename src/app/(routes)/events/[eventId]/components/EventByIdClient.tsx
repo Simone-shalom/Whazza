@@ -9,6 +9,7 @@ interface EventByIdClientProps {
   event: Event
   leaderboard: Leaderboard
   times: Time[]
+  participants: number | null
 }
 
 export interface Tag {
@@ -16,7 +17,7 @@ export interface Tag {
   time: string;
 }
 
-const EventByIdClient = ({event, leaderboard, times}: EventByIdClientProps) => {
+const EventByIdClient = ({event, leaderboard, times, participants}: EventByIdClientProps) => {
 
     const router = useRouter()
 
@@ -25,7 +26,8 @@ const EventByIdClient = ({event, leaderboard, times}: EventByIdClientProps) => {
   return (
   
     <Container>
-     <EventByIdCard event={event}  leaderboard={leaderboard} times={times}/>
+     <EventByIdCard event={event}  leaderboard={leaderboard} times={times}
+        participants={participants}/>
         {/* {session && (
           <ImageUpload onChange={()=>{}} value=""/>
         )} */}
