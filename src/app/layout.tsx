@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Footer from "@/components/Footer";
 import ToasterProvider from "@/providers/ToasterProvider";
-import { LeaderBoardModal } from "@/components/modals/LeaderboardModal";
 
 const montse = Montserrat({
   subsets: ["latin"],

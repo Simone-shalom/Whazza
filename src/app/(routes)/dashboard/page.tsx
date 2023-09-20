@@ -14,6 +14,10 @@ import { Button } from "@/components/ui/button";
 import Container from "@/components/Container";
 import Image from "next/image";
 import { PageWrapper } from "@/components/animations/pageWrapper";
+import toast from "react-hot-toast";
+import { usePrizesModal } from "@/hooks/use-prizes-modal";
+import PrizesButton from "@/components/PrizesButton";
+import { PrizesModal } from "@/components/modals/PrizesModal";
 ;
 
 export default async function Page() {
@@ -56,6 +60,7 @@ export default async function Page() {
                 <Button variant="default" className="opacity-60 max-w-xl">
                   <Link href={String(customerPortal)}>Manage subscription</Link>
                 </Button>
+                <PrizesButton />
               </div>
             ) : (
               <div className=" flex flex-col justify-center items-center rounded-lg pb-5 ">
@@ -67,7 +72,9 @@ export default async function Page() {
                 </Link>
                 <div className="flex items-center pb-5 space-x-5">
               <LogoutBtn />
-              <Button variant="outline">Collect prizes</Button>
+              <Button 
+                onClick={()=>toast.error('Prizes only for subscribed users')}
+                variant="outline">Collect prizes</Button>
             </div>
               </div>
             )}
@@ -80,6 +87,7 @@ export default async function Page() {
               height={300}
             />
           </div>
+          <PrizesModal />
         </div>
       </PageWrapper>
     </Container>
