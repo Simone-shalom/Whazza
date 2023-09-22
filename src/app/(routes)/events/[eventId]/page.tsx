@@ -5,8 +5,8 @@ import EventByIdClient from "./components/EventByIdClient"
 import getEventById from "@/actions/getEventById"
 import getLeaderboard from "@/actions/getLeaderboard"
 import getTimes from "@/actions/getTImes"
-import getTopThreeTimes from "@/actions/getTopThree"
 import getEventParticipants from "@/actions/getEventParticipants"
+import getWinnerTimes from "@/actions/getWinnersTimes"
 
 
 interface EventParams {
@@ -18,9 +18,10 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
   const event = await getEventById(params)
   const leaderboard = await getLeaderboard({eventId: event?.id})
   const times = await getTimes({leaderboardId: leaderboard.id})
-  const timesTopThree = await getTopThreeTimes({topCount:3})
   const eventPaticipants = await getEventParticipants()
-
+  const winnersTimes =await getWinnerTimes({leaderboardId: leaderboard.id})
+  
+  console.log(winnersTimes)
 
   if(!event){
     return null
@@ -39,7 +40,7 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
     <PageWrapper>
     <div className='pt-24 min-h-screen '>
       <EventByIdClient event={event} leaderboard={leaderboard} times={times} 
-        participants={eventPaticipants}/>
+        participants={eventPaticipants} />
         <Footer />
     </div>
     </PageWrapper>

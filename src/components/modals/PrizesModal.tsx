@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,9 +19,11 @@ import { Button } from "@/components/ui/button";
 import {useParams, useRouter } from "next/navigation";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
-import { Leaderboard } from "@prisma/client";
-import TimePicker from "react-time-picker";
 import { usePrizesModal } from "@/hooks/use-prizes-modal";
+
+interface PrizesModalProps {
+  userTopThree: boolean
+}
 
 
 const formSchema = z.object({
@@ -34,12 +35,13 @@ const formSchema = z.object({
 });
 
 
-export const PrizesModal = () => {
+export const PrizesModal = ({userTopThree}: PrizesModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const prizesModal = usePrizesModal()
 
   const router = useRouter();
 
+  console.log(userTopThree)
 
   useEffect(() => {
     setIsMounted(true);
@@ -82,56 +84,26 @@ export const PrizesModal = () => {
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} 
       className="space-y-6 flex flex-col w-[320px]">
-    <div className="flex items-start justify-start">
+    <div className="flex items-center justify-center">
     </div>
+    {userTopThree ? (
+      <div className="text-center">
+        <p className="text-2xl font-semibold">
+        You are Legend
+        </p>
+      </div>
+    ): (
+      <div className="text-center">
+        <p>
+          Join events to became legend
+        </p>
+      </div>
+    )}
 
-        <FormField
-          control={form.control}
-          name="distance"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel
-                className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-              >
-                Distance <span>KM</span> - optional
-              </FormLabel>
-              <FormControl>
-                <Input
-                  disabled={isLoading} type="number"
-                  className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-                  placeholder="Distance completed"
-                  {...field}
-                  />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="amount"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel
-                className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-              >
-                Amount <span>(reps)</span> - optional
-              </FormLabel>
-              <FormControl>
-                <Input
-                  disabled={isLoading} type="number"
-                  className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-                  placeholder="Reps done in a challenge"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <div className="flex items-center justify-center">
-        <Button size='lg' disabled={isLoading} 
+        <Button 
+          onClick={()=> toast.error('prices available soon')}
+          size='lg' disabled={isLoading} 
               className="hover:scale-105 transition hover:opacity-80 w-1/2">
               Collect
         </Button>

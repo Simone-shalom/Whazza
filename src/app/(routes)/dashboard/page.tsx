@@ -15,9 +15,9 @@ import Container from "@/components/Container";
 import Image from "next/image";
 import { PageWrapper } from "@/components/animations/pageWrapper";
 import toast from "react-hot-toast";
-import { usePrizesModal } from "@/hooks/use-prizes-modal";
 import PrizesButton from "@/components/PrizesButton";
 import { PrizesModal } from "@/components/modals/PrizesModal";
+import getUserTopThree from "@/actions/getUserTopThree";
 ;
 
 export default async function Page() {
@@ -26,7 +26,9 @@ export default async function Page() {
   const hasSub = await hasSubscription();
   const checkoutLink = await createCheckoutLink(String(customer));
   const customerPortal = await generateCustomerPortalLink(String(customer));
+  const userTopThree = await getUserTopThree()
 
+  console.log(userTopThree)
 
   const user = await prismadb.user.findFirst({
     where: {
@@ -87,7 +89,7 @@ export default async function Page() {
               height={300}
             />
           </div>
-          <PrizesModal />
+          <PrizesModal userTopThree={userTopThree}/>
         </div>
       </PageWrapper>
     </Container>

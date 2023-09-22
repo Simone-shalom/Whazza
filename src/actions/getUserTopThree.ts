@@ -1,22 +1,15 @@
 import prismadb from "@/lib/prismadb"
 import getCurrentUser from "./getCurrentUser"
 
-interface ITimesParams {
-    leaderboardId?: string
-}
 
-export default async function getWinnerTimes (params: ITimesParams) {
+export default async function getUserTopThree () {
 
 
-    const {leaderboardId}= params
     const currentUser = await getCurrentUser()
 
     try {
 
         const winnerTimes = await prismadb.time.findMany({
-            where: {
-                leaderboardId: leaderboardId
-            },
             orderBy: {
                 time: 'asc'
             },
@@ -24,20 +17,18 @@ export default async function getWinnerTimes (params: ITimesParams) {
         })
 
          // Check if the userId parameter is provided
-        if (currentUser) {
+        
+         if(!currentUser?.id){
+            throw new Error('No user authenticated')
+         }
         // Find if the current user's ID exists in the winnerTimes
         const userHasWinnerTime = winnerTimes.some(
           (time) => time.userId === currentUser.id
         );
   
-        return {
-          winnerTimes,
-          userHasWinnerTime,
-        };
-      }
-
-
-        return winnerTimes
+        return userHasWinnerTime
+        
+    
 
     }catch(error: any){
         throw new Error(error)
