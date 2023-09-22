@@ -19,6 +19,8 @@ import getUserPoints from "@/actions/getUserPoints";
 import Scoring from "@/components/Scoring";
 import { PrizesModal } from "@/components/modals/PrizesModal";
 import UserPoints from "@/components/UserPoints";
+import getLeaderboard from "@/actions/getLeaderboard";
+import getEvents from "@/actions/getEvents";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
@@ -27,6 +29,7 @@ export default async function Page() {
   const checkoutLink = await createCheckoutLink(String(customer));
   const customerPortal = await generateCustomerPortalLink(String(customer));
   const userPoints = await getUserPoints()
+
 
   const user = await prismadb.user.findFirst({
     where: {
@@ -47,10 +50,11 @@ export default async function Page() {
   }
 
   return (
+    <div className="min-h-[75vh]">
     <Container>
       <PageWrapper>
       <p className="text-3xl font-semibold text-center pt-5 "> Hello {session?.user?.name}</p>
-        <div className="flex flex-col lg:flex-row items-center pt-10">
+        <div className="flex flex-col lg:flex-row items-center pt-20">
           <main className="w-full lg:w-1/2 flex flex-col items-center">
             {hasSub ? (
               <div className="flex flex-col gap-4 items-center justify-center pb-5">
@@ -60,7 +64,7 @@ export default async function Page() {
                 <Button variant="default" className="opacity-60 max-w-xl">
                   <Link href={String(customerPortal)}>Manage subscription</Link>
                 </Button>
-                <PrizesButton />
+                <PrizesButton sub={hasSub}/>
               </div>
             ) : (
               <div className=" flex flex-col justify-center items-center rounded-lg pb-5 ">
@@ -70,17 +74,19 @@ export default async function Page() {
                 >
                   You have no subscription, checkout now!
                 </Link>
+                <PrizesButton />
               </div>
             )}
             <LogoutBtn />
           </main>
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
           <Scoring />
-          <UserPoints userPoints={userPoints}/>
+            <UserPoints userPoints={userPoints}/>
           <PrizesModal userPoints={userPoints}/>
           </div>
         </div>
       </PageWrapper>
     </Container>
+    </div>
   );
 }

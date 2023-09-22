@@ -1,8 +1,15 @@
 import prismadb from "@/lib/prismadb";
 import getCurrentUser from "./getCurrentUser";
 
-export default async function getUserPoints() {
+// interface IUserPoints {
+//   leaderboardId?: string
+// }
+
+
+export default async function getUserPoints(){
   const currentUser = await getCurrentUser();
+
+ // const {leaderboardId} = params
 
   try {
     if (!currentUser?.id) {
@@ -12,7 +19,8 @@ export default async function getUserPoints() {
     // Retrieve the top 3 times for the user
     const userTimes = await prismadb.time.findMany({
       where: {
-        userId: currentUser.id,
+       // leaderboardId: leaderboardId
+       userId: currentUser.id
       },
       orderBy: {
         time: 'asc',
