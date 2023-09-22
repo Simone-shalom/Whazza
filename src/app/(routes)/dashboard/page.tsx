@@ -13,12 +13,12 @@ import LogoutBtn from "@/components/LogoutBtn";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/Container";
 import Image from "next/image";
-import { PageWrapper } from "@/components/animations/pageWrapper";
-import toast from "react-hot-toast";
+import { PageWrapper } from "@/components/animations/pageWrapper"
 import PrizesButton from "@/components/PrizesButton";
+import getUserPoints from "@/actions/getUserPoints";
+import Scoring from "@/components/Scoring";
 import { PrizesModal } from "@/components/modals/PrizesModal";
-import getUserTopThree from "@/actions/getUserTopThree";
-;
+import UserPoints from "@/components/UserPoints";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
@@ -26,9 +26,7 @@ export default async function Page() {
   const hasSub = await hasSubscription();
   const checkoutLink = await createCheckoutLink(String(customer));
   const customerPortal = await generateCustomerPortalLink(String(customer));
-  const userTopThree = await getUserTopThree()
-
-  console.log(userTopThree)
+  const userPoints = await getUserPoints()
 
   const user = await prismadb.user.findFirst({
     where: {
@@ -55,7 +53,7 @@ export default async function Page() {
         <div className="flex flex-col lg:flex-row items-center pt-10">
           <main className="w-full lg:w-1/2 flex flex-col items-center">
             {hasSub ? (
-              <div className="flex flex-col gap-4 items-center justify-center">
+              <div className="flex flex-col gap-4 items-center justify-center pb-5">
                 <div className="rounded-md px-4 py-2 max-w-xl bg-emerald-400 font-medium text-sm text-white">
                   You have a subscription!
                 </div>
@@ -72,24 +70,15 @@ export default async function Page() {
                 >
                   You have no subscription, checkout now!
                 </Link>
-                <div className="flex items-center pb-5 space-x-5">
-              <LogoutBtn />
-              <Button 
-                onClick={()=>toast.error('Prizes only for subscribed users')}
-                variant="outline">Collect prizes</Button>
-            </div>
               </div>
             )}
+            <LogoutBtn />
           </main>
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
-            <Image
-              src="/images/clip_image002_thumb.png"
-              alt=""
-              width={300}
-              height={300}
-            />
+          <Scoring />
+          <UserPoints userPoints={userPoints}/>
+          <PrizesModal userPoints={userPoints}/>
           </div>
-          <PrizesModal userTopThree={userTopThree}/>
         </div>
       </PageWrapper>
     </Container>

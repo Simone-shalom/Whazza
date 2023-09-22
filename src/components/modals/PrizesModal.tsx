@@ -20,9 +20,10 @@ import {useParams, useRouter } from "next/navigation";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
 import { usePrizesModal } from "@/hooks/use-prizes-modal";
+import UserPoints from "../UserPoints";
 
 interface PrizesModalProps {
-  userTopThree: boolean
+  userPoints: number | null
 }
 
 
@@ -35,13 +36,13 @@ const formSchema = z.object({
 });
 
 
-export const PrizesModal = ({userTopThree}: PrizesModalProps) => {
+export const PrizesModal = ({userPoints}: PrizesModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const prizesModal = usePrizesModal()
 
   const router = useRouter();
 
-  console.log(userTopThree)
+  console.log(userPoints)
 
   useEffect(() => {
     setIsMounted(true);
@@ -86,10 +87,12 @@ export const PrizesModal = ({userTopThree}: PrizesModalProps) => {
       className="space-y-6 flex flex-col w-[320px]">
     <div className="flex items-center justify-center">
     </div>
-    {userTopThree ? (
+    {userPoints ? (
       <div className="text-center">
         <p className="text-2xl font-semibold">
         You are Legend
+        </p>
+        <p>
         </p>
       </div>
     ): (
@@ -99,6 +102,9 @@ export const PrizesModal = ({userTopThree}: PrizesModalProps) => {
         </p>
       </div>
     )}
+      <div>
+        <UserPoints userPoints={userPoints}/>
+      </div>
 
         <div className="flex items-center justify-center">
         <Button 
