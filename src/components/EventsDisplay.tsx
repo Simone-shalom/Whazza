@@ -5,7 +5,7 @@ import EventsCard from "./EventsCard"
 
 interface EventsDisplayProps {
     events: Event[]
-    usersCount: number 
+    usersCount: number | null
 }
 
 const EventsDisplay = ({events, usersCount}: EventsDisplayProps) => {

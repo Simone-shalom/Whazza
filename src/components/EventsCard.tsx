@@ -12,7 +12,7 @@ import { Progress } from "./ui/progress";
 interface EventsCardProps {
     data: Event
     eventBlur?: boolean
-    usersCount: number 
+    usersCount: number | null
 }
 
 const EventsCard = ({data, eventBlur , usersCount}: EventsCardProps) => {
