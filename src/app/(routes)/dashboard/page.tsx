@@ -15,12 +15,11 @@ import Container from "@/components/Container";
 import Image from "next/image";
 import { PageWrapper } from "@/components/animations/pageWrapper"
 import PrizesButton from "@/components/PrizesButton";
-import getUserPoints from "@/actions/getUserPoints";
 import Scoring from "@/components/Scoring";
-import { PrizesModal } from "@/components/modals/PrizesModal";
+import getTotalPoints from "@/actions/getTotalPoints";
 import UserPoints from "@/components/UserPoints";
-import getLeaderboard from "@/actions/getLeaderboard";
-import getEvents from "@/actions/getEvents";
+import { PrizesModal } from "@/components/modals/PrizesModal";
+
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
@@ -28,9 +27,9 @@ export default async function Page() {
   const hasSub = await hasSubscription();
   const checkoutLink = await createCheckoutLink(String(customer));
   const customerPortal = await generateCustomerPortalLink(String(customer));
-  const userPoints = await getUserPoints()
+  const totalPoints = await getTotalPoints()
 
-
+  
   const user = await prismadb.user.findFirst({
     where: {
       email: session?.user?.email,
@@ -81,8 +80,8 @@ export default async function Page() {
           </main>
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
           <Scoring />
-            <UserPoints userPoints={userPoints}/>
-          <PrizesModal userPoints={userPoints}/>
+            <UserPoints userPoints={totalPoints}/>
+          <PrizesModal userPoints={totalPoints}/>
           </div>
         </div>
       </PageWrapper>

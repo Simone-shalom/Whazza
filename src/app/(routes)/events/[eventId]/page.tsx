@@ -7,6 +7,7 @@ import getLeaderboard from "@/actions/getLeaderboard"
 import getTimes from "@/actions/getTImes"
 import getEventParticipants from "@/actions/getEventParticipants"
 import getWinnerTimes from "@/actions/getWinnersTimes"
+import getUserPoints from "@/actions/getEventPoints"
 
 
 interface EventParams {
@@ -20,8 +21,9 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
   const times = await getTimes({leaderboardId: leaderboard.id})
   const eventPaticipants = await getEventParticipants()
   const winnersTimes =await getWinnerTimes({leaderboardId: leaderboard.id})
+  const userPoints = await getUserPoints({leaderboardId: leaderboard.id})
   
-  console.log(winnersTimes)
+  console.log(userPoints)
 
   if(!event){
     return null

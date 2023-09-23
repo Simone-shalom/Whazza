@@ -6,6 +6,7 @@ const Scoring = () => {
        <>
                    
                     <h3 className="text-2xl font-semibold pt-5">Scoring system</h3>
+                    <p className="text-lg text-muted-foreground capitalize">only the best result counts</p>
                  
                   <div className="text-xl ">
                     <p className="pt-1">
