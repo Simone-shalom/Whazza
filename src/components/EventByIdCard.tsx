@@ -7,16 +7,18 @@ import { Separator } from "./ui/separator"
 import { Button } from "./ui/button"
 import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal"
 import { LeaderBoardModal } from "./modals/LeaderboardModal"
+import UserPoints from "./UserPoints"
 
 interface EventByIdCardProps {
     event: Event
     leaderboard: Leaderboard
     times: Time[]
     participants: number | null
+    eventPoints: number | null
 }
 
 
-const EventByIdCard = ({event, leaderboard, times, participants}: EventByIdCardProps) => {
+const EventByIdCard = ({event, leaderboard, times, participants, eventPoints}: EventByIdCardProps) => {
 
   const leaderBoardModal = useLeaderboardModal()
 
@@ -45,7 +47,8 @@ const EventByIdCard = ({event, leaderboard, times, participants}: EventByIdCardP
                       users
                     </p>
                   </div>
-                  <p className=" pt-1 text-muted-foreground text-lg font-bold">{event.createdBy}</p> 
+                  <p className=" pt-1 text-muted-foreground text-lg font-bold">{event.createdBy}</p>
+                  <UserPoints userPoints={eventPoints}/> 
                 </div>
               </div>
               <div className="w-full md:w-2/3 md:pl-8 md:py-8 md:border-l  border-gray-500 md:border-t-0 border-t mt-4 pt-4 md:mt-0 md:text-left">

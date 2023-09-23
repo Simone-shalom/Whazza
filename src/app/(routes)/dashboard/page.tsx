@@ -19,6 +19,7 @@ import Scoring from "@/components/Scoring";
 import getTotalPoints from "@/actions/getTotalPoints";
 import UserPoints from "@/components/UserPoints";
 import { PrizesModal } from "@/components/modals/PrizesModal";
+import AnimatedBlob from "@/components/AnimatedBlob";
 
 
 export default async function Page() {
@@ -49,11 +50,16 @@ export default async function Page() {
   }
 
   return (
-    <div className="min-h-[75vh]">
+    <div className="min-h-[75vh] ">
     <Container>
       <PageWrapper>
-      <p className="text-3xl font-semibold text-center pt-5 "> Hello {session?.user?.name}</p>
-        <div className="flex flex-col lg:flex-row items-center pt-20">
+        <AnimatedBlob>
+        <div className="flex flex-col items-center justify-center pt-10">
+          <p className="text-4xl font-bold text-center"> Hello {session?.user?.name}</p>
+          <Scoring />
+        </div>
+      </AnimatedBlob>
+        <div className="flex flex-col lg:flex-row items-center pt-12">
           <main className="w-full lg:w-1/2 flex flex-col items-center">
             {hasSub ? (
               <div className="flex flex-col gap-4 items-center justify-center pb-5">
@@ -76,11 +82,10 @@ export default async function Page() {
                 <PrizesButton />
               </div>
             )}
-            <LogoutBtn />
+              <UserPoints userPoints={totalPoints}/>
           </main>
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
-          <Scoring />
-            <UserPoints userPoints={totalPoints}/>
+            <LogoutBtn />
           <PrizesModal userPoints={totalPoints}/>
           </div>
         </div>

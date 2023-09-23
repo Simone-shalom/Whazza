@@ -6,8 +6,10 @@ import getEventById from "@/actions/getEventById"
 import getLeaderboard from "@/actions/getLeaderboard"
 import getTimes from "@/actions/getTImes"
 import getEventParticipants from "@/actions/getEventParticipants"
-import getWinnerTimes from "@/actions/getWinnersTimes"
 import getUserPoints from "@/actions/getEventPoints"
+import getCurrentUser from "@/actions/getCurrentUser"
+import { redirect } from "next/navigation"
+import getEventPoints from "@/actions/getEventPoints"
 
 
 interface EventParams {
@@ -16,14 +18,20 @@ interface EventParams {
 
 const EventsByIdPage = async({params}: {params: EventParams}) => {
 
+  const currentUser = await getCurrentUser()
+
+  if(!currentUser){
+    redirect('/dashboard')
+  }
+
+
   const event = await getEventById(params)
   const leaderboard = await getLeaderboard({eventId: event?.id})
   const times = await getTimes({leaderboardId: leaderboard.id})
   const eventPaticipants = await getEventParticipants()
-  const winnersTimes =await getWinnerTimes({leaderboardId: leaderboard.id})
-  const userPoints = await getUserPoints({leaderboardId: leaderboard.id})
+  const eventPoints = await getEventPoints({leaderboardId: leaderboard.id})
   
-  console.log(userPoints)
+  console.log(eventPoints)
 
   if(!event){
     return null
@@ -42,7 +50,7 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
     <PageWrapper>
     <div className='pt-24 min-h-screen '>
       <EventByIdClient event={event} leaderboard={leaderboard} times={times} 
-        participants={eventPaticipants} />
+        participants={eventPaticipants} eventPoints={eventPoints}/>
         <Footer />
     </div>
     </PageWrapper>

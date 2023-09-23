@@ -5,10 +5,10 @@ const Scoring = () => {
   return (
        <>
                    
-                    <h3 className="text-2xl font-semibold pt-5">Scoring system</h3>
-                    <p className="text-lg text-muted-foreground capitalize">only the best result counts</p>
+                    <h3 className="text-3xl font-semibold pt-10 text-orange-700">Scoring system</h3>
+                    <p className="text-xl text-muted-foreground font-semibold capitalize">only the best result counts</p>
                  
-                  <div className="text-xl ">
+                  <div className="text-2xl ">
                     <p className="pt-1">
                     1 place in event = <span className="font-semibold">3 points</span>
                     </p>
