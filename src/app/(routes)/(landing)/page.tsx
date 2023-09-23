@@ -1,13 +1,10 @@
 
-import getEvents from '@/actions/getEvents'
+import getEventParticipants from '@/actions/getEventParticipants'
 import getNewEvents from '@/actions/getNewEvents'
-import AnimatedBlob from '@/components/AnimatedBlob'
 import Container from '@/components/Container'
 import EventsDisplay from '@/components/EventsDisplay'
 import Footer from '@/components/Footer'
-import LandingButtons from '@/components/LandingButtons'
 import { LandingHero } from '@/components/LandingHero'
-import RelatedEvents from '@/components/RelatedEvents'
 import { Testimonials } from '@/components/Testimonials'
 import { PageWrapper } from '@/components/animations/pageWrapper'
 
@@ -15,13 +12,14 @@ import { PageWrapper } from '@/components/animations/pageWrapper'
 export default async function Home() {
 
   const newEvents = await getNewEvents()
+  const eventPaticipants = await getEventParticipants()
 
   return (
     <PageWrapper>
       <Container>
         <LandingHero />
         <div className=' flex px-5 lg:px-10 items-center justify-center'>
-          <EventsDisplay events={newEvents} landing/>
+          <EventsDisplay events={newEvents}  usersCount={eventPaticipants}/>
         </div>
         <Testimonials />
         <Footer />

@@ -8,21 +8,21 @@ import { Card } from "./ui/card"
 import { Separator } from "./ui/separator";
 import { ArrowRightIcon, ChevronLeftCircleIcon, MoveLeft } from "lucide-react";
 import { Progress } from "./ui/progress";
-import { cn } from "@/lib/utils";
 
 interface EventsCardProps {
     data: Event
-    landing?: boolean
+    eventBlur?: boolean
+    usersCount: number 
 }
 
-const EventsCard = ({data, landing}: EventsCardProps) => {
+const EventsCard = ({data, eventBlur , usersCount}: EventsCardProps) => {
 
     const router = useRouter()
 
     const date = new Date(data.createdAt)
     const formatedCreatedAt = format(date,'HH:mm PP' )
 
-    const landingBlur = landing ? 'blur-sm' : ''
+    const eventsBlur = eventBlur ? 'blur-sm' : ''
 
   return (
     <>
@@ -32,7 +32,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
         <div className='flex flex-col  w-full'>
             <div className='w-full relative overflow-hidden rounded-top-xl h-[160px]'>
                 <Image src={data.imageSrc} alt="Image url"  fill
-                    className= {`${landingBlur} object-cover h-full w-full  transition ease-in `}/>
+                    className= {`${eventsBlur} object-cover h-full w-full  transition ease-in `}/>
                     <div className="absolute left-1 top-5">
                         <ChevronLeftCircleIcon size={32} color="white" fill="" />
                     </div>
@@ -50,8 +50,8 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
                 <p>
                     Your place
                 </p>
-                <p className={`${landingBlur} font-bold`}>
-                    3/10
+                <p className={`${eventsBlur} font-bold`}>
+                    10
                 </p>
             </div>
             <Separator />
@@ -69,7 +69,7 @@ const EventsCard = ({data, landing}: EventsCardProps) => {
             </div>   
             <Separator />
               <p className="pt-1">Already 
-                <span className="font-bold px-1">10</span>
+                <span className="font-bold px-1 text-black">{usersCount}</span>
                 {data.participants} people has joined</p> 
             </Card>
             </div>

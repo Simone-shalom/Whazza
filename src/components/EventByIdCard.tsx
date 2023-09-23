@@ -13,12 +13,14 @@ interface EventByIdCardProps {
     event: Event
     leaderboard: Leaderboard
     times: Time[]
-    participants: number | null
-    eventPoints: number | null
+    participants: number 
+    eventPoints: number 
+    userPlace: number | null
 }
 
 
-const EventByIdCard = ({event, leaderboard, times, participants, eventPoints}: EventByIdCardProps) => {
+const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,userPlace}:
+   EventByIdCardProps) => {
 
   const leaderBoardModal = useLeaderboardModal()
 
@@ -47,7 +49,12 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints}: E
                       users
                     </p>
                   </div>
-                  <p className=" pt-1 text-muted-foreground text-lg font-bold">{event.createdBy}</p>
+                  <div>
+                    <h3 className="capitalize text-xl font-semibold pt-2">createdBy </h3>
+                    <p className="text-muted-foreground text-xl font-bold">
+                    {event.createdBy}  
+                    </p>
+                  </div>
                   <UserPoints userPoints={eventPoints}/> 
                 </div>
               </div>

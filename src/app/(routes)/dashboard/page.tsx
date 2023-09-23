@@ -12,7 +12,6 @@ import prismadb from "@/lib/prismadb";
 import LogoutBtn from "@/components/LogoutBtn";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/Container";
-import Image from "next/image";
 import { PageWrapper } from "@/components/animations/pageWrapper"
 import PrizesButton from "@/components/PrizesButton";
 import Scoring from "@/components/Scoring";
@@ -54,7 +53,7 @@ export default async function Page() {
     <Container>
       <PageWrapper>
         <AnimatedBlob>
-        <div className="flex flex-col items-center justify-center pt-10">
+        <div className="flex flex-col items-center justify-center pt-10 z-50">
           <p className="text-4xl font-bold text-center"> Hello {session?.user?.name}</p>
           <Scoring />
         </div>

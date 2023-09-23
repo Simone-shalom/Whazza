@@ -1,7 +1,7 @@
 
 import Footer from "@/components/Footer";
 import { mustBeLoggedIn } from "@/lib/auth";
-import { createCheckoutLink, createCustomerIfNull, hasSubscription } from "@/lib/stripe";
+import { createCustomerIfNull,} from "@/lib/stripe";
 
 export default async function DashboardLayout({
   children,
