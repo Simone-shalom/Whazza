@@ -81,10 +81,12 @@ export default async function Page() {
                 <PrizesButton />
               </div>
             )}
-              <UserPoints userPoints={totalPoints}/>
           </main>
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
+            <UserPoints userPoints={totalPoints}/>
+            <div className="pt-5 pb-10">
             <LogoutBtn />
+            </div>
           <PrizesModal userPoints={totalPoints}/>
           </div>
         </div>

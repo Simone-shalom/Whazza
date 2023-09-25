@@ -13,8 +13,8 @@ export const Pricing = () => {
       <div className="flex flex-col text-center w-full mb-20">
         <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Pricing</h1>
         <p className="lg:w-2/3 mx-auto leading-relaxed text-xl text-gray-500">Our pricing system, allowes you to choose and pay for what you do</p>
-        <div className="flex mx-auto border-2 border-purple-500 rounded overflow-hidden mt-6">
-          <button className="py-1 px-4 bg-purple-500 text-white focus:outline-none">Monthly</button>
+        <div className="flex mx-auto border-2 border-orange-500 rounded overflow-hidden mt-6">
+          <button className="py-1 px-4 bg-orange-500 text-white focus:outline-none">Monthly</button>
         </div>
       </div>
       <div className="flex flex-wrap -m-4 xl:mx-10">
@@ -56,8 +56,8 @@ export const Pricing = () => {
 
 
         <div className="p-4 xl:w-1/2 md:w-1/2 w-full">
-          <div className="h-full p-6 rounded-lg border-2 border-purple-500 flex flex-col relative overflow-hidden">
-            <span className="bg-purple-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+          <div className="h-full p-6 rounded-lg border-2 border-orange-500 flex flex-col relative overflow-hidden">
+            <span className="bg-orange-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
             <h2 className="text-sm tracking-widest title-font mb-1 font-medium">PRO</h2>
             <h1 className="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
               <span>19.99</span>
@@ -93,7 +93,7 @@ export const Pricing = () => {
             </p>
             <button 
                 onClick={()=> router.push('/dashboard')}
-                className="flex items-center mt-auto text-white bg-purple-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-purple-600 rounded">Start today
+                className="flex items-center mt-auto text-white bg-orange-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-orange-600 rounded">Start today
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>

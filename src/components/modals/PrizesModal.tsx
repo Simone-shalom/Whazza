@@ -1,16 +1,10 @@
 "use client";
 
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+
 import { useEffect, useState } from "react";
 import 'react-time-picker/dist/TimePicker.css';
-
-import {
-  Form,
-} from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import {useParams, useRouter } from "next/navigation";
+import {useRouter } from "next/navigation";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
 import { usePrizesModal } from "@/hooks/use-prizes-modal";
@@ -21,18 +15,10 @@ interface PrizesModalProps {
 }
 
 
-const formSchema = z.object({
-  time: z.string().min(1, {
-    message: "add the time"
-  }),
-  distance: z.string(),
-  amount: z.string(),
-});
-
-
 export const PrizesModal = ({userPoints}: PrizesModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const prizesModal = usePrizesModal()
+  const [loading, setLoading] = useState(false)
 
   const router = useRouter();
 
@@ -42,29 +28,16 @@ export const PrizesModal = ({userPoints}: PrizesModalProps) => {
     setIsMounted(true);
   }, []);
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      time: '',
-      distance: '',
-      amount: '',
-    }
-  });
 
-  const isLoading = form.formState.isSubmitting;
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+  const onSubmit = async () => {
 
     try {
     //   await axios.post(`/api/leaderboard/`, values);
+      console.log(userPoints)
 
-
-    //   form.reset();
     //   prizesModal.onClose()
     //   router.refresh()
     //   toast.success("Leaderboard joined successfully")
-    console.log(values)
     } catch (error) {
       console.log(error);
       toast.error('something went wrong')
@@ -76,8 +49,7 @@ export const PrizesModal = ({userPoints}: PrizesModalProps) => {
   }
 
   let bodyContent = (
-    <Form {...form}>
-    <form onSubmit={form.handleSubmit(onSubmit)} 
+    <div 
       className="space-y-6 flex flex-col w-[320px]">
     <div className="flex items-center justify-center">
     </div>
@@ -102,18 +74,19 @@ export const PrizesModal = ({userPoints}: PrizesModalProps) => {
 
         <div className="flex items-center justify-center">
         <Button 
-          onClick={()=> toast.error('prizes available soon')}
-          size='lg' disabled={isLoading} 
+          onClick={onSubmit}
+          size='lg' disabled={loading} 
               className="hover:scale-105 transition hover:opacity-80 w-1/2">
               Collect
         </Button>
         </div>
-    </form>
-   </Form>
+    </div>
+
+   
   )
 
   return (
-      <Modal disabled={isLoading} isOpen={prizesModal.isOpen}
+      <Modal disabled={loading} isOpen={prizesModal.isOpen}
         onClose={prizesModal.onClose} body={bodyContent} title="Get prizes"
           />
   )

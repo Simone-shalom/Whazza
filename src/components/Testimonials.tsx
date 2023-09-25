@@ -12,24 +12,24 @@ const Testimonialss =[
         src: '/images/how-tweet-threads-one.png.twimg.1920.png'
     },
     {
-        name: 'Simmons',
+        name: 'Andreas',
         avatar: 'A',
-        title: 'Software Engineer',
-        description: 'This is the best application i have used  the best application i have used',
+        title: 'Graphic Designer',
+        description: "Creative minds, bring your designs to life! Join our team and turn ideas into stunning visuals.",
         src: '/images/how-tweet-threads-one.png.twimg.1920.png'
     },
     {
-        name: 'Simmons',
+        name: 'Nicolaos',
         avatar: 'A',
-        title: 'Software Engineer',
-        description: 'This is the best application i have used  the best application i have used',
+        title: 'Marketing Manager',
+        description:  "Marketing gurus, take the lead and drive brand success. Explore new strategies and shape the future.",
         src: '/images/how-tweet-threads-one.png.twimg.1920.png'
     },
     {
-        name: 'Simmons',
+        name: 'Simone',
         avatar: 'A',
-        title: 'Software Engineer',
-        description: 'This is the best application i have used the best application i have used',
+        title: 'Customer Support Specialist',
+        description: "Passionate about helping customers? Join our support team and make a difference in users' lives.",
         src: '/images/how-tweet-threads-one.png.twimg.1920.png'
     },
 ]
@@ -53,7 +53,7 @@ export const Testimonials = () => {
                         <CardTitle className="flex items-center gap-x-2">
                             <div>
                             <div>
-                                <div className="px-3 py-1 rounded-lg bg-purple-300">
+                                <div className="px-3 py-1 rounded-lg bg-orange-300">
                                     {test.name}
                                 </div>
                             </div>
