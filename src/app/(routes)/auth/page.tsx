@@ -1,8 +1,6 @@
 
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
-import LeaderboardsAuth from "@/components/LeaderboardsAuth";
-import RelatedEvents from "@/components/RelatedEvents";
 import SiginBtn from "@/components/SiginBtn";
 import SiginEmailBtn from "@/components/SiginEmailBtn";
 import { PageWrapper } from "@/components/animations/pageWrapper";

@@ -62,10 +62,10 @@ export default async function Page() {
           <main className="w-full lg:w-1/2 flex flex-col items-center">
             {hasSub ? (
               <div className="flex flex-col gap-4 items-center justify-center pb-5">
-                <div className="rounded-md px-4 py-2 max-w-xl bg-emerald-400 font-medium text-sm text-white">
+                <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 font-medium text-sm text-white">
                   You have a subscription!
                 </div>
-                <Button variant="default" className="opacity-60 max-w-xl">
+                <Button variant="secondary" className="opacity-80 max-w-xl">
                   <Link href={String(customerPortal)}>Manage subscription</Link>
                 </Button>
                 <PrizesButton sub={hasSub}/>

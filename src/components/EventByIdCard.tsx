@@ -1,6 +1,6 @@
 'use client'
 
-import { Event, Leaderboard, Time } from "@prisma/client"
+import { Event, Leaderboard, Time, User } from "@prisma/client"
 import Image from "next/image"
 import { ScrollArea } from "./ui/scroll-area"
 import { Separator } from "./ui/separator"
@@ -16,10 +16,11 @@ interface EventByIdCardProps {
     participants: number 
     eventPoints: number 
     userPlace: number | null
+    currentUser: User | null
 }
 
 
-const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,userPlace}:
+const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,userPlace, currentUser}:
    EventByIdCardProps) => {
 
   const leaderBoardModal = useLeaderboardModal()
@@ -55,7 +56,13 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
                     {event.createdBy}  
                     </p>
                   </div>
-                  <UserPoints userPoints={eventPoints}/> 
+                  <div className="text-xl font-semibold flex space-x-3 pt-3 items-center justify-center">
+                    <p className="text-xl">Your place: </p>
+                    <div className="font-bold text-2xl">
+                       {userPlace}
+                    </div>
+                  </div>
+                  <UserPoints userPoints={eventPoints}/>
                 </div>
               </div>
               <div className="w-full md:w-2/3 md:pl-8 md:py-8 md:border-l  border-gray-500 md:border-t-0 border-t mt-4 pt-4 md:mt-0 md:text-left">
@@ -67,9 +74,16 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
                 <div className="p-4">
                   {times.map((time, index) => (
                     <>
+                    <div>
+                    {time.username === currentUser?.name && (
+                            <div className="flex">
+                              <p >Your time</p>
+                              
+                            </div>)}
+                    </div>
                       <div
                         key={time.id}
-                        className={`text-lg flex justify-between ${
+                        className={`text-lg flex justify-between rounded-xl p-1 border-dotted  ${
                           index === 0 ? 'border-2 border-yellow-500' : index === 1 ? 'border-2 border-gray-700' : index === 2 ? 'border-2 border-orange-900' : ''
                         }`}>
                         <p className="font-semibold">

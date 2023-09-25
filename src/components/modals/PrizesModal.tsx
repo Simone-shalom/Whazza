@@ -102,7 +102,7 @@ export const PrizesModal = ({userPoints}: PrizesModalProps) => {
 
         <div className="flex items-center justify-center">
         <Button 
-          onClick={()=> toast.error('prices available soon')}
+          onClick={()=> toast.error('prizes available soon')}
           size='lg' disabled={isLoading} 
               className="hover:scale-105 transition hover:opacity-80 w-1/2">
               Collect

@@ -43,6 +43,7 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
     <div className='pt-24 min-h-screen '>
       <EventByIdClient event={event} leaderboard={leaderboard} times={times} 
         participants={eventPaticipants} eventPoints={eventPoints} userPlace={userPlace}
+        currentUser={currentUser}
         />
         <Footer />
     </div>

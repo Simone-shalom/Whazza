@@ -2,7 +2,7 @@
 
 import Container from "@/components/Container"
 import EventByIdCard from "@/components/EventByIdCard"
-import { Event, Leaderboard, Time } from "@prisma/client"
+import { Event, Leaderboard, Time, User } from "@prisma/client"
 import { useRouter } from "next/navigation"
 
 interface EventByIdClientProps {
@@ -12,6 +12,7 @@ interface EventByIdClientProps {
   participants: number 
   eventPoints: number
   userPlace: number | null
+  currentUser: User | null
 }
 
 export interface Tag {
@@ -19,14 +20,15 @@ export interface Tag {
   time: string;
 }
 
-const EventByIdClient = ({event, leaderboard, times, participants, eventPoints ,userPlace}:
+const EventByIdClient = ({event, leaderboard, times, participants, eventPoints ,userPlace, currentUser}:
    EventByIdClientProps) => {
 
   return (
   
     <Container>
      <EventByIdCard event={event}  leaderboard={leaderboard} times={times}
-        participants={participants} eventPoints={eventPoints} userPlace={userPlace}/>
+        participants={participants} eventPoints={eventPoints} userPlace={userPlace}
+        currentUser={currentUser}/>
         {/* {session && (
           <ImageUpload onChange={()=>{}} value=""/>
         )} */}
