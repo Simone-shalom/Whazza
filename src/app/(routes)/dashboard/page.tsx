@@ -30,23 +30,23 @@ export default async function Page() {
   const totalPoints = await getTotalPoints()
 
   
-  const user = await prismadb.user.findFirst({
-    where: {
-      email: session?.user?.email,
-    },
-  });
+  // const user = await prismadb.user.findFirst({
+  //   where: {
+  //     email: session?.user?.email,
+  //   },
+  // });
 
 
-  if (hasSub) {
-      await stripe.subscriptions.list({
-      customer: String(user?.stripe_customer_id),
-    });
+  // if (hasSub) {
+  //     await stripe.subscriptions.list({
+  //     customer: String(user?.stripe_customer_id),
+  //   });
     // const invoice = await stripe.invoices.retrieveUpcoming({
       // subscription: subscriptions.data.at(0)?.id,
     // });
 
     // current_usage = invoice.amount_due;
-  }
+  // }
 
   return (
     <div className="min-h-[75vh]">

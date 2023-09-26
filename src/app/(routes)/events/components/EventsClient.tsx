@@ -4,17 +4,18 @@ import Container from "@/components/Container"
 import EventsDisplay from "@/components/EventsDisplay"
 import { Button } from "@/components/ui/button"
 import { Event } from "@prisma/client"
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 
 interface EventsClientProps {
   events: Event[]
   usersCount: number | null
+  hasSub: boolean
 }
 
 
 
-const EventsClient = ({events, usersCount}: EventsClientProps) => {
-
+const EventsClient = ({events, usersCount, hasSub}: EventsClientProps) => {
     // const { data: session } = useSession();
     // const eventsModal2 = useEventsModal2()
     const router = useRouter()
@@ -31,12 +32,20 @@ const EventsClient = ({events, usersCount}: EventsClientProps) => {
       
   // }
 
+  const onCreateEvent = () => {
+    if(hasSub){
+      router.push('/createEvent')
+    }else {
+      toast.error("Only subscribed users can create events")
+    }
+  }
+
   return (
   
     <Container>
       <div className="flex flex-col items-center justify-center ">
       <Button className="text-xl font-semibold  pb-2"
-        onClick={()=> router.push('/createEvent')}>
+        onClick={onCreateEvent}>
         Create an Event
       </Button>
       <h1 className="text-black text-4xl font-semibold pt-10">All available events</h1>

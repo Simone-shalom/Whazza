@@ -6,7 +6,7 @@ import Footer from "@/components/Footer"
 
 const CreateEvent = async() => {
 
-    await mustBeLoggedIn()
+  await mustBeLoggedIn()
 
   return (
     <Container>
