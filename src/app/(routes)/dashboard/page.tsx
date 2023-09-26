@@ -49,15 +49,17 @@ export default async function Page() {
   }
 
   return (
-    <div className="min-h-[75vh] ">
+    <div className="min-h-[75vh]">
     <Container>
       <PageWrapper>
+        <div className="flex items-center justify-center">
         <AnimatedBlob>
-        <div className="flex flex-col items-center justify-center pt-10 z-50">
+        <div className="flex flex-col items-center  pt-10 z-50 w-full">
           <p className="text-4xl font-bold text-center"> Hello {session?.user?.name}</p>
           <Scoring />
         </div>
       </AnimatedBlob>
+      </div>
         <div className="flex flex-col lg:flex-row items-center pt-12">
           <main className="w-full lg:w-1/2 flex flex-col items-center">
             {hasSub ? (

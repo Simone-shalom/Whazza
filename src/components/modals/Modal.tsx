@@ -24,7 +24,7 @@ const Modal = ({
 
   return (
  <Dialog open={isOpen} onOpenChange={onClose}>
-    <DialogContent className="flex items-center justify-center bg-gradient-to-b from-purple-100 to-white flex-col z-50">
+    <DialogContent className="flex items-center justify-center bg-gradient-to-b from-purple-100 to-white flex-col z-50 ">
         {/*Title*/}
          <DialogHeader>
              <DialogTitle className='flex justify-center items-center flex-col
