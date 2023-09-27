@@ -45,24 +45,6 @@ const extendedBadges = userBadges.map((item) => {
   } as ExtendedBadge;
 });
 
-  // const user = await prismadb.user.findFirst({
-  //   where: {
-  //     email: session?.user?.email,
-  //   },
-  // });
-
-
-  // if (hasSub) {
-  //     await stripe.subscriptions.list({
-  //     customer: String(user?.stripe_customer_id),
-  //   });
-    // const invoice = await stripe.invoices.retrieveUpcoming({
-      // subscription: subscriptions.data.at(0)?.id,
-    // });
-
-    // current_usage = invoice.amount_due;
-  // }
-
   return (
     <div className="min-h-[75vh]">
     <Container>
@@ -75,7 +57,7 @@ const extendedBadges = userBadges.map((item) => {
         </div>
       </AnimatedBlob>
       </div>
-        <div className="flex flex-col lg:flex-row items-center pt-12">
+        <div className="flex flex-col lg:flex-row  pt-12">
           <main className="w-full lg:w-1/2 flex flex-col items-center">
             {hasSub ? (
               <div className="flex flex-col gap-4 items-center justify-center pb-5">
@@ -99,14 +81,15 @@ const extendedBadges = userBadges.map((item) => {
               </div>
             )}
           </main>
-          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
+          <div className="w-full lg:w-1/2 flex flex-col items-center gap-4 ">
             <UserPoints userPoints={totalPoints}/>
-            <div className="pt-5 pb-10">
+            <Button>Choose a badge</Button>  
             <LogoutBtn />
-            <BadgesCard userBadges={extendedBadges} />
-            </div>
           <PrizesModal userPoints={totalPoints} badges={badges}/>
           </div>
+        </div>
+        <div className="flex items-center justify-center px-5">
+           <BadgesCard userBadges={extendedBadges} />
         </div>
       </PageWrapper>
     </Container>
