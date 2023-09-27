@@ -9,7 +9,6 @@ import Modal from "./Modal";
 import toast from "react-hot-toast";
 import { usePrizesModal } from "@/hooks/use-prizes-modal";
 import UserPoints from "../UserPoints";
-import badges from "@/lib/badges";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import axios from "axios";
@@ -17,23 +16,22 @@ import { ScrollArea } from "../ui/scroll-area";
 
 interface PrizesModalProps {
   userPoints: number | null
+  badges: Badge[]
 }
-type Badge = {
+export type Badge = {
   name: string;
   src: string;
   points: number;
 };
 
 
-export const PrizesModal = ({userPoints}: PrizesModalProps) => {
+export const PrizesModal = ({userPoints, badges}: PrizesModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const prizesModal = usePrizesModal()
   const [loading, setLoading] = useState(false)
   const [selBadge, setSelBadge] = useState<Badge | null>(null)
 
   const router = useRouter();
-
-  console.log(userPoints)
 
   useEffect(() => {
     setIsMounted(true);
@@ -50,12 +48,12 @@ export const PrizesModal = ({userPoints}: PrizesModalProps) => {
       return;
     }
     try {
-     // await axios.post(`/api/leaderboard/`, {badge: selBadge});
+      await axios.post(`/api/badges/`, {badge: selBadge});
       console.log(selBadge)
 
-    //   prizesModal.onClose()
-    //   router.refresh()
-    //   toast.success("Leaderboard joined successfully")
+      prizesModal.onClose()
+      router.refresh()
+      toast.success("Badge collected successfully")
     } catch (error) {
       console.log(error);
       toast.error('something went wrong')
@@ -82,11 +80,11 @@ export const PrizesModal = ({userPoints}: PrizesModalProps) => {
             <div 
               onClick={() => handleBadgeClick(badge)}
               key={badge.name} className={`flex flex-col items-center justify-center relative hover:scale-110
-               transition duration-500 opacity-70 hover:opacity-100 cursor-pointer focus:opacity-100
+               transition duration-500 hover:opacity-100 focus:opacity-100
                ${
-                selBadge === badge ? 'opacity-100' : 'opacity-70'
+                selBadge === badge ? 'opacity-100 scale-110' : 'opacity-70'
               }
-              ${userPoints < badge.points ? 'opacity-50 cursor-not-allowed hover:opacity-50 focus:opacity-50' : ''}
+              ${userPoints < badge.points ? 'opacity-50 cursor-not-allowed hover:opacity-50 focus:opacity-50' : 'cursor-pointer'}
               `}>
               <p className="text-lg w-[200px]">
                 {badge.name}
@@ -115,9 +113,9 @@ export const PrizesModal = ({userPoints}: PrizesModalProps) => {
         <div className="flex items-center justify-center">
         <Button 
           onClick={(event) => {
-            event.preventDefault(); // Prevent the default behavior of the button
+            event.preventDefault(); 
             if (selBadge !== null) {
-              onSubmit(selBadge); // Pass the selected badge to the onSubmit function
+              onSubmit(selBadge); 
             }
           }}
           size='lg' disabled={loading} 
