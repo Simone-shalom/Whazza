@@ -8,7 +8,6 @@ import {
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import prismadb from "@/lib/prismadb";
 import LogoutBtn from "@/components/LogoutBtn";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/Container";
@@ -19,6 +18,9 @@ import getTotalPoints from "@/actions/getTotalPoints";
 import UserPoints from "@/components/UserPoints";
 import { PrizesModal } from "@/components/modals/PrizesModal";
 import AnimatedBlob from "@/components/AnimatedBlob";
+import getBadges from "@/actions/getBadges";
+import getUserBadges from "@/actions/getUserBadges";
+import BadgesCard, { ExtendedBadge } from "@/components/BadgesCard";
 
 
 export default async function Page() {
@@ -28,8 +30,21 @@ export default async function Page() {
   const checkoutLink = await createCheckoutLink(String(customer));
   const customerPortal = await generateCustomerPortalLink(String(customer));
   const totalPoints = await getTotalPoints()
+  const badges = await getBadges()
+  const userBadges = await getUserBadges()
 
-  
+  // Map the received data to create instances of ExtendedBadge
+const extendedBadges = userBadges.map((item) => {
+  return {
+    id: item.id,
+    userId: item.userId,
+    badgeId: item.badgeId,
+    name: item.badge.name,
+    src: item.badge.src,
+    points: item.badge.points,
+  } as ExtendedBadge;
+});
+
   // const user = await prismadb.user.findFirst({
   //   where: {
   //     email: session?.user?.email,
@@ -88,8 +103,9 @@ export default async function Page() {
             <UserPoints userPoints={totalPoints}/>
             <div className="pt-5 pb-10">
             <LogoutBtn />
+            <BadgesCard userBadges={extendedBadges} />
             </div>
-          <PrizesModal userPoints={totalPoints}/>
+          <PrizesModal userPoints={totalPoints} badges={badges}/>
           </div>
         </div>
       </PageWrapper>
