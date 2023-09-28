@@ -66,26 +66,31 @@ const extendedBadges = userBadges.map((item) => {
                 <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 font-medium text-sm text-white">
                   You have a subscription!
                 </div>
-                <Button variant="secondary" className="opacity-80 max-w-xl">
+                <Button variant="secondary" className="opacity-80 max-w-xl hover:scale-110 transition duration-500">
                   <Link href={String(customerPortal)}>Manage subscription</Link>
                 </Button>
                 <PrizesButton sub={hasSub}/>
               </div>
             ) : (
-              <div className=" flex flex-col justify-center items-center rounded-lg pb-5 ">
-                <Link
-                  href={String(checkoutLink)}
-                  className="font-medium text-base hover:underline pb-6"
-                >
-                  You have no subscription, checkout now!
-                </Link>
+              <div className=" flex flex-col justify-center items-center rounded-lg pb-5 gap-4 ">
+                 <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 opacity-70 font-medium text-sm text-white">
+                  You are on free mode!
+                </div>
+                <Button variant="secondary" className="opacity-90 max-w-xl hover:scale-110 transition duration-500">
+                  <Link
+                    href={String(checkoutLink)}
+                    
+                  >
+                    Get subscription, checkout now!
+                  </Link>
+                </Button>
                 <PrizesButton />
               </div>
             )}
           </main>
           <div className="w-full lg:w-1/2 flex flex-col items-center gap-4 ">
             <UserPoints userPoints={totalPoints}/>
-            <BadgesButton sub/> 
+            <BadgesButton sub={hasSub}/> 
             <LogoutBtn />
           <PrizesModal userPoints={totalPoints} badges={badges}/>
           <BadgesModal badges={extendedBadges}/>

@@ -56,7 +56,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
                     {event.createdBy}  
                     </p>
                   </div>
-                  <div className="text-xl font-semibold flex space-x-3 pt-3 items-center justify-center">
+                  <div className="text-xl font-semibold flex space-x-3  bg-white rounded-md px-5 my-3 items-center justify-center">
                     <p className="text-xl">Your place: </p>
                     <div className="font-bold text-2xl">
                        {userPlace}

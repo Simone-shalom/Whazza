@@ -9,7 +9,6 @@ import Modal from "./Modal";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import axios from "axios";
 import { ScrollArea } from "../ui/scroll-area";
 import { useBadgesModal } from "@/hooks/use-badges-modal";
 
@@ -45,7 +44,7 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
       return;
     }
     try {
-      await axios.post(`/api/badges/`, {badge: selBadge});
+      // await axios.post(`/api/badges/`, {badge: selBadge});
       console.log(selBadge)
 
       badgesModal.onClose()
@@ -76,7 +75,7 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
           {badges.map((badge) => (
             <div 
               onClick={() => handleBadgeClick(badge)}
-              key={badge.name} className={`flex flex-col items-center justify-center relative hover:scale-110
+              key={badge.name} className={`flex flex-col items-center justify-center cursor-pointer relative hover:scale-110
                transition duration-500 hover:opacity-100 focus:opacity-100
                ${
                 selBadge === badge ? 'opacity-100 scale-110' : 'opacity-70'
@@ -86,9 +85,6 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
                 {badge.name}
               </p>
               <Image src={badge.src} width={100} height={100} alt="badge"/>
-              <p className="absolute top-16 right-0 text-lg font-bold">
-                {badge.points}
-              </p>
               <Separator className="border border-black"/>
           
             </div>
@@ -102,9 +98,6 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
         </p>
       </div>
     )}
-      <div>
-        <p>nothjin</p>
-      </div>
 
         <div className="flex items-center justify-center">
         <Button 
@@ -116,7 +109,7 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
           }}
           size='lg' disabled={loading} 
               className="hover:scale-105 transition hover:opacity-80 w-1/2">
-              Collect
+              Select
         </Button>
         </div>
     </div>

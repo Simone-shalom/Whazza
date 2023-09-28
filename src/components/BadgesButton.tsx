@@ -17,12 +17,12 @@ const BadgesButton = ({sub}: BadgesButtonProps) => {
       if (sub) {
         badgesModal.onOpen();
       } else {
-        toast.error("choosing badges only for subscribed users");
+        toast.error("Only for subscribed users");
       }
     };
   
     return (
-      <Button onClick={handleClick}>
+      <Button onClick={handleClick} variant='secondary'>
         Choose badge
       </Button>
     );

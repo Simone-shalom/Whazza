@@ -16,7 +16,7 @@ const PrizesButton = ({sub}: PrizesButtonProps) => {
       if (sub) {
         prizesModal.onOpen();
       } else {
-        toast.error("Prizes only for subscribed users");
+        toast.error("Only for subscribed users");
       }
     };
   
