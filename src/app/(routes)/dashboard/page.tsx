@@ -21,6 +21,8 @@ import AnimatedBlob from "@/components/AnimatedBlob";
 import getBadges from "@/actions/getBadges";
 import getUserBadges from "@/actions/getUserBadges";
 import BadgesCard, { ExtendedBadge } from "@/components/BadgesCard";
+import BadgesButton from "@/components/BadgesButton";
+import { BadgesModal } from "@/components/modals/BadgesModal";
 
 
 export default async function Page() {
@@ -83,12 +85,13 @@ const extendedBadges = userBadges.map((item) => {
           </main>
           <div className="w-full lg:w-1/2 flex flex-col items-center gap-4 ">
             <UserPoints userPoints={totalPoints}/>
-            <Button>Choose a badge</Button>  
+            <BadgesButton sub/> 
             <LogoutBtn />
           <PrizesModal userPoints={totalPoints} badges={badges}/>
+          <BadgesModal badges={extendedBadges}/>
           </div>
         </div>
-        <div className="flex items-center justify-center px-5">
+        <div className="flex items-center justify-center px-5 pt-10 lg:pt-0">
            <BadgesCard userBadges={extendedBadges} />
         </div>
       </PageWrapper>
