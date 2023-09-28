@@ -2,7 +2,6 @@
 
 import { Badge, UserBadge } from "@prisma/client"
 import Image from "next/image";
-import { Skeleton } from "./ui/skeleton";
 import { XIcon } from "lucide-react";
 
 export interface ExtendedBadge extends Badge, UserBadge {}
@@ -14,7 +13,6 @@ interface BadgesCardProps {
 
 const BadgesCard = ({userBadges}: BadgesCardProps) => {
   
-  console.log(userBadges)
 
   return (
   <div className="flex flex-col justify-center items-center">
@@ -25,7 +23,7 @@ const BadgesCard = ({userBadges}: BadgesCardProps) => {
         <div className="flex items-center justify-center">
           <XIcon size={32}/>
           <p>
-            subscribe to get access to your badges
+            no badges yet, collect one 
           </p>
         </div>
       ): (

@@ -13,10 +13,13 @@ import Image from "next/image";
 import { Separator } from "../ui/separator";
 import axios from "axios";
 import { ScrollArea } from "../ui/scroll-area";
+import { X } from "lucide-react";
+import { ExtendedBadge } from "../BadgesCard";
 
 interface PrizesModalProps {
   userPoints: number | null
   badges: Badge[]
+  userBadges: ExtendedBadge[]
 }
 export type Badge = {
   name: string;
@@ -25,17 +28,34 @@ export type Badge = {
 };
 
 
-export const PrizesModal = ({userPoints, badges}: PrizesModalProps) => {
+export const PrizesModal = ({userPoints, badges ,userBadges}: PrizesModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const prizesModal = usePrizesModal()
   const [loading, setLoading] = useState(false)
-  const [selBadge, setSelBadge] = useState<Badge | null>(null)
+  const [selBadge, setSelBadge] = useState<Badge| null>(null)
+
 
   const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  console.log(userBadges, badges)
+
+  // Filter out not taken badges
+const collectedBadges = badges.filter((badge) => {
+  return userBadges.some((userBadge) => userBadge.name === badge.name);
+});
+
+
+const handleBadgeClick = (badge: Badge) => {
+  if (userBadges.some((userBadge) => userBadge.name === badge.name)) {
+    toast.error("You've already collected this badge");
+  } else {
+    setSelBadge(badge);
+  }
+};
 
 
   const onSubmit = async (selBadge :Badge) => {
@@ -48,6 +68,7 @@ export const PrizesModal = ({userPoints, badges}: PrizesModalProps) => {
       return;
     }
     try {
+      
       await axios.post(`/api/badges/`, {badge: selBadge});
 
       prizesModal.onClose()
@@ -62,10 +83,6 @@ export const PrizesModal = ({userPoints, badges}: PrizesModalProps) => {
   if (!isMounted) {
     return null;
   }
-
-  const handleBadgeClick = (badge: Badge) => {
-    setSelBadge(badge);
-  };
 
   let bodyContent = (
     <div 
@@ -85,6 +102,11 @@ export const PrizesModal = ({userPoints, badges}: PrizesModalProps) => {
               }
               ${userPoints < badge.points ? 'opacity-50 cursor-not-allowed hover:opacity-50 focus:opacity-50' : 'cursor-pointer'}
               `}>
+                {collectedBadges.includes(badge) && (
+                   <div className="absolute top-0 right-0 text-red-500 text-2xl mr-2 mt-2">
+                   <X size={32}/>
+                 </div>
+                )}
               <p className="text-lg w-[200px]">
                 {badge.name}
               </p>

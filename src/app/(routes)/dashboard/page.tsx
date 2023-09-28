@@ -92,7 +92,7 @@ const extendedBadges = userBadges.map((item) => {
             <UserPoints userPoints={totalPoints}/>
             <BadgesButton sub={hasSub}/> 
             <LogoutBtn />
-          <PrizesModal userPoints={totalPoints} badges={badges}/>
+          <PrizesModal userPoints={totalPoints} badges={badges} userBadges={extendedBadges}/>
           <BadgesModal badges={extendedBadges}/>
           </div>
         </div>
