@@ -8,7 +8,7 @@ interface UserPointsProps {
 
 const UserPoints = ({userPoints}:UserPointsProps) => {
   return (
-    <div className="flex items-center justify-center bg-orange-700 rounded-md text-white px-5  ">
+    <div className="flex items-center justify-center bg-orange-700 rounded-md text-white px-5">
         <h1 className="font-semibold">
             Your points: 
         </h1>

@@ -31,7 +31,6 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
   const eventPoints = await getEventPoints({leaderboardId: leaderboard.id})
   const userPlace = await getUserPlaceInLeaderboard(leaderboard.id)
 
-  console.log(userPlace)
 
   if(!event){
     return redirect('/')

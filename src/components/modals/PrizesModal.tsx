@@ -49,7 +49,6 @@ export const PrizesModal = ({userPoints, badges}: PrizesModalProps) => {
     }
     try {
       await axios.post(`/api/badges/`, {badge: selBadge});
-      console.log(selBadge)
 
       prizesModal.onClose()
       router.refresh()
@@ -106,7 +105,7 @@ export const PrizesModal = ({userPoints, badges}: PrizesModalProps) => {
         </p>
       </div>
     )}
-      <div>
+      <div className="flex items-center justify-center">
         <UserPoints userPoints={userPoints}/>
       </div>
 

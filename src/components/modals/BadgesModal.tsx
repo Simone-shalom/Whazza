@@ -34,7 +34,6 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
     setIsMounted(true);
   }, []);
 
-  console.log(badges)
 
   const onSubmit = async (selBadge :Badge) => {
 
@@ -119,7 +118,7 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
 
   return (
       <Modal disabled={loading} isOpen={badgesModal.isOpen}
-        onClose={badgesModal.onClose} body={bodyContent} title="Get prizes"
+        onClose={badgesModal.onClose} body={bodyContent} title="Your badges"
           />
   )
 }

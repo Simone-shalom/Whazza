@@ -22,7 +22,7 @@ const BadgesButton = ({sub}: BadgesButtonProps) => {
     };
   
     return (
-      <Button onClick={handleClick} variant='secondary'>
+      <Button onClick={handleClick} variant='secondary' className='hover:scale-110 transition duration-500'>
         Choose badge
       </Button>
     );

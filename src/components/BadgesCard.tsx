@@ -17,8 +17,8 @@ const BadgesCard = ({userBadges}: BadgesCardProps) => {
   console.log(userBadges)
 
   return (
-  <div>
-     <h1 className="text-2xl font-semibold text-center">
+  <div className="flex flex-col justify-center items-center">
+     <h1 className="text-2xl font-semibold">
         Your badges
       </h1>
       {userBadges.length === 0 ? (
@@ -29,10 +29,11 @@ const BadgesCard = ({userBadges}: BadgesCardProps) => {
           </p>
         </div>
       ): (
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex items-center justify-center">
+      <div className="grid grid-flow-col  justify-center gap-8">
           {userBadges.map((badge: ExtendedBadge) => (
-              <div key={badge.id} className="flex flex-col items-center">
-                  <div className="flex flex-col items-center pt-5 hover:scale-110
+              <div key={badge.id} className="flex flex-col items-center justify-center">
+                  <div className="flex flex-col items-center justify-center pt-5 hover:scale-110
                     transition duration-500 hover:opacity-100 focus:opacity-100 ">
                     <p className="font-semibold text-xl pb-1">{badge.name}</p>
                     <Image src={badge.src} alt="badge" width={100} height={100} 
@@ -40,6 +41,7 @@ const BadgesCard = ({userBadges}: BadgesCardProps) => {
                   </div>
               </div>
           ))}
+      </div>
       </div>
       )}
     </div>

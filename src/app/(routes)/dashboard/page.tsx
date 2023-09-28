@@ -59,11 +59,11 @@ const extendedBadges = userBadges.map((item) => {
         </div>
       </AnimatedBlob>
       </div>
-        <div className="flex flex-col lg:flex-row  pt-12">
-          <main className="w-full lg:w-1/2 flex flex-col items-center">
+        <div className="flex flex-col md:flex-row  pt-12">
+          <main className="w-full md:w-1/2 flex flex-col items-center">
             {hasSub ? (
               <div className="flex flex-col gap-4 items-center justify-center pb-5">
-                <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 font-medium text-sm text-white">
+                <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700  font-semibold text-white">
                   You have a subscription!
                 </div>
                 <Button variant="secondary" className="opacity-80 max-w-xl hover:scale-110 transition duration-500">
@@ -73,7 +73,7 @@ const extendedBadges = userBadges.map((item) => {
               </div>
             ) : (
               <div className=" flex flex-col justify-center items-center rounded-lg pb-5 gap-4 ">
-                 <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 opacity-70 font-medium text-sm text-white">
+                 <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 opacity-70  font-semibold text-white">
                   You are on free mode!
                 </div>
                 <Button variant="secondary" className="opacity-90 max-w-xl hover:scale-110 transition duration-500">
@@ -88,7 +88,7 @@ const extendedBadges = userBadges.map((item) => {
               </div>
             )}
           </main>
-          <div className="w-full lg:w-1/2 flex flex-col items-center gap-4 ">
+          <div className="w-full md:w-1/2 flex flex-col items-center gap-4 ">
             <UserPoints userPoints={totalPoints}/>
             <BadgesButton sub={hasSub}/> 
             <LogoutBtn />
@@ -96,7 +96,7 @@ const extendedBadges = userBadges.map((item) => {
           <BadgesModal badges={extendedBadges}/>
           </div>
         </div>
-        <div className="flex items-center justify-center px-5 pt-10 lg:pt-0">
+        <div className="flex items-center justify-center px-5 pt-10 md:pt-0">
            <BadgesCard userBadges={extendedBadges} />
         </div>
       </PageWrapper>
