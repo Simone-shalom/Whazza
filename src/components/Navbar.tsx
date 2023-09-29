@@ -10,7 +10,7 @@ import SelectedBadge from "./SelectedBadge";
   const [showBackground, setShowBackground] = useState(false)
 
  // Get the selected badge from localStorage
-  const storedSelectedBadge = localStorage.getItem('selectedBadge');
+ const storedSelectedBadge = typeof window !== 'undefined' ? localStorage.getItem('selectedBadge') : null;
   const selectedBadge = storedSelectedBadge ? JSON.parse(storedSelectedBadge) : null;
 
   const generateDashboardLink = () => {

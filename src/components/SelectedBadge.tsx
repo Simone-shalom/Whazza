@@ -9,7 +9,7 @@ interface SelectedBadgeProps {
 
 const SelectedBadge = ({selectedBadge}: SelectedBadgeProps) => {
   return (
-    <div className="flex flex-col items-center justify-center hover:scale-110 transition duration-1000 cursor-pointer ">
+    <div className="flex flex-col items-center justify-center hover:scale-110 transition duration-1000 ">
         <div className="text-orange-700  font-bold text-lg">
             {selectedBadge.name}
         </div>
