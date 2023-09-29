@@ -11,56 +11,78 @@ import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import { useBadgesModal } from "@/hooks/use-badges-modal";
+import useBadgeStore from "@/hooks/use-badges-store";
+import { Badge } from "@prisma/client";
+import { Check } from "lucide-react";
 
 interface BadgesModalProps {
   badges: Badge[]
 }
-export type Badge = {
-  name: string;
-  src: string;
-  points: number;
-} 
+// export type Badge = {
+//   name: string;
+//   src: string;
+//   points: number;
+// } 
 
 
 export const BadgesModal = ({badges}: BadgesModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const badgesModal = useBadgesModal()
   const [loading, setLoading] = useState(false)
-  const [selBadge, setSelBadge] = useState<Badge | null>(null)
+  // const [selBadge, setSelBadge] = useState<Badge | null>(null)
+
+  const selectedBadge = useBadgeStore((state) => state.selectedBadge); // Get the selected badge from the global state
+  const setSelectedBadge = useBadgeStore((state) => state.setSelectedBadge); // Function to update the selected badge
 
   const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
 
-
-  const onSubmit = async (selBadge :Badge) => {
-
-  
-    if (!selBadge) {
-      // Don't submit if no badge is selected or user points are insufficient
-      return;
-    }
-    try {
-      // await axios.post(`/api/badges/`, {badge: selBadge});
-      console.log(selBadge)
-
-      badgesModal.onClose()
-      router.refresh()
-      toast.success("Badge collected successfully")
-    } catch (error) {
-      console.log(error);
-      toast.error('something went wrong')
-    }
+     // Check if there's a selected badge in local storage
+  const storedBadge = localStorage.getItem('selectedBadge');
+  if (storedBadge) {
+    setSelectedBadge(JSON.parse(storedBadge));
   }
+
+  }, [setSelectedBadge]);
+
+
+  // const onSubmit = async () => {
+  
+  //   if (!selectedBadge) {
+  //     // Don't submit if no badge is selected or user points are insufficient
+  //     return;
+  //   }
+  //   try {
+  //     // await axios.post(`/api/badges/`, {badge: selBadge});
+  //     console.log(selectedBadge)
+
+  //     badgesModal.onClose()
+  //     router.refresh()
+  //     toast.success("Badge Selected successfully")
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error('something went wrong')
+  //   }
+  // }
 
   if (!isMounted) {
     return null;
   }
+  console.log(selectedBadge);
 
   const handleBadgeClick = (badge: Badge) => {
-    setSelBadge(badge);
+    if (selectedBadge === badge) {
+      // The clicked badge is already selected, so deselect it.
+      setSelectedBadge(null);
+    } else {
+      // Select the clicked badge.
+      setSelectedBadge(badge);
+    }
+     // Store the selected badge in local storage
+      toast.success("Badge selected")
+  localStorage.setItem('selectedBadge', JSON.stringify(badge));
   };
 
   let bodyContent = (
@@ -77,12 +99,17 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
               key={badge.name} className={`flex flex-col items-center justify-center cursor-pointer relative hover:scale-110
                transition duration-500 hover:opacity-100 focus:opacity-100
                ${
-                selBadge === badge ? 'opacity-100 scale-110' : 'opacity-70'
+                selectedBadge === badge ? 'opacity-100 scale-110' : 'opacity-70'
               }
               `}>
               <p className="text-lg w-[200px]">
                 {badge.name}
               </p>
+              {selectedBadge?.name === badge.name && (
+                <div className="absolute top-0 right-0 text-red-500 text-2xl mr-2 mt-2">
+                  <Check />
+                </div>
+              )}
               <Image src={badge.src} width={100} height={100} alt="badge"/>
               <Separator className="border border-black"/>
           
@@ -99,17 +126,17 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
     )}
 
         <div className="flex items-center justify-center">
-        <Button 
+        {/* <Button 
           onClick={(event) => {
             event.preventDefault(); 
-            if (selBadge !== null) {
-              onSubmit(selBadge); 
+            if (selectedBadge !== null) {
+              onSubmit(); 
             }
           }}
           size='lg' disabled={loading} 
               className="hover:scale-105 transition hover:opacity-80 w-1/2">
               Select
-        </Button>
+        </Button> */}
         </div>
     </div>
 

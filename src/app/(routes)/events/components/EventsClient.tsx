@@ -3,6 +3,7 @@
 import Container from "@/components/Container"
 import EventsDisplay from "@/components/EventsDisplay"
 import { Button } from "@/components/ui/button"
+import useBadgeStore from "@/hooks/use-badges-store"
 import { Event } from "@prisma/client"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
@@ -19,7 +20,9 @@ const EventsClient = ({events, usersCount, hasSub}: EventsClientProps) => {
     // const { data: session } = useSession();
     // const eventsModal2 = useEventsModal2()
     const router = useRouter()
+    const useBadges = useBadgeStore()
 
+    console.log(useBadges.selectedBadge)
  
   //   const OpenEventModal = () => {
    
