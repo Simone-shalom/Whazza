@@ -41,7 +41,6 @@ export const PrizesModal = ({userPoints, badges ,userBadges}: PrizesModalProps) 
     setIsMounted(true);
   }, []);
 
-  console.log(userBadges, badges)
 
   // Filter out not taken badges
 const collectedBadges = badges.filter((badge) => {
