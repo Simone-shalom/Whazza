@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from "react";
 import 'react-time-picker/dist/TimePicker.css';
-import { Button } from "@/components/ui/button";
 import {useRouter } from "next/navigation";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
@@ -18,18 +17,12 @@ import { Check } from "lucide-react";
 interface BadgesModalProps {
   badges: Badge[]
 }
-// export type Badge = {
-//   name: string;
-//   src: string;
-//   points: number;
-// } 
 
 
 export const BadgesModal = ({badges}: BadgesModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const badgesModal = useBadgesModal()
   const [loading, setLoading] = useState(false)
-  // const [selBadge, setSelBadge] = useState<Badge | null>(null)
 
   const selectedBadge = useBadgeStore((state) => state.selectedBadge); // Get the selected badge from the global state
   const setSelectedBadge = useBadgeStore((state) => state.setSelectedBadge); // Function to update the selected badge
@@ -48,25 +41,6 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
   }, [setSelectedBadge]);
 
 
-  // const onSubmit = async () => {
-  
-  //   if (!selectedBadge) {
-  //     // Don't submit if no badge is selected or user points are insufficient
-  //     return;
-  //   }
-  //   try {
-  //     // await axios.post(`/api/badges/`, {badge: selBadge});
-  //     console.log(selectedBadge)
-
-  //     badgesModal.onClose()
-  //     router.refresh()
-  //     toast.success("Badge Selected successfully")
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error('something went wrong')
-  //   }
-  // }
-
   if (!isMounted) {
     return null;
   }
@@ -82,6 +56,7 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
     }
      // Store the selected badge in local storage
       toast.success("Badge selected")
+      router.refresh()
   localStorage.setItem('selectedBadge', JSON.stringify(badge));
   };
 
@@ -124,20 +99,6 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
         </p>
       </div>
     )}
-
-        <div className="flex items-center justify-center">
-        {/* <Button 
-          onClick={(event) => {
-            event.preventDefault(); 
-            if (selectedBadge !== null) {
-              onSubmit(); 
-            }
-          }}
-          size='lg' disabled={loading} 
-              className="hover:scale-105 transition hover:opacity-80 w-1/2">
-              Select
-        </Button> */}
-        </div>
     </div>
 
    
