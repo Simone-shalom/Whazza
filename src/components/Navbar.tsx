@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { useSession } from 'next-auth/react';
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import SelectedBadge from "./SelectedBadge";
 
  const Navbar = ()=> {
   const { data: session } = useSession();
   const [showBackground, setShowBackground] = useState(false)
 
-  // const selectedBadge = useBadgeStore((state) => state.selectedBadge); // Get the selected badge from the global state
+ // Get the selected badge from localStorage
   const storedSelectedBadge = localStorage.getItem('selectedBadge');
   const selectedBadge = storedSelectedBadge ? JSON.parse(storedSelectedBadge) : null;
 
