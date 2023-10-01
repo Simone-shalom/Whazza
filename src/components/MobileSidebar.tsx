@@ -7,7 +7,6 @@ import {Menu} from 'lucide-react'
 import Link from "next/link"
 import { useSession } from "next-auth/react"
 import AnimatedBlob from "./AnimatedBlob"
-import LogoutBtn from "./LogoutBtn"
 import SelectedBadge from "./SelectedBadge"
 
 interface MobileSidebarProps {
@@ -19,10 +18,7 @@ const MobileSidebar = ({}: MobileSidebarProps) => {
     const { data: session } = useSession();
     const [mounted, setMounted] = useState(false)
 
-     // Get the selected badge from localStorage
-     const storedSelectedBadge = typeof window !== 'undefined' ? localStorage.getItem('selectedBadge') : null;
-     const selectedBadge = storedSelectedBadge ? JSON.parse(storedSelectedBadge) : null;
-
+    
   useEffect(() => {
 
     setMounted(true)
@@ -65,8 +61,8 @@ const MobileSidebar = ({}: MobileSidebarProps) => {
           <Link href="/pricing" className="font-medium text- text-black hover:opacity-80 hover:scale-110 transition duration-200">
             Pricing
           </Link>
-          {selectedBadge && (
-            <SelectedBadge selectedBadge={selectedBadge}/>
+          {session && (
+            <SelectedBadge/>
           )}
           <div className="pt-64 w-full">
             <AnimatedBlob>

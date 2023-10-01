@@ -9,9 +9,6 @@ import SelectedBadge from "./SelectedBadge";
   const { data: session } = useSession();
   const [showBackground, setShowBackground] = useState(false)
 
- // Get the selected badge from localStorage
- const storedSelectedBadge = typeof window !== 'undefined' ? localStorage.getItem('selectedBadge') : null;
-  const selectedBadge = storedSelectedBadge ? JSON.parse(storedSelectedBadge) : null;
 
   const generateDashboardLink = () => {
     const callbackUrl = '/dashboard'; // Specify your desired dashboard URL
@@ -43,21 +40,22 @@ return() =>{
 
 },[])
 
-console.log(selectedBadge)
 
 
   return (
     <nav className= {`  ${showBackground ? ' bg-gradient-to-b from-white to-purple-100' : ''} 
-      w-full px-4 fixed z-50 shadow-md  `}>
+      w-full px-4 fixed z-50 shadow-md `}>
       <div className={`flex  items-center gap-8 px-5 rounded-xl justify-between 
-        py-3 max-w-7xl m-auto transition duration-500`}>
+        py-3 max-w-7xl m-auto transition duration-500 h-24`}>
         <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-80">
           Logo
         </Link>
         <div className="flex items-center gap-4">
-        {selectedBadge && (
-           <SelectedBadge selectedBadge={selectedBadge}/>
-          )}
+          <div>
+            {session && (
+            <SelectedBadge/>
+            )}
+          </div>
           <Link href="/events" className="font-medium text-lg  hover:scale-110 transition duration-200 text-black hover:opacity-80">
             Events
           </Link>
