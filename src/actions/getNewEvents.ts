@@ -12,7 +12,7 @@ export default async function getNewEvents () {
             include: {
                 leaderboard: true
             },
-            take: 4
+            take: 5
         })
 
         return events

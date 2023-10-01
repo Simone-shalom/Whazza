@@ -29,7 +29,7 @@ const EventsCard = ({data, eventBlur , usersCount}: EventsCardProps) => {
     <div
         onClick={()=> router.push(`/events/${data.id}`)}
         className={` col-span-1 cursor-pointer  border-collapse shadow-2xl border rounded-b-xl transition duration-1000 hover:scale-110 hover:translate-y-5 hover:translate-x-5`} >
-        <div className='flex flex-col  w-full'>
+        <div className='flex flex-col  w-full  '>
             <div className='w-full relative overflow-hidden rounded-top-xl h-[160px]'>
                 <Image src={data.imageSrc} alt="Image url"  fill
                     className= {`${eventsBlur} object-cover h-full w-full  transition ease-in `}/>
@@ -38,7 +38,7 @@ const EventsCard = ({data, eventBlur , usersCount}: EventsCardProps) => {
                     </div>
             </div>
             <Card className=" rounded-t-none rounded-b-xl px-5 py-3 bg-gradient-to-b from-purple-50 to-purple-100 border-1">
-            <div className='text-xl font-semibold'>
+            <div className='text-xl font-semibold h-[60px] text-center flex items-center justify-center'>
                  {data.name}
             </div>
             <div className='text-md text-gray-700 pb-2 truncate'>
@@ -62,15 +62,11 @@ const EventsCard = ({data, eventBlur , usersCount}: EventsCardProps) => {
                 <ArrowRightIcon size={24}/>
             </div>
             <Separator />
-            <div className="flex pt-3 pb-1">
+            <div className="flex pt-3 pb-10">
                 <p className="font-semibold">
                     Challenge details
                 </p>
             </div>   
-            <Separator />
-              <p className="pt-1">Already 
-                <span className="font-bold px-1 text-black">{usersCount}</span>
-                {data.participants} people has joined</p> 
             </Card>
             </div>
         </div>

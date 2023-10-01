@@ -11,7 +11,7 @@ const SelectedBadge = () => {
  
   return (
     <>
-    <div className="flex flex-col items-center justify-center hover:scale-110 transition duration-1000 ">
+    <div className="flex flex-col items-center justify-center hover:scale-110 transition duration-1000 w-[150px] ">
         <div className="text-orange-700  font-bold text-lg">
             {selectedBadge.name}
         </div>

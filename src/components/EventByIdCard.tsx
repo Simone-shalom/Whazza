@@ -30,26 +30,16 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
       <section className="text-gray-600 body-font">
         <div className="container px-5 pt-10 mx-auto flex flex-col">
           <div className="mx-auto">
-            <div className="rounded-lg h-64 overflow-hidden">
-              <Image  alt="content" className="object-cover object-center h-full w-full" src={event.imageSrc} width={200} height={200} />
+            <div className="rounded-lg h-64 overflow-hidden xl:w-[1000px]">
+              <Image  alt="content" className="object-cover object-center h-full w-full" src={event.imageSrc} width={900} height={300} />
             </div>
             <div className="flex flex-col md:flex-row w-full items-center md:items-start px-2 md:space-x-12">
               <div className="sm:w-1/2 text-center md:pr-8 sm:py-8">
-                <div className="flex flex-col items-center text-center justify-center">
+                <div className="flex flex-col items-center text-center justify-center space-y-3">
                   <h2 className="font-medium title-font mt-4 text-gray-900 text-3xl">{event.name}</h2>
                   <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                   <p className="text-xl px-2 text-black capitalize">{event.desc}</p>
-                  <div className="flex flex-col pt-2">
-                    <p className="text-lg font-semibold px-2">{event.time}</p>
-                    <p className="text-lg font-semibold px-2">{event.distance}</p>
-                    <p className="text-lg font-semibold px-2">{event.amount}</p>
-                  </div>
-                  <div>
-                    <p className="text-lg font-semibold px-2 pt-2">Already joined by 
-                      <span className="text-xl mx-1 ">{participants}</span> 
-                      users
-                    </p>
-                  </div>
+               
                   <div>
                     <h3 className="capitalize text-xl font-semibold pt-2">createdBy </h3>
                     <p className="text-muted-foreground text-xl font-bold">
