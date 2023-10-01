@@ -1,5 +1,6 @@
 import getCurrentUser from "@/actions/getCurrentUser";
 import prismadb from "@/lib/prismadb";
+import { ratelimit } from "@/lib/rate-limit";
 import { NextResponse } from "next/server";
 
 interface EParams {
@@ -23,6 +24,15 @@ export async function POST(req: Request,{params}: {params: EParams}){
         if(!leaderboardId || typeof leaderboardId !== 'string'){
             return new NextResponse("Event id is required", {status:400})
         }
+
+         //rate limit part 
+         const identifier = req.url + '-' + currentUser.id
+         const {success} = await ratelimit(identifier)
+
+         if(!success){
+            return new NextResponse("You have just joined the event",{status:429})
+        }
+        //
 
         const leaderboardWithTimes = await prismadb.time.create({
             data: {

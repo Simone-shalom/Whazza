@@ -41,6 +41,7 @@ const formSchema = z.object({
 export const LeaderBoardModal = ({leaderboard}: LeaderboardModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const leaderBoardModal = useLeaderboardModal()
+  const [loading,setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -63,17 +64,29 @@ export const LeaderBoardModal = ({leaderboard}: LeaderboardModalProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
 
     try {
-      await axios.post(`/api/leaderboard/${leaderboard.id}`, values);
+      setIsLoading(true)
 
-      form.reset();
+      const response = await axios.post(`/api/leaderboard/${leaderboard.id}`, values);
+
+      if (response.status === 200) {
+        form.reset();
       leaderBoardModal.onClose()
       router.refresh()
       toast.success("Leaderboard joined successfully")
-    } catch (error) {
-      console.log(error);
-      toast.error('something went wrong')
+      }
+
+    } catch (error: any) {
+
+      if (error.response && error.response.status === 429) {
+        toast.error('You have just joined the event');
+    } else {
+      // Handle other errors if necessary
+      toast.error('Something went wrong');
     }
+  } finally {
+    setIsLoading(false)
   }
+}
 
   if (!isMounted) {
     return null;
