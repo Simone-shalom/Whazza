@@ -2,12 +2,11 @@ import { NextAuthProvider } from "@/providers/SessionProvidert";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import Footer from "@/components/Footer";
 import ToasterProvider from "@/providers/ToasterProvider";
 
 const montse = Montserrat({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight:  "500"
 });
 
 export const metadata: Metadata = {

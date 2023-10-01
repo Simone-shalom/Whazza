@@ -23,11 +23,11 @@ const SignIn = async() => {
       <div className="min-h-screen">
         <PageWrapper>
             <div className="flex min-h-[800px] items-center justify-center flex-col space-y-6">
-            <p className='text-center text-4xl text-black font-extrabold  '>
+            <p className='text-center text-4xl text-black font-bold  '>
               Our Leaderboards are waiting for you to join 
             </p>
             <div className="flex">
-            <p className='text-center text-3xl text-black font-semibold pb-8 '>
+            <p className='text-center text-3xl text-black pb-8 '>
               Special prizes every month
             </p>
             <SparkleIcon size={32}/>
