@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow: /dashboard
+Sitemap: https://whazza.vercel.app/sitemap.xml
