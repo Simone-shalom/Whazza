@@ -42,6 +42,7 @@
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.46.1",
     "react-hot-toast": "^2.4.1",
+    "react-spinners": "^0.13.8",
     "react-time-picker": "^6.5.0",
     "stripe": "12.16.0",
     "tailwind-merge": "^1.14.0",
