@@ -48,7 +48,7 @@ export const Testimonials = () => {
             {Testimonialss.map((test) => (
                 <Card key={test.name} 
                     className="bg-transparent shadow-md border-none text-black hover:opacity-80 transition
-                     hover:scale-110 duration-500 cursor-pointer">
+                     hover:scale-110 duration-500">
                     <CardHeader>
                         <CardTitle className="flex items-center gap-x-2">
                             <div>

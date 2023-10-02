@@ -5,10 +5,16 @@ import Image from "next/image"
 
 const SelectedBadge = () => {
  
-  // Get the selected badge from localStorage
-  const storedSelectedBadge = typeof window !== 'undefined' ? localStorage.getItem('selectedBadge') : null;
-    const selectedBadge = storedSelectedBadge ? JSON.parse(storedSelectedBadge) : null;
- 
+ // Get the selected badge from localStorage
+ const storedSelectedBadge =
+ typeof window !== "undefined" ? localStorage.getItem("selectedBadge") : null;
+
+const selectedBadge = storedSelectedBadge ? JSON.parse(storedSelectedBadge) : null;
+
+// Render the component only if selectedBadge exists
+if (!selectedBadge) {
+ return null;
+}
   return (
     <>
     <div className="flex flex-col items-center justify-center hover:scale-110 transition duration-1000 w-[150px] ">

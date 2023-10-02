@@ -55,7 +55,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
                   <UserPoints userPoints={eventPoints}/>
                 </div>
               </div>
-              <div className="w-full md:w-2/3 md:pl-8 md:py-8 md:border-l  border-gray-500 md:border-t-0 border-t mt-4 pt-4 md:mt-0 md:text-left">
+              <div className="w-full md:w-2/3 md:pl-8 md:py-8 md:border-l border-gray-500 md:border-t-0 border-t mt-4 pt-12 md:mt-0 md:text-left">
                 <h1 className="text-3xl font-semibold text-black text-center pb-1">
                   Leaderboard
                 </h1>
@@ -63,7 +63,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
               <ScrollArea className="h-72 pt-2 rounded-md border ">
                 <div className="p-4">
                   {times.map((time, index) => (
-                    <>
+                    <div key={time.id}>
                     <div>
                     {time.username === currentUser?.name && (
                             <div className="flex">
@@ -84,7 +84,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
                           </p>
                       </div>
                       <Separator className="my-2" />
-                    </>
+                    </div>
                   ))}
                 </div>
               </ScrollArea>
