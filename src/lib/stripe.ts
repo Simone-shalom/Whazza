@@ -29,8 +29,8 @@ export async function hasSubscription() {
 
 export async function createCheckoutLink(customer: string) {
     const checkout = await stripe.checkout.sessions.create({
-        success_url: "/dashboard",
-        cancel_url: "/dashboard",
+        success_url: "https://whazza.vercel.app//dashboard",
+        cancel_url: "https://whazza.vercel.app//dashboard",
         customer: customer,
         line_items: [
             {
@@ -50,7 +50,7 @@ export async function generateCustomerPortalLink(customerId: string) {
         
         const portalSession = await stripe.billingPortal.sessions.create({
             customer: customerId,
-            return_url: "/dashboard", 
+            return_url: "https://whazza.vercel.app//dashboard", 
         });
 
         console.log()
