@@ -29,8 +29,8 @@ export async function hasSubscription() {
 
 export async function createCheckoutLink(customer: string) {
     const checkout = await stripe.checkout.sessions.create({
-        success_url: "http://localhost:3000/dashboard",
-        cancel_url: "http://localhost:3000/dashboard",
+        success_url: "/dashboard",
+        cancel_url: "/dashboard",
         customer: customer,
         line_items: [
             {
@@ -50,7 +50,7 @@ export async function generateCustomerPortalLink(customerId: string) {
         
         const portalSession = await stripe.billingPortal.sessions.create({
             customer: customerId,
-            return_url: "http://localhost:3000/dashboard", 
+            return_url: "/dashboard", 
         });
 
         console.log()
