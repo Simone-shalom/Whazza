@@ -44,7 +44,6 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
   if (!isMounted) {
     return null;
   }
-  console.log(selectedBadge);
 
   const handleBadgeClick = (badge: Badge) => {
     if (selectedBadge === badge) {

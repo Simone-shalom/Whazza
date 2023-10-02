@@ -3,7 +3,6 @@
 import Container from "@/components/Container"
 import EventsDisplay from "@/components/EventsDisplay"
 import { Button } from "@/components/ui/button"
-import useBadgeStore from "@/hooks/use-badges-store"
 import { Event } from "@prisma/client"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
@@ -17,24 +16,9 @@ interface EventsClientProps {
 
 
 const EventsClient = ({events, usersCount, hasSub}: EventsClientProps) => {
-    // const { data: session } = useSession();
-    // const eventsModal2 = useEventsModal2()
+
     const router = useRouter()
-    const useBadges = useBadgeStore()
-
-    console.log(useBadges.selectedBadge)
  
-  //   const OpenEventModal = () => {
-   
-  //     if(!session){
-  //       toast.error("You must be logged in to create an Event")
-  //       router.push('/auth')
-  //     } else {
-  //       router.push('/createEvent')
-  //     }
-      
-  // }
-
   const onCreateEvent = () => {
     if(hasSub){
       router.push('/createEvent')
@@ -56,9 +40,6 @@ const EventsClient = ({events, usersCount, hasSub}: EventsClientProps) => {
       <div className="flex flex-row justify-center items-center pb-20">
          <EventsDisplay events={events} usersCount={usersCount}/>
       </div>
-        {/* {session && (
-          <ImageUpload onChange={()=>{}} value=""/>
-        )} */}
     </Container>
   )
 }
