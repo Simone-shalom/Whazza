@@ -19,7 +19,7 @@ export default async function Home() {
       <Container>
         <LandingHero />
         <div className=' flex px-5 lg:px-10 items-center justify-center'>
-          <EventsDisplay events={newEvents}  usersCount={eventPaticipants}/>
+          <EventsDisplay events={newEvents}  usersCount={eventPaticipants} landing/>
         </div>
         <Testimonials />
         <Footer />
