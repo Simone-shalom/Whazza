@@ -31,7 +31,7 @@ const BadgesCard = ({userBadges}: BadgesCardProps) => {
         <div className="flex items-center justify-center">
       <div className="flex flex-wrap  justify-center gap-8">
           {userBadges.map((badge: ExtendedBadge, index) => (
-            <CardSlider index={index}>
+            <CardSlider index={index} key={badge.id}>
               <div key={badge.id} className="flex flex-col items-center justify-center">
                   <div className="flex flex-col items-center justify-center pt-5 hover:scale-110
                     transition duration-500 hover:opacity-100 focus:opacity-100 w-[160px] ">

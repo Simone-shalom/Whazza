@@ -52,7 +52,7 @@ const EventsDisplay = ({events, usersCount, landing}: EventsDisplayProps) => {
         <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 
           xl:grid-cols-4 2xl:grid-cols-5 gap-12 pt-10">
           {filteredEvents.map((event, index) => (
-              <CardSlider index={index}>
+              <CardSlider index={index} key={event.id}>
             <EventsCard key={event.id} data={event} eventBlur usersCount={usersCount} 
             />
             </CardSlider>
