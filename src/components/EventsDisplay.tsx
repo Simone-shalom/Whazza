@@ -7,6 +7,7 @@ import useDebounce from "@/hooks/use-debounce"
 import { Input } from "./ui/input"
 import Empty from "./Loader"
 import Loader from "./Loader"
+import CardSlider from "./animations/cardSlidder"
 
 interface EventsDisplayProps {
     events: Event[]
@@ -50,9 +51,11 @@ const EventsDisplay = ({events, usersCount, landing}: EventsDisplayProps) => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 
           xl:grid-cols-4 2xl:grid-cols-5 gap-12 pt-10">
-          {filteredEvents.map((event) => (
+          {filteredEvents.map((event, index) => (
+              <CardSlider index={index}>
             <EventsCard key={event.id} data={event} eventBlur usersCount={usersCount} 
             />
+            </CardSlider>
           ))}
       </div>
       )}

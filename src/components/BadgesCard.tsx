@@ -3,6 +3,7 @@
 import { Badge, UserBadge } from "@prisma/client"
 import Image from "next/image";
 import { XIcon } from "lucide-react";
+import CardSlider from "./animations/cardSlidder";
 
 export interface ExtendedBadge extends Badge, UserBadge {}
 
@@ -29,7 +30,8 @@ const BadgesCard = ({userBadges}: BadgesCardProps) => {
       ): (
         <div className="flex items-center justify-center">
       <div className="flex flex-wrap  justify-center gap-8">
-          {userBadges.map((badge: ExtendedBadge) => (
+          {userBadges.map((badge: ExtendedBadge, index) => (
+            <CardSlider index={index}>
               <div key={badge.id} className="flex flex-col items-center justify-center">
                   <div className="flex flex-col items-center justify-center pt-5 hover:scale-110
                     transition duration-500 hover:opacity-100 focus:opacity-100 w-[160px] ">
@@ -38,6 +40,7 @@ const BadgesCard = ({userBadges}: BadgesCardProps) => {
                       className="object-cover"/>
                   </div>
               </div>
+              </CardSlider>
           ))}
       </div>
       </div>

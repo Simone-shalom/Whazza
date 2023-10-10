@@ -6,6 +6,7 @@ import getEvents from "@/actions/getEvents"
 import getCurrentUser from "@/actions/getCurrentUser"
 import getEventParticipants from "@/actions/getEventParticipants"
 import { hasSubscription } from "@/lib/stripe"
+import { CardWrapper } from "@/components/animations/cardWrapper"
 
 
 const EventsPage = async() => {
@@ -18,12 +19,12 @@ const EventsPage = async() => {
 
   return (
       <Container>
-        <PageWrapper>
+        <CardWrapper>
         <div className='pt-24 min-h-screen '>
           <EventsClient events={events} usersCount={eventPaticipants} hasSub={hasSub}/>
             <Footer />
         </div>
-        </PageWrapper>
+        </CardWrapper>
       </Container>
   )
 }

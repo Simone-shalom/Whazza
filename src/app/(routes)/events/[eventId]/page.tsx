@@ -21,7 +21,7 @@ const EventsByIdPage = async({params}: {params: EventParams}) => {
   const currentUser = await getCurrentUser()
   
   if(!currentUser){
-    redirect('/dashboard')
+    redirect('/auth')
   }
 
   const event = await getEventById(params)

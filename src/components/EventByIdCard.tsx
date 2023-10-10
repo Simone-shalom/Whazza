@@ -8,6 +8,8 @@ import { Button } from "./ui/button"
 import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal"
 import { LeaderBoardModal } from "./modals/LeaderboardModal"
 import UserPoints from "./UserPoints"
+import ImageSlideIn from "./animations/imageSlideIn"
+import CardSlidder from "./animations/cardSlidder"
 
 interface EventByIdCardProps {
     event: Event
@@ -27,6 +29,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
 
   return (
     <div className="flex flex-row justify-center items-center">
+      <ImageSlideIn>
       <section className="text-gray-600 body-font">
         <div className="container px-5 pt-10 mx-auto flex flex-col">
           <div className="mx-auto">
@@ -101,6 +104,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
           </div>
         </div>
       </section>
+      </ImageSlideIn>
       </div>
   )
 }
