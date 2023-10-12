@@ -13,6 +13,8 @@ import { useBadgesModal } from "@/hooks/use-badges-modal";
 import useBadgeStore from "@/hooks/use-badges-store";
 import { Badge } from "@prisma/client";
 import { Check } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 interface BadgesModalProps {
   badges: Badge[]
@@ -59,12 +61,17 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
   localStorage.setItem('selectedBadge', JSON.stringify(badge));
   };
 
+  const goEvents = () => {
+    router.push('/events')
+    badgesModal.onClose()
+  }
+
   let bodyContent = (
     <div 
       className="space-y-6 flex flex-col w-[500px]">
     <div className="flex items-center justify-center">
     </div>
-    {badges ? (
+    {badges.length> 0 ? (
       <ScrollArea className="text-center h-[320px]">
         <div className="flex flex-col items-center gap-4 justify-center">
           {badges.map((badge) => (
@@ -93,9 +100,15 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
       </ScrollArea>
     ): (
       <div className="text-center">
-        <p>
-          Join events to became legend
-        </p>
+        <h2 className="text-xl font-semibold">
+          Nothin' yet...
+        </h2>
+        <h3 className="text-lg text-muted-foreground font-sans pb-3">
+          Join events to collect points
+        </h3>
+          <Button onClick={goEvents}>
+            Go to events
+          </Button>
       </div>
     )}
     </div>

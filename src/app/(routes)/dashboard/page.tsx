@@ -23,6 +23,11 @@ import getUserBadges from "@/actions/getUserBadges";
 import BadgesCard, { ExtendedBadge } from "@/components/BadgesCard";
 import BadgesButton from "@/components/BadgesButton";
 import { BadgesModal } from "@/components/modals/BadgesModal";
+import { Card } from "@/components/ui/card";
+import Image from "next/image";
+import ImageSlideIn from "@/components/animations/imageSlideIn";
+import { CardWrapper } from "@/components/animations/cardWrapper";
+import { HeroCard } from "@/components/HeroCard";
 
 
 export default async function Page() {
@@ -49,20 +54,31 @@ const extendedBadges = userBadges.map((item) => {
 
   return (
     <div className="min-h-[75vh]">
+      <HeroCard src="/images/Raoul-Paoli.png"/>
+
+      <HeroCard src="/images/sam-uy-futbolista-soccer-player.png" right/>
     <Container>
-      <PageWrapper>
-        <div className="flex items-center justify-center">
-        <AnimatedBlob>
-        <div className="flex flex-col items-center  pt-10 z-50 w-full">
-          <p className="text-4xl font-bold text-center"> Hello {session?.user?.name}</p>
+    <PageWrapper>
+        <div className="flex items-center justify-center  ">
+        {/* <AnimatedBlob> */}
+        <div className="flex flex-col items-center  pt-10 z-20 w-full">
+          <p className="text-3xl xl:text-4xl font-bold text-center"> Hello {session?.user?.name}</p>
           <Scoring />
+
+          <div className="block top-[500px] xl:hidden pt-6 max-w-sm ">
+            <AnimatedBlob>
+              <div>
+              <Image src='/images/Raoul-Paoli.png' alt="" width={250} height={200}/>
+              </div>
+            </AnimatedBlob>
+          </div>
         </div>
-      </AnimatedBlob>
+      {/* </AnimatedBlob> */}
       </div>
-        <div className="flex flex-col md:flex-row  pt-12">
+        <div className="flex flex-col md:flex-row  pt-12 gap-8 pb-8">
           <main className="w-full md:w-1/2 flex flex-col items-center">
             {hasSub ? (
-              <div className="flex flex-col gap-4 items-center justify-center pb-5">
+              <div className="flex flex-col gap-4 w-full items-center justify-center pb-5">
                 <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700  font-semibold text-white">
                   You have a subscription!
                 </div>
@@ -96,10 +112,10 @@ const extendedBadges = userBadges.map((item) => {
           <BadgesModal badges={extendedBadges}/>
           </div>
         </div>
-        <div className="flex items-center justify-center px-5 pt-10 md:pt-0">
+        <div className="flex items-center justify-center px-5 pt-10 md:pt-0 ">
            <BadgesCard userBadges={extendedBadges} />
         </div>
-      </PageWrapper>
+        </PageWrapper>
     </Container>
     </div>
   );
