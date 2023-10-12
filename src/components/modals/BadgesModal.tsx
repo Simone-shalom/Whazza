@@ -101,7 +101,7 @@ export const BadgesModal = ({badges}: BadgesModalProps) => {
     ): (
       <div className="text-center">
         <h2 className="text-xl font-semibold">
-          Nothin' yet...
+          Nothin yet...
         </h2>
         <h3 className="text-lg text-muted-foreground font-sans pb-3">
           Join events to collect points
