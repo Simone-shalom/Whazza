@@ -33,7 +33,7 @@ const SignIn = async() => {
             <SparkleIcon size={32}/>
             </div>
           
-              <Card className="relative flex items-center justify-center flex-col z-50 px-10 pt-8 pb-4 rounded-xl shadow-xl hover:shadow-2xl transition  cursor-pointer">
+              <Card className="relative flex items-center justify-center flex-col z-50 px-10 pt-8 pb-4 rounded-xl shadow-xl hover:shadow-2xl transition">
               <p className="text-black font-extrabold text-xl absolute right-2 top-2">Logo</p>
                 <CardContent>
                   <CardTitle className='flex justify-center items-center flex-col
