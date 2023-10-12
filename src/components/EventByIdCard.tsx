@@ -9,7 +9,7 @@ import { useLeaderboardModal } from "@/hooks/use-leaderboard-modal"
 import { LeaderBoardModal } from "./modals/LeaderboardModal"
 import UserPoints from "./UserPoints"
 import ImageSlideIn from "./animations/imageSlideIn"
-import CardSlidder from "./animations/cardSlidder"
+import Confetti from "./animations/confetti"
 
 interface EventByIdCardProps {
     event: Event
@@ -31,10 +31,11 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
     <div className="flex flex-row justify-center items-center">
       <ImageSlideIn>
       <section className="text-gray-600 body-font">
+      <Confetti />
         <div className="container px-5 pt-10 mx-auto flex flex-col">
           <div className="mx-auto">
-            <div className="rounded-lg h-64 overflow-hidden xl:w-[1000px]">
-              <Image  alt="content" className="object-cover object-center h-full w-full" src={event.imageSrc} width={900} height={300} />
+            <div className="rounded-lg h-64 overflow-hidden xl:w-[1000px] shadow-2xl">
+              <Image  alt="content" className="object-cover object-center h-full w-full hover:scale-105 transition duration-500" src={event.imageSrc} width={900} height={300} />
             </div>
             <div className="flex flex-col md:flex-row w-full items-center md:items-start px-2 md:space-x-12">
               <div className="sm:w-1/2 text-center md:pr-8 sm:py-8">
@@ -96,7 +97,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
                 onClick={leaderBoardModal.onOpen}
                 className="text-center px-5  text-lg hover:scale-110 transition duration-300">
                 Join
-               </Button>
+               </Button> 
                <LeaderBoardModal leaderboard={leaderboard}/>
               </div>
               </div>

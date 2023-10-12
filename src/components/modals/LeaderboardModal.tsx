@@ -23,6 +23,8 @@ import Modal from "./Modal";
 import toast from "react-hot-toast";
 import { Leaderboard } from "@prisma/client";
 import TimePicker from "react-time-picker";
+import { useConfetti } from "@/hooks/use-confetti";
+
 
 
 interface LeaderboardModalProps {
@@ -42,6 +44,7 @@ export const LeaderBoardModal = ({leaderboard}: LeaderboardModalProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const leaderBoardModal = useLeaderboardModal()
   const [loading,setIsLoading] = useState(false);
+  const useConfeti = useConfetti()
 
   const router = useRouter();
 
@@ -73,6 +76,7 @@ export const LeaderBoardModal = ({leaderboard}: LeaderboardModalProps) => {
       leaderBoardModal.onClose()
       router.refresh()
       toast.success("Leaderboard joined successfully")
+      useConfeti.onOpen()
       }
 
     } catch (error: any) {
