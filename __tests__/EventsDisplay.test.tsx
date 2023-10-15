@@ -30,6 +30,17 @@ describe('EventsDisplay', () => {
       expect(searchInput).toBeInTheDocument();
       expect(eventsCards.length).toBe(0);
     });
+
+    it('should display events', () => {
+   
+      const events = mockEvents
+  
+      render(<EventsDisplay events={events} usersCount={0} landing={false} />);
+     
+        expect(screen.getByText('Sample Event 1')).toBeInTheDocument();
+        expect(screen.getByText('Sample Event 2')).toBeInTheDocument();
+        expect(screen.queryByText('Sample Event 3')).toBeNull();
+    });
    
       // const events = mockEvents
   
