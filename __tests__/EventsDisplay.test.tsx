@@ -1,6 +1,19 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import EventsDisplay from '@/components/EventsDisplay';
+import { useRouter } from 'next/navigation';
+import { mockEvents } from '../mockData/mockEvents';
+
+
+ // Mock the useRouter hook
+ jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    query: { id: '1' },
+  }),
+}));
+
+// jest.mock('next/router', () => ({ useRouter: () => ({ push: jest.fn() }) }));
 
 
 describe('EventsDisplay', () => {
@@ -17,67 +30,9 @@ describe('EventsDisplay', () => {
       expect(searchInput).toBeInTheDocument();
       expect(eventsCards.length).toBe(0);
     });
-
-    // it('should filter events based on search query', () => {
-    //   // Arrange
-    //   const events = [
-    //     {
-    //       id: "1",
-    //       name: "Sample Event 1",
-    //       desc: "Sample Description 1",
-    //       imageSrc: "sample_image_1.jpg",
-    //       time: "Sample Time 1",
-    //       distance: "Sample Distance 1",
-    //       amount: "Sample Amount 1",
-    //       createdAt: new Date(),
-    //       userId: "user_id_1",
-    //       createdBy: "created_by_1",
-    //       user: {
-    //         id: "user_id_1",
-    //         // ... other user properties
-    //       },
-    //       participants: ["participant_id_1", "participant_id_2"],
-    //       leaderboard: [
-    //         {
-    //           // ... leaderboard properties
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       id: "2",
-    //       name: "Sample Event 2",
-    //       desc: "Sample Description 2",
-    //       imageSrc: "sample_image_2.jpg",
-    //       time: "Sample Time 2",
-    //       distance: "Sample Distance 2",
-    //       amount: "Sample Amount 2",
-    //       createdAt: new Date(),
-    //       userId: "user_id_2",
-    //       createdBy: "created_by_2",
-    //       user: {
-    //         id: "user_id_2",
-    //         // ... other user properties
-    //       },
-    //       participants: ["participant_id_3", "participant_id_4"],
-    //       leaderboard: [
-    //         {
-    //           // ... leaderboard properties
-    //         },
-    //       ],
-    //     },
-    //   ]; 
-    //   render(<EventsDisplay events={events} usersCount={0} landing={false} />);
-
-    //   // Act
-    //   const searchInput = screen.getByPlaceholderText('Search by name');
-    //   fireEvent.change(searchInput, { target: { value: 'Event 2' } });
-    //   const eventsCards = screen.queryAllByTestId('events-card');
-
-    //   // Assert
-    //   expect(eventsCards.length).toBe(1);
-    //   expect(eventsCards[0]).toHaveTextContent('Event 2');
-    // });
-
+   
+      // const events = mockEvents
+  
         // Displays loader when events are being fetched
         it('should display loader when events are being fetched', () => {
           // Arrange
@@ -102,3 +57,35 @@ describe('EventsDisplay', () => {
       expect(loader).toBeInTheDocument();
     });
 });
+
+describe('Functionality', () => {
+
+   // Filters events based on search query
+   it('should filter events based on search query', async () => {
+   
+    const events = mockEvents
+
+    render(<EventsDisplay events={events} usersCount={0} landing={false} />);
+    const searchInput = screen.getByPlaceholderText('Search by name');
+    fireEvent.change(searchInput, { target: { value: 'Sample Event 1' } });
+    await waitFor(() => {
+      expect(screen.getByText('Sample Event 1')).toBeInTheDocument();
+      expect(screen.queryByText('Sample Event 2')).toBeNull();
+    });
+  });
+
+  it('should display "No events found" message when search query does not match any event', async () => {
+    const events = mockEvents
+
+    render(<EventsDisplay events={events} usersCount={0} landing={false} />);
+    const searchInput = screen.getByPlaceholderText('Search by name');
+    fireEvent.change(searchInput, { target: { value: 'Sample Event 3' } });
+    await waitFor(() => {
+      expect(screen.getByText(/No events found/)).toBeInTheDocument();
+    })
+  });
+
+})
+
+   
+   
