@@ -11,6 +11,10 @@ import UserPoints from "./UserPoints"
 import ImageSlideIn from "./animations/imageSlideIn"
 import Confetti from "./animations/confetti"
 
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+
+import { useRouter } from 'next/navigation';
+
 interface EventByIdCardProps {
     event: Event
     leaderboard: Leaderboard
@@ -50,7 +54,7 @@ const EventByIdCard = ({event, leaderboard, times, participants, eventPoints ,us
                     {event.createdBy}  
                     </p>
                   </div>
-                  <div className="text-xl font-semibold flex space-x-3  bg-white rounded-md px-5 my-3 items-center justify-center">
+                  <div data-testid='userPlace' className="text-xl font-semibold flex space-x-3  bg-white rounded-md px-5 my-3 items-center justify-center">
                     <p className="text-xl">Your place: </p>
                     <div className="font-bold text-2xl">
                        {userPlace}
