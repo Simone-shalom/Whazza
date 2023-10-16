@@ -8,7 +8,6 @@ import { Card } from "./ui/card"
 import { Separator } from "./ui/separator";
 import { ArrowRightIcon, ChevronLeftCircleIcon, MoveLeft } from "lucide-react";
 import { Progress } from "./ui/progress";
-
 interface EventsCardProps {
     data: Event
     eventBlur?: boolean
@@ -26,7 +25,7 @@ const EventsCard = ({data, eventBlur , usersCount}: EventsCardProps) => {
 
   return (
     <>
-    <div
+    <div data-testid="events-card"
         onClick={()=> router.push(`/events/${data.id}`)}
         className={` col-span-1 cursor-pointer  border-collapse shadow-2xl border rounded-b-xl transition duration-1000 hover:scale-110 hover:translate-y-5 hover:translate-x-5`} >
         <div className='flex flex-col  w-full  '>
