@@ -21,7 +21,7 @@ const PrizesButton = ({sub}: PrizesButtonProps) => {
     };
   
     return (
-      <Button onClick={handleClick} variant='outline'>
+      <Button data-testid="PrizesButton" onClick={handleClick} variant='outline'>
         Collect prizes
       </Button>
     );
