@@ -25,12 +25,12 @@ const LandingButtons = () => {
    }
 
   return (
-    <div className='flex items-center justify-center space-x-5'>
-        <Button className='hover:opacity-80 hover:scale-110 transition'
+    <div data-testid="buttonsContainer" className='flex items-center justify-center space-x-5'>
+        <Button data-testid="StartedBtn" className='hover:opacity-80 hover:scale-110 transition'
         onClick={goAuthOrDashboard}>
         Get started
         </Button>
-        <Button
+        <Button data-testid="GithubBtn"
           onClick={goToGitHub} 
           variant='secondary' className='hover:opacity-80 hover:scale-110 transition'>
         Github
