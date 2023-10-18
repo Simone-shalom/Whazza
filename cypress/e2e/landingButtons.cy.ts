@@ -16,6 +16,7 @@ describe('LandingButtons component', () => {
             cy.stub(win, 'open').as('windowOpen');
             cy.get('[data-testid="GithubBtn"]').click().then(() => {
               expect(win.open).to.be.calledWith(githubLink, '_blank');
+              cy.wait(500);
             });
           });
     });
