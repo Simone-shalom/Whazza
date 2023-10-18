@@ -41,7 +41,7 @@ return() =>{
 
   return (
     <nav className=" w-full px-4 fixed z-50">
-      <div className={`flex  items-center gap-8 px-5 rounded-xl justify-between 
+      <div data-testid="NavContainer" className={`flex  items-center gap-8 px-5 rounded-xl justify-between 
         py-6 max-w-5xl m-auto transition duration-500 
         ${showBackground ? 'bg-zinc-100' : ''}`}>
         <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-80">
