@@ -43,7 +43,7 @@ return() =>{
 
 
   return (
-    <nav className= {`  ${showBackground ? ' bg-gradient-to-b from-white to-purple-100' : ''} 
+    <nav data-testid="navbar-container" className= {`  ${showBackground ? ' bg-gradient-to-b from-white to-purple-100' : ''} 
       w-full px-4 fixed z-50 shadow-md `}>
       <div className={`flex  items-center gap-8 px-5 rounded-xl justify-between 
         py-3 max-w-7xl m-auto transition duration-500 h-24`}>
@@ -51,7 +51,7 @@ return() =>{
           Logo
         </Link>
         <div className="flex items-center gap-4">
-          <div>
+          <div data-testid="selected-badge">
             {session && (
             <SelectedBadge/>
             )}
