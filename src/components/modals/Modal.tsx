@@ -36,7 +36,7 @@ const Modal = ({
          </DialogHeader>
 
         {/*Body*/}
-            <div className=' flex w-full justify-center items-center'>
+            <div data-testid='body' className=' flex w-full justify-center items-center'>
                 {body}
             </div>
 
