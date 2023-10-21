@@ -12,6 +12,8 @@ describe('HeaderClient component', () => {
       cy.contains('Dashboard').should('be.visible'); // Check if the 'Dashboard' link is displayed
     });
   
+
+    //fix
     it('should change the background color on scroll', () => {
         cy.wait(1000);
         cy.window().then((win) => {
