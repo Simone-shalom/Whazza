@@ -18,6 +18,8 @@ const SignIn = async() => {
      redirect('/dashboard');
   }
 
+
+
   return (
       <Container>
       <div className="min-h-screen">
@@ -42,9 +44,18 @@ const SignIn = async() => {
                     Became a member
                     </div>
                   </CardTitle>
-                  <CardDescription className='px-6 pb-5 text-center text-lg text-gray-500 font-semibold flex w-full justify-center items-center'>
+                  <CardDescription className='px-6 pb-2 text-center text-lg text-gray-500 font-semibold flex w-full justify-center items-center'>
                   Get started for free. No card required.
                   </CardDescription>
+                  <h1 className="text-center text-xl">Test credentials</h1>
+                  <div className="flex pb-3 space-x-3">
+                  <p>
+                  wellsimon89@gmail.com
+                  </p>
+                  <p>
+                  12wellsimon89
+                  </p>
+                  </div>
                   <SiginBtn />
                   <SiginEmailBtn />
                   <p className="text-sm font-italic pt-1 text-black text-center">
