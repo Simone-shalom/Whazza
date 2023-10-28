@@ -44,7 +44,7 @@ const EventsCard = ({data, eventBlur , usersCount}: EventsCardProps) => {
                  {data.desc} 
             </div>
             <Separator />
-            <Progress value={33}/>
+            <Progress value={33} role="progressbar"/>
             <div className="flex justify-between font-semibold pt-3 pb-1">
                 <p>
                     Your place
