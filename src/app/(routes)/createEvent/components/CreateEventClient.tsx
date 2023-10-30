@@ -1,6 +1,7 @@
 'use client'
 
 import Container from "@/components/Container";
+import HelperButtons from "@/components/HelperButtons";
 import { PageWrapper } from "@/components/animations/pageWrapper";
 import { InitialModal } from "@/components/modals/EventModal2"
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,7 @@ const CreateEventClient = () => {
         </div>
       </Card>
     </Container>
+    <HelperButtons />
     </PageWrapper>
   )
 }

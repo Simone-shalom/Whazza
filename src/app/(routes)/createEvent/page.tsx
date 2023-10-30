@@ -11,7 +11,7 @@ const CreateEvent = async() => {
   return (
     <Container>
         <div className=' pt-10 min-h-screen '>
-          <div className="flex justify-center items-center pt-32">
+          <div className="flex justify-center items-center pt-32 pb-10">
           <CreateEventClient />
           </div>
             <Footer />
