@@ -24,7 +24,7 @@ import { useRouter } from "next/navigation";
 import { useEventsModal2 } from "@/hooks/use-events-modal2";
 import { ImageUpload } from "../ImageUpload";
 import toast from "react-hot-toast";
-import Image from "next/image";
+
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -89,20 +89,6 @@ export const InitialModal = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col items-center">
           <div className="flex items-start justify-start">
-          {/* <FormField
-                  control={form.control}
-                  name="imageUrl"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <ImageUpload
-                          value={field.value}
-                          onChange={field.onChange}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                /> */}
           </div>
           <Dialog  open={eventsModal2.isOpen} onOpenChange={eventsModal2.onClose}>
         <DialogContent>
@@ -241,7 +227,7 @@ export const InitialModal = () => {
                 )}
               />
        <Button disabled={isLoading}>
-                Submit
+                Create
         </Button>
           </form>
          </Form>
