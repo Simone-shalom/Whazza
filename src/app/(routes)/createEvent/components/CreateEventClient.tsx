@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useEventsModal2 } from "@/hooks/use-events-modal2";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -44,7 +45,9 @@ const CreateEventClient = () => {
         </div>
       </Card>
     </Container>
+    <div className="flex lg:hidden items-center justify-center">
     <HelperButtons />
+    </div>
     </PageWrapper>
   )
 }

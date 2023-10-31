@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Button } from "./ui/button"
+import Image from "next/image"
 
 
 const HelperButtons = () => {
@@ -21,6 +22,7 @@ const HelperButtons = () => {
                 </Button>
             </Link>
         </div>
+        <Image src='/images/nikeurn.png' alt="event image tempel" width={100} height={200}/>
     </div>
   )
 }

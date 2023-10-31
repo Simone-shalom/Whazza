@@ -45,7 +45,7 @@ const MobileSidebar = ({}: MobileSidebarProps) => {
   return (
    <Sheet>
     <SheetTrigger>
-      <Button data-testid="MenuBtn" variant='ghost' className="md:hidden" aria-aria-label="Mobile Menu">
+      <Button data-testid="MenuBtn" variant='ghost' className="md:hidden" aria-label="Mobile Menu">
         <Menu size={20}/>
       </Button>
     </SheetTrigger>
