@@ -48,6 +48,12 @@
 <img width="559" alt="image" src="https://github.com/Simone-shalom/Whazza/assets/117103936/652d111c-1e71-414c-a422-f203756049ee">
 
 
+### SEO && Performance
+  Amazing app performance utilising nextjs features
+<img width="1253" alt="image" src="https://github.com/Simone-shalom/Whazza/assets/117103936/a8e42219-edba-494b-b2b8-765911700b53">
+
+
+
 
 ## Implementation:
  - Authentication using nextAuth
@@ -60,6 +66,7 @@
  - Managing global states with zustand
  - Forms using Zod React-hook-form
  - Collecting and choosing badges via local storage
+ - Seo && performance improvememt using nextjs features
 
 
 ## Credentials:
