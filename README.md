@@ -4,7 +4,7 @@
 
 
 ## Introduction
-### Sass application with subscriptions, sport challenges
+### Fullstack Sass application with subscriptions, sport challenges
 
 ## Tech Stack: 
  - [Next.js](https://nextjs.org/) – framework
@@ -57,6 +57,7 @@
 
 ## Implementation:
  - Authentication using nextAuth
+ - Developed REST API 
  - Creating and joining events functionality
  - Prisma as orm
  - Rate limiting with redis
