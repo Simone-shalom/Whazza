@@ -6,7 +6,7 @@ describe('HeaderClient component', () => {
     });
   
     it('should display the header with the logo and navigation links', () => {
-      cy.contains('Logo').should('be.visible'); // Check if the logo is displayed
+      cy.contains('Sportify').should('be.visible'); // Check if the logo is displayed
       cy.contains('Events').should('be.visible'); // Check if the 'Events' link is displayed
       cy.contains('Pricing').should('be.visible'); // Check if the 'Pricing' link is displayed
       cy.contains('Dashboard').should('be.visible'); // Check if the 'Dashboard' link is displayed
