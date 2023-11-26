@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
 import SelectedBadge from "./SelectedBadge";
+import { LogoComp } from "./LogoComp";
 
  const Navbar = ()=> {
   const { data: session } = useSession();
@@ -48,7 +49,7 @@ return() =>{
       <div className={`flex  items-center gap-8 px-5 rounded-xl justify-between 
         py-3 max-w-7xl m-auto transition duration-500 h-24`}>
         <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-80">
-          Logo
+          <LogoComp />
         </Link>
         <div className="flex items-center gap-4">
           <div data-testid="selected-badge">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
+import { LogoComp } from "./LogoComp";
 
  const HeaderClient = ()=> {
   const { data: session } = useSession();
@@ -45,7 +46,7 @@ return() =>{
         py-6 max-w-5xl m-auto transition duration-500 
         ${showBackground ? 'bg-zinc-100' : ''}`}>
         <Link href={"/"} className="text-2xl font-semibold text-black hover:opacity-80">
-          Logo
+          <LogoComp/>
         </Link>
         <div className="flex items-center gap-4">
           <Link href="/events" className="font-medium text-lg  hover:scale-110 transition duration-200 text-black hover:opacity-80">

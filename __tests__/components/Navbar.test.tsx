@@ -24,7 +24,7 @@ jest.mock('next/navigation', () => ({
 describe('Navbar component', () => {
     it('renders the logo', () => {
       render(<Navbar />);
-      const logoElement = screen.getByText('Logo');
+      const logoElement = screen.getByText('Sportify');
       expect(logoElement).toBeInTheDocument();
     });
   

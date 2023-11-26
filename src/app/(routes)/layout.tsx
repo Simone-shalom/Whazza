@@ -1,5 +1,6 @@
 
 
+import { LogoComp } from '@/components/LogoComp'
 import MobileSidebar from '@/components/MobileSidebar'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ const RoutesLayout = ({children}: {children: React.ReactNode}) => {
       <div className='fixed w-full z-50'>
         <div className={`md:hidden flex bg-gradient-to-b from-purple-100 to-purple-50  justify-between py-4 px-4 rounded-b-xl`}>
         <Link href={"/"} className="text-2xl  font-semibold text-black hover:opacity-90">
-            Logo
+            <LogoComp />
           </Link>
           <MobileSidebar />
         </div>
