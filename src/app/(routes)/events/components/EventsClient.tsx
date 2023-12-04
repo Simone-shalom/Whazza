@@ -30,7 +30,9 @@ const EventsClient = ({events, usersCount, hasSub}: EventsClientProps) => {
   return (
   
     <Container>
-      <div className="flex flex-col items-center justify-center ">
+      <div 
+        data-testid='events-display'
+        className="flex flex-col items-center justify-center ">
       <Button className="text-xl font-semibold  pb-2"
         onClick={onCreateEvent}>
         Create an Event

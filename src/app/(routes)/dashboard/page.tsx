@@ -23,10 +23,7 @@ import getUserBadges from "@/actions/getUserBadges";
 import BadgesCard, { ExtendedBadge } from "@/components/BadgesCard";
 import BadgesButton from "@/components/BadgesButton";
 import { BadgesModal } from "@/components/modals/BadgesModal";
-import { Card } from "@/components/ui/card";
 import Image from "next/image";
-import ImageSlideIn from "@/components/animations/imageSlideIn";
-import { CardWrapper } from "@/components/animations/cardWrapper";
 import { HeroCard } from "@/components/HeroCard";
 
 

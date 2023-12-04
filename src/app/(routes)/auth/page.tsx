@@ -36,7 +36,8 @@ const SignIn = async() => {
             <SparkleIcon size={32}/>
             </div>
           
-              <Card className="relative flex items-center justify-center bg-gradient-to-r border-black  from-purple-100 to-purple-50/50  flex-col z-50 px-10 pt-8 pb-4 rounded-xl shadow-xl hover:shadow-2xl transition">
+              <Card className="relative flex items-center justify-center bg-gradient-to-r border-black  from-purple-100 to-purple-50/50
+                flex-col z-50 px-10 pt-8 pb-4 rounded-xl shadow-xl hover:shadow-2xl transition">
               <div className="text-black font-extrabold text-xl absolute right-2 top-2">
                 <LogoComp />
               </div>
