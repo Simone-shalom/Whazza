@@ -18,9 +18,6 @@ export default async function getLeaderboard(params: IleaderboardParams){
         const leaderboard = await prismadb.leaderboard.findMany({
             where : {
                 eventId: eventId,
-            },
-            include: {
-                times: true
             }
         })
 
