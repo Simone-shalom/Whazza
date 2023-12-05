@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 
 interface EventByIdClientProps {
   event: Event
-  leaderboard: Leaderboard
+  leaderboard: any
   times: Time[]
   participants: number 
   eventPoints: number
