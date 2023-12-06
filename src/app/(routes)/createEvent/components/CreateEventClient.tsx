@@ -37,7 +37,9 @@ const CreateEventClient = () => {
       </h1>
       <Card className="px-20 py-5 bg-transparent border-black border-2 border-dotted">
       <div className="flex flex-col items-center justify-center">
-        <Button className="text-xl font-semibold pb-2" variant='default'
+        <Button 
+        data-testid='addInfoBtn'
+        className="text-xl font-semibold pb-2" variant='default'
             onClick={OpenEventModal}>
             Add Information
         </Button>
