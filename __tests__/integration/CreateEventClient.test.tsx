@@ -64,5 +64,22 @@ describe('CreateEventClient component', () => {
         expect(useEventsModal2().onOpen()).toHaveBeenCalled();
     })
   });
-  // Add more test cases as needed
+  it('redirects to /auth and shows an error toast when "Add Information" button is clicked without a session', async () => {
+    // Mock no session data
+    useSession.mockReturnValue({ data: null });
+
+    // Mock toast.error
+    jest.spyOn(toast, 'error');
+
+    render(<CreateEventClient />);
+
+    // Click the "Add Information" button
+    fireEvent.click(screen.getByText('Add Information'));
+
+    // Wait for the redirect to /auth
+    await waitFor(() => {
+      // Check if error toast is shown
+      expect(toast.error).toHaveBeenCalledWith('You must be logged in to create an Event');
+    });
+  });
 });
