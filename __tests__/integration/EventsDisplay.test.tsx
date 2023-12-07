@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import EventsDisplay from '@/components/EventsDisplay';
 import { useRouter } from 'next/navigation';
-import { mockEvents } from '../mockData/mockEvents';
+import { mockEvents } from '../../mockData/mockEvents';
 
 
  // Mock the useRouter hook
@@ -12,9 +12,6 @@ import { mockEvents } from '../mockData/mockEvents';
     query: { id: '1' },
   }),
 }));
-
-// jest.mock('next/router', () => ({ useRouter: () => ({ push: jest.fn() }) }));
-
 
 describe('EventsDisplay', () => {
      // Renders search input and events cards
