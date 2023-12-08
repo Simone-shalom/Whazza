@@ -19,7 +19,7 @@ const SignIn = async() => {
       <Container>
       <div className="min-h-screen">
         <PageWrapper>
-            <div className="flex min-h-[600px] items-center justify-center flex-col space-y-6 pt-24 lg:my-12 ">
+            <div className="flex  items-center justify-center flex-col pb-32 ">
               <AuthCard />
             </div>
           </PageWrapper>
