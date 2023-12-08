@@ -1,6 +1,5 @@
 
 import { AuthCard } from "@/components/AuthCard";
-import { AuthHeading } from "@/components/AuthHeading";
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import { PageWrapper } from "@/components/animations/pageWrapper";
@@ -20,7 +19,7 @@ const SignIn = async() => {
       <Container>
       <div className="min-h-screen">
         <PageWrapper>
-            <div className="flex min-h-[600px] items-center justify-center flex-col space-y-6 pt-24  lg:my-10 pb-10">
+            <div className="flex min-h-[600px] items-center justify-center flex-col space-y-6 pt-24 lg:my-12 ">
               <AuthCard />
             </div>
           </PageWrapper>
