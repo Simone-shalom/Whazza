@@ -4,6 +4,7 @@ import getNewEvents from '@/actions/getNewEvents'
 import Container from '@/components/Container'
 import EventsDisplay from '@/components/EventsDisplay'
 import Footer from '@/components/Footer'
+import { HowItWorks } from '@/components/HowItWorks'
 import { LandingHero } from '@/components/LandingHero'
 import { Testimonials } from '@/components/Testimonials'
 import { CardWrapper } from '@/components/animations/cardWrapper'
@@ -25,6 +26,7 @@ export default async function Home() {
         </div>
         </CardWrapper>
         <Testimonials />
+        <HowItWorks />
         <Footer />
       </Container>
     </PageWrapper>
