@@ -5,7 +5,7 @@ import { Separator } from './ui/separator'
 import { ArrowRight } from 'lucide-react'
 
 
-const Steps =[
+export const Steps =[
     {
        number: 1,
        step: 'Step 1',
@@ -16,19 +16,19 @@ const Steps =[
         number: 2,
         step: 'Step 2',
         name: 'Join events',
-        text: 'First authenticate yourself by clicking on get started or directly event'
+        text: 'Then choose event and join, by adding time to leaderboard, get your points'
      },
      {
         number: 3,
         step: 'Step 3',
         name: 'Subscribe',
-        text: 'First authenticate yourself by clicking on get started or directly event'
+        text: 'If u dont have an subscription yet, click subscribe button in the dashboard'
      },
      {
         number: 4,
         step: 'Step 4',
         name: 'Collect prizes',
-        text: 'First authenticate yourself by clicking on get started or directly event'
+        text: 'Choose one from available badges and collect them, you are now heroo'
      },
 ]
 
@@ -60,7 +60,7 @@ export const HowItWorks = () => {
                                     {item.name}
                                 </div>
                             </div>
-                            <p className="text-sm text-black-600">
+                            <p className="text-sm font-thin text-black-600">
                                 {item.text}
                             </p>
                         </div>
