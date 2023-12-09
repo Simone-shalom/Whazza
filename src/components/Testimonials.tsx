@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Twitter } from 'lucide-react'
 
-const Testimonialss =[
+export const Testimonialss =[
     {
         name: 'Simmons',
         avatar: 'A',
@@ -46,7 +46,7 @@ export const Testimonials = () => {
         </h3>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols- lg:grid-cols-3 
             xl:grid-cols-4 gap-10 px-10 '>
-            {Testimonialss.map((test) => (
+            {Testimonialss.map((test,index) => (
                 <Card key={test.name} 
                     className="bg-transparent shadow-md border-none text-black hover:opacity-80 transition
                      hover:scale-110 duration-500">
@@ -70,7 +70,9 @@ export const Testimonials = () => {
                     <CardContent>
                         <div className='flex flex-col items-center justify-center'>
                             <p className='pb-4 h-28'> {test.description}</p>
-                            <Image src={test.src} alt='' width={200} height={100}/>
+                            <Image 
+                               data-testid={`testimonial-image-${index}`}
+                                src={test.src} alt={`${test.src}`} width={200} height={100}/>
                         </div>
                         
                     </CardContent>

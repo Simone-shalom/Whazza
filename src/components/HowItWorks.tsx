@@ -2,6 +2,7 @@ import React from 'react'
 import UserPoints from './UserPoints'
 import Image from 'next/image'
 import { Separator } from './ui/separator'
+import { ArrowRight } from 'lucide-react'
 
 
 const Steps =[
@@ -44,11 +45,13 @@ export const HowItWorks = () => {
         xl:grid-cols-4 gap-10 px-10 '>
         {Steps.map((item) => (
             <div key={item.name} 
-                className="bg-transparent shadow-md border-none text-black hover:opacity-80 transition
+                className="bg-transparent shadow-md border-none text-black hover:opacity-90 opacity-70 transition
                 hover:scale-110 duration-500 p-3">
-                <div>
                     <div className="flex items-center gap-x-2">
                         <div className='w-full space-y-2'>
+                            <div>
+                                <ArrowRight />
+                            </div>
                             <h3 className='text-xl font-semibold'>
                                 {item.step}
                             </h3>
@@ -62,7 +65,6 @@ export const HowItWorks = () => {
                             </p>
                         </div>
                     </div>
-                </div>
                 <div>
                 </div>
             </div>
