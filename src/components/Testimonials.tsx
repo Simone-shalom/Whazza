@@ -2,6 +2,7 @@
 import Image from 'next/image'
 
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Twitter } from 'lucide-react'
 
 const Testimonialss =[
     {
@@ -51,12 +52,15 @@ export const Testimonials = () => {
                      hover:scale-110 duration-500">
                     <CardHeader>
                         <CardTitle className="flex items-center gap-x-2">
-                            <div>
-                            <div>
-                                <div className="px-3 py-1 rounded-lg bg-orange-300">
-                                    {test.name}
+                            <div className='w-full'>
+                                <div className='flex w-full justify-between'>
+                                    <div className="px-3 py-1 rounded-lg bg-orange-300">
+                                        {test.name}
+                                    </div>
+                                    <div className='flex items-center justify-center'>
+                                        <Twitter size={24} color='#7abaff' fill='#7abaff'/>
+                                    </div>
                                 </div>
-                            </div>
                                 <p className="text-sm text-black-600">
                                     {test.title}
                                 </p>
@@ -65,7 +69,7 @@ export const Testimonials = () => {
                     </CardHeader>
                     <CardContent>
                         <div className='flex flex-col items-center justify-center'>
-                            <p className='pb-4'> {test.description}</p>
+                            <p className='pb-4 h-28'> {test.description}</p>
                             <Image src={test.src} alt='' width={200} height={100}/>
                         </div>
                         
