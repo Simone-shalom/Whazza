@@ -18,11 +18,11 @@ const SignIn = async() => {
   return (
       <Container>
       <div className="min-h-screen">
-        <PageWrapper>
+        {/* <PageWrapper> */}
             <div className="flex  items-center justify-center flex-col pb-32 ">
               <AuthCard />
             </div>
-          </PageWrapper>
+          {/* </PageWrapper> */}
       <Footer />
     </div>
     </Container>
