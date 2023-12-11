@@ -75,7 +75,9 @@ const MobileSidebar = ({}: MobileSidebarProps) => {
           </Link>
           {session && <SelectedBadge />}
           <div className="pt-64 w-full">
-            <AnimatedBlob></AnimatedBlob>
+            <AnimatedBlob>
+              <div></div>
+            </AnimatedBlob>
           </div>
           <p className="pt-64">Simone s</p>
         </div>
