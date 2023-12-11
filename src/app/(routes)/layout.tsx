@@ -12,7 +12,7 @@ const RoutesLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className="fixed w-full z-50">
         <div
-          className={`md:hidden flex bg-gradient-to-b from-purple-50 to bg-purple-50  justify-between py-4 px-4 rounded-b-xl`}
+          className={`md:hidden flex bg-gradient-to-b from-purple-100 to bg-purple-50  justify-between py-4 px-4 rounded-b-xl`}
         >
           <Link
             href={"/"}

@@ -46,7 +46,7 @@ export const HowItWorks = () => {
           {Steps.map((item) => (
             <div
               key={item.name}
-              className="bg-transparent shadow-md border-none text-black hover:opacity-90 opacity-70 transition
+              className="bg-transparent shadow-md border-none text-black hover:translate-x-5 transition
                 hover:scale-110 duration-500 p-3"
             >
               <div className="flex items-center gap-x-2">
@@ -60,7 +60,7 @@ export const HowItWorks = () => {
                       {item.name}
                     </div>
                   </div>
-                  <p className="text-sm font-thin text-black-600">
+                  <p className=" leading-tight px-2 font-thin text-black-600">
                     {item.text}
                   </p>
                 </div>

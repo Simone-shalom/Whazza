@@ -45,7 +45,7 @@ const Navbar = () => {
     <nav
       data-testid="navbar-container"
       className={`  ${
-        showBackground ? " bg-gradient-to-b from-white to-purple-50" : ""
+        showBackground ? " bg-gradient-to-b from-purple-50 to-purple-100" : ""
       } 
       w-full px-4 fixed z-50 shadow-md `}
     >
