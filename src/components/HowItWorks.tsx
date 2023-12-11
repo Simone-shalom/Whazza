@@ -1,6 +1,10 @@
+"use client";
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import ScrollSlider from "./animations/scrollSlider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export const Steps = [
   {
@@ -27,9 +31,37 @@ export const Steps = [
     name: "Collect prizes",
     text: "Choose one from available badges and collect them, you are now heroo",
   },
+  {
+    number: 5,
+    step: "Step 5",
+    name: "Became a leader",
+    text: "Chase friends on leaderboards by joining available events",
+  },
 ];
 
 export const HowItWorks = () => {
+  const sliderSettings = {
+    infinite: true,
+    slidesToShow: 3, // Adjust the number of slides to show at a time
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1520,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+    autoplay: true,
+    autoPlaySpeed: 1000,
+  };
+
   return (
     <div className="px-10 pb-10">
       <ScrollSlider>
@@ -39,15 +71,16 @@ export const HowItWorks = () => {
         <h3 className="text-center text-2xl text-black font-bold mb-10">
           See the proccess step by step
         </h3>
-        <div
+        {/* <div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols- lg:grid-cols-3 
         xl:grid-cols-4 gap-10 px-10 "
-        >
+        > */}
+        <Slider {...sliderSettings}>
           {Steps.map((item) => (
             <div
               key={item.name}
               className="bg-transparent shadow-md border-none text-black hover:translate-x-5 transition
-                hover:scale-110 duration-500 p-3"
+                hover:scale-110 duration-500 p-3 lg:px-10"
             >
               <div className="flex items-center gap-x-2">
                 <div className="w-full space-y-2">
@@ -65,10 +98,10 @@ export const HowItWorks = () => {
                   </p>
                 </div>
               </div>
-              <div></div>
             </div>
           ))}
-        </div>
+        </Slider>
+        {/* </div> */}
       </ScrollSlider>
     </div>
   );

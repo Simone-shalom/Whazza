@@ -51,8 +51,8 @@ export const Testimonials = () => {
           Thousands of happy users, every day
         </h3>
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols- lg:grid-cols-3 
-            xl:grid-cols-4 gap-10 px-10 "
+          className="grid grid-cols-1  md:grid-cols-2 
+            2xl:grid-cols-4 gap-10 px-10 "
         >
           {Testimonialss.map((test, index) => (
             <Card
@@ -77,7 +77,7 @@ export const Testimonials = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col items-center justify-center">
-                  <p className="pb-4 h-28"> {test.description}</p>
+                  <p className="pb-4 h-32"> {test.description}</p>
                   <Image
                     data-testid={`testimonial-image-${index}`}
                     src={test.src}
