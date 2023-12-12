@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -21,6 +21,8 @@ import { useRouter } from "next/navigation";
 import { useEventsModal2 } from "@/hooks/use-events-modal2";
 import toast from "react-hot-toast";
 import { ImageUpload } from "../ImageUpload";
+import { DialogTitle } from "@radix-ui/react-dialog";
+import { Separator } from "../ui/separator";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -85,6 +87,12 @@ export const InitialModal = () => {
     <>
       <Dialog open={eventsModal2.isOpen} onOpenChange={eventsModal2.onClose}>
         <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="flex items-center justify-center text-2xl py-2">
+              Create Event Form
+            </DialogTitle>
+            <Separator />
+          </DialogHeader>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -95,7 +103,7 @@ export const InitialModal = () => {
                 name="imageSrc"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="uppercase text-xs text-center font-bold text-zinc-500 dark:text-secondary/70">
+                    <FormLabel className="uppercase flex items-center justify-center text-xs text-center font-bold text-zinc-500 dark:text-secondary/70">
                       Image
                     </FormLabel>
                     <FormControl>
@@ -186,7 +194,7 @@ export const InitialModal = () => {
                         disabled={isLoading}
                         type="number"
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-                        placeholder="Distance required to finish"
+                        placeholder="Distance to finish"
                         {...field}
                       />
                     </FormControl>
@@ -208,7 +216,7 @@ export const InitialModal = () => {
                         disabled={isLoading}
                         type="number"
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-                        placeholder="Reps requiered to complete"
+                        placeholder="Reps to complete"
                         {...field}
                       />
                     </FormControl>

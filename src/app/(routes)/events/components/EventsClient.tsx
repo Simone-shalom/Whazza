@@ -39,7 +39,10 @@ const EventsClient = ({
         data-testid="events-display"
         className="flex flex-col items-center justify-center "
       >
-        <Button className="text-xl font-semibold  pb-2" onClick={onCreateEvent}>
+        <Button
+          className="text-xl font-semibold hover:scale-110 transition duration-300 pb-2"
+          onClick={onCreateEvent}
+        >
           Create an Event
         </Button>
         <InitialModal />
