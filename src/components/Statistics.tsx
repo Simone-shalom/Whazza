@@ -18,11 +18,16 @@ interface StatisticsCardProps {
   duration: number;
 }
 
-const StatisticsCard = ({ text, value, duration }: StatisticsCardProps) => {
+export const StatisticsCard = ({
+  text,
+  value,
+  duration,
+}: StatisticsCardProps) => {
   return (
     <div className=" flex flex-col items-center justify-center">
       <NumberCounter value={value} duration={duration} />
       <p className="text-xl font-semibold font-mono ">{text}</p>
+      <div className="hidden">{value}</div>
     </div>
   );
 };
