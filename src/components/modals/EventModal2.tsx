@@ -6,35 +6,31 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useEventsModal2 } from "@/hooks/use-events-modal2";
-import { ImageUpload } from "../ImageUpload";
 import toast from "react-hot-toast";
-
+import { ImageUpload } from "../ImageUpload";
 
 const formSchema = z.object({
   name: z.string().min(1, {
-    message: "name is required."
+    message: "name is required.",
   }),
   desc: z.string().min(1, {
-    message: "Description is required."
+    message: "Description is required.",
   }),
   imageSrc: z.string().min(1, {
-    message: "image is required."
+    message: "image is required.",
   }),
   time: z.string(),
   distance: z.string(),
@@ -43,7 +39,7 @@ const formSchema = z.object({
 
 export const InitialModal = () => {
   const [isMounted, setIsMounted] = useState(false);
-  const eventsModal2 = useEventsModal2()
+  const eventsModal2 = useEventsModal2();
 
   const router = useRouter();
 
@@ -56,12 +52,11 @@ export const InitialModal = () => {
     defaultValues: {
       name: "",
       imageSrc: "",
-      time: '',
-      distance: '',
-      amount: '',
-      desc: ''
-
-    }
+      time: "",
+      distance: "",
+      amount: "",
+      desc: "",
+    },
   });
 
   const isLoading = form.formState.isSubmitting;
@@ -71,14 +66,16 @@ export const InitialModal = () => {
       await axios.post("/api/create", values);
 
       form.reset();
-      router.push('/events');
-      router.refresh()
-      toast.success("Event created")
+      router.push("/events");
+      router.refresh();
+      toast.success("Event created");
     } catch (error) {
       console.log(error);
-      toast.error('something went wrong')
+      toast.error("something went wrong");
+    } finally {
+      eventsModal2.onClose();
     }
-  }
+  };
 
   if (!isMounted) {
     return null;
@@ -86,20 +83,38 @@ export const InitialModal = () => {
 
   return (
     <>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col items-center">
-          <div className="flex items-start justify-start">
-          </div>
-          <Dialog  open={eventsModal2.isOpen} onOpenChange={eventsModal2.onClose}>
+      <Dialog open={eventsModal2.isOpen} onOpenChange={eventsModal2.onClose}>
         <DialogContent>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5 flex flex-col items-center"
+            >
+              <FormField
+                control={form.control}
+                name="imageSrc"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="uppercase text-xs text-center font-bold text-zinc-500 dark:text-secondary/70">
+                      Image
+                    </FormLabel>
+                    <FormControl>
+                      <ImageUpload
+                        value={field.value}
+                        onChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                       Event name
                     </FormLabel>
                     <FormControl>
@@ -120,9 +135,7 @@ export const InitialModal = () => {
                 name="desc"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                       Description
                     </FormLabel>
                     <FormControl>
@@ -138,19 +151,18 @@ export const InitialModal = () => {
                 )}
               />
 
-            <FormField
+              <FormField
                 control={form.control}
                 name="time"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                       Time <span>MIN</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        disabled={isLoading} type="number"
+                        disabled={isLoading}
+                        type="number"
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                         placeholder="Time for a challenge"
                         {...field}
@@ -166,18 +178,17 @@ export const InitialModal = () => {
                 name="distance"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                       Distance <span>KM</span> - optional
                     </FormLabel>
                     <FormControl>
                       <Input
-                        disabled={isLoading} type="number"
+                        disabled={isLoading}
+                        type="number"
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                         placeholder="Distance required to finish"
                         {...field}
-                        />
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -189,16 +200,15 @@ export const InitialModal = () => {
                 name="amount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
-                      Amount 
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
+                      Amount
                     </FormLabel>
                     <FormControl>
                       <Input
-                        disabled={isLoading} type="number"
+                        disabled={isLoading}
+                        type="number"
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-                        placeholder="Reps requiered for a challenge"
+                        placeholder="Reps requiered to complete"
                         {...field}
                       />
                     </FormControl>
@@ -206,31 +216,11 @@ export const InitialModal = () => {
                   </FormItem>
                 )}
               />
-
-            </DialogContent>
-        </Dialog>
-        <FormField
-                control={form.control}
-                name="imageSrc"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
-                      Image
-                    </FormLabel>
-                    <FormControl>
-                      <ImageUpload value={field.value} onChange={field.onChange}/>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-       <Button disabled={isLoading}>
-                Create
-        </Button>
-          </form>
-         </Form>
-        </>
-  )
-}
+              <Button disabled={isLoading}>Create</Button>
+            </form>
+          </Form>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
