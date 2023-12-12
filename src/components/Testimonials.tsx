@@ -42,7 +42,7 @@ export const Testimonialss = [
 
 export const Testimonials = () => {
   return (
-    <div className="px-10 pb-20 pt-32">
+    <div className="px-10 pb-20 pt-20">
       <ScrollSlider>
         <h2 className="text-center text-4xl text-black font-extrabold mb-10">
           Testimonials
@@ -57,7 +57,7 @@ export const Testimonials = () => {
           {Testimonialss.map((test, index) => (
             <Card
               key={test.name}
-              className="bg-transparent shadow-md border-none text-black hover:opacity-80 transition
+              className="bg-transparent shadow-md border-none text-black transition
                      hover:scale-110 duration-500"
             >
               <CardHeader>

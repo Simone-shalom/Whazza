@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import ScrollSlider from "./animations/scrollSlider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -23,7 +23,7 @@ export const Steps = [
     number: 3,
     step: "Step 3",
     name: "Subscribe",
-    text: "If u dont have an subscription yet, click subscribe button in the dashboard",
+    text: "If u dont have an subscription yet, click the subscribe button in the dashboard",
   },
   {
     number: 4,
@@ -60,10 +60,12 @@ export const HowItWorks = () => {
     ],
     autoplay: true,
     autoPlaySpeed: 1000,
+    nextArrow: <ArrowRight color="black" size={32} />,
+    prevArrow: <ArrowLeft color="black" size={32} />,
   };
 
   return (
-    <div className="px-10 pb-10">
+    <div className="px-10 pb-10 pt-5">
       <ScrollSlider>
         <h2 className="text-center text-4xl text-black font-extrabold mb-10">
           How it works
@@ -71,16 +73,12 @@ export const HowItWorks = () => {
         <h3 className="text-center text-2xl text-black font-bold mb-10">
           See the proccess step by step
         </h3>
-        {/* <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols- lg:grid-cols-3 
-        xl:grid-cols-4 gap-10 px-10 "
-        > */}
         <Slider {...sliderSettings}>
           {Steps.map((item) => (
             <div
               key={item.name}
               className="bg-transparent shadow-md border-none text-black hover:translate-x-5 transition
-                hover:scale-110 duration-500 p-3 lg:px-10"
+                hover:scale-105 duration-500 p-2 lg:px-10 "
             >
               <div className="flex items-center gap-x-2">
                 <div className="w-full space-y-2">
@@ -93,7 +91,7 @@ export const HowItWorks = () => {
                       {item.name}
                     </div>
                   </div>
-                  <p className=" leading-tight px-2 font-thin text-black-600">
+                  <p className=" leading-tight h-12 px-3 mr-2 font-thin text-black-600">
                     {item.text}
                   </p>
                 </div>
@@ -101,7 +99,6 @@ export const HowItWorks = () => {
             </div>
           ))}
         </Slider>
-        {/* </div> */}
       </ScrollSlider>
     </div>
   );
