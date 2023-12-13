@@ -5,33 +5,20 @@ import {
   hasSubscription,
   stripe,
 } from "@/lib/stripe";
-import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import LogoutBtn from "@/components/LogoutBtn";
-import { Button } from "@/components/ui/button";
 import Container from "@/components/Container";
 import { PageWrapper } from "@/components/animations/pageWrapper";
-import PrizesButton from "@/components/PrizesButton";
-import Scoring from "@/components/Scoring";
 import getTotalPoints from "@/actions/getTotalPoints";
-import UserPoints from "@/components/UserPoints";
-import { PrizesModal } from "@/components/modals/PrizesModal";
-import AnimatedBlob from "@/components/AnimatedBlob";
 import getBadges from "@/actions/getBadges";
 import getUserBadges from "@/actions/getUserBadges";
-import BadgesCard, { ExtendedBadge } from "@/components/BadgesCard";
-import BadgesButton from "@/components/BadgesButton";
-import { BadgesModal } from "@/components/modals/BadgesModal";
-import Image from "next/image";
+import { ExtendedBadge } from "@/components/BadgesCard";
 import { HeroCard } from "@/components/HeroCard";
-import { Card } from "@/components/ui/card";
 import { DashboardInfo } from "@/components/DashboardInfo";
 import { DashboardLinks } from "@/components/DashboardLinks";
 import { DashboardBadges } from "@/components/DashboardBadges";
 
 export default async function Page() {
-  const session = await getServerSession(authOptions);
   const customer = await createCustomerIfNull();
   const hasSub = await hasSubscription();
   const checkoutLink = await createCheckoutLink(String(customer));
