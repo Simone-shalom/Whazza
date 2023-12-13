@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import AnimatedBlob from "./AnimatedBlob";
 import SelectedBadge from "./SelectedBadge";
+import LogoutBtn from "./LogoutBtn";
 
 interface MobileSidebarProps {}
 
@@ -73,6 +74,7 @@ const MobileSidebar = ({}: MobileSidebarProps) => {
           >
             Pricing
           </Link>
+          {session && <LogoutBtn />}
           {session && <SelectedBadge />}
           <div className="pt-64 w-full">
             <AnimatedBlob>

@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import SelectedBadge from "./SelectedBadge";
 import { LogoComp } from "./LogoComp";
+import LogoutBtn from "./LogoutBtn";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -80,6 +81,7 @@ const Navbar = () => {
           >
             Dashboard
           </Link>
+          {session && <LogoutBtn />}
         </div>
       </div>
     </nav>
