@@ -5,8 +5,6 @@ import {
   hasSubscription,
   stripe,
 } from "@/lib/stripe";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Container from "@/components/Container";
 import { PageWrapper } from "@/components/animations/pageWrapper";
 import getTotalPoints from "@/actions/getTotalPoints";
