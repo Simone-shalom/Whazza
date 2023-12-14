@@ -15,6 +15,7 @@ import { HeroCard } from "@/components/HeroCard";
 import { DashboardInfo } from "@/components/DashboardInfo";
 import { DashboardLinks } from "@/components/DashboardLinks";
 import { DashboardBadges } from "@/components/DashboardBadges";
+import { DashboardHero } from "@/components/DashboardHero";
 
 export default async function Page() {
   const customer = await createCustomerIfNull();
@@ -38,26 +39,27 @@ export default async function Page() {
   });
 
   return (
-    <div className="min-h-[75vh]">
-      <HeroCard src="/images/Raoul-Paoli.png" />
+    <Container>
+      <PageWrapper>
+        <div className="flex flex-col space-y-4   ">
+          <div className="flex flex-col w-full">
+            <DashboardHero userPoints={totalPoints} />
+            <div className="flex flex-col lg:flex-row w-full gap-4">
+              <DashboardInfo />
 
-      <HeroCard src="/images/sam-uy-futbolista-soccer-player.png" right />
-      <Container>
-        <PageWrapper>
-          <div className="flex flex-col space-y-8 px-5 sm:px-10 md:px-0 xl:px-12 sm:mx-10">
-            <DashboardInfo />
-            <DashboardLinks
-              hasSub={hasSub}
-              checkoutLink={checkoutLink}
-              customerPortal={customerPortal}
-              totalPoints={totalPoints}
-              extendedBadges={extendedBadges}
-              badges={badges}
-            />
-            <DashboardBadges extendedBadges={extendedBadges} />
+              <DashboardLinks
+                hasSub={hasSub}
+                checkoutLink={checkoutLink}
+                customerPortal={customerPortal}
+                totalPoints={totalPoints}
+                extendedBadges={extendedBadges}
+                badges={badges}
+              />
+            </div>
           </div>
-        </PageWrapper>
-      </Container>
-    </div>
+          <DashboardBadges extendedBadges={extendedBadges} />
+        </div>
+      </PageWrapper>
+    </Container>
   );
 }
