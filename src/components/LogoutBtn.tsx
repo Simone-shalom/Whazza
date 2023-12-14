@@ -8,7 +8,7 @@ const LogoutBtn = () => {
       <Button
         onClick={() => signOut({ callbackUrl: "/" })}
         variant="outline"
-        className="font-medium text-lg"
+        className="font-medium text-lg border-orange-500"
       >
         Logout
       </Button>
