@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import PrizesButton from "./PrizesButton";
 import Link from "next/link";
 import { Card } from "./ui/card";
-import UserPoints from "./UserPoints";
 import BadgesButton from "./BadgesButton";
 import LogoutBtn from "./LogoutBtn";
 import { PrizesModal } from "./modals/PrizesModal";

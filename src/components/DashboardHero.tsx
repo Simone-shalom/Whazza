@@ -1,8 +1,7 @@
 "use client";
-import { ArrowBigDownDash, ArrowBigRightDash } from "lucide-react";
+import { ArrowBigDownDash } from "lucide-react";
 import AnimatedBlob from "./AnimatedBlob";
 import { useSession } from "next-auth/react";
-import LandingButtons from "./LandingButtons";
 import UserPoints from "./UserPoints";
 
 interface DashboardHeroProps {

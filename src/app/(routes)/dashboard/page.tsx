@@ -11,7 +11,6 @@ import getTotalPoints from "@/actions/getTotalPoints";
 import getBadges from "@/actions/getBadges";
 import getUserBadges from "@/actions/getUserBadges";
 import { ExtendedBadge } from "@/components/BadgesCard";
-import { HeroCard } from "@/components/HeroCard";
 import { DashboardInfo } from "@/components/DashboardInfo";
 import { DashboardLinks } from "@/components/DashboardLinks";
 import { DashboardBadges } from "@/components/DashboardBadges";
@@ -46,7 +45,6 @@ export default async function Page() {
             <DashboardHero userPoints={totalPoints} />
             <div className="flex flex-col lg:flex-row w-full gap-4">
               <DashboardInfo />
-
               <DashboardLinks
                 hasSub={hasSub}
                 checkoutLink={checkoutLink}
