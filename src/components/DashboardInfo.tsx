@@ -3,25 +3,17 @@
 import React from "react";
 import { Card } from "./ui/card";
 import Scoring from "./Scoring";
-import { useSession } from "next-auth/react";
 import Draggable from "react-draggable";
-import { DashboardAlert } from "./DashboardAlert";
 
 export const DashboardInfo = () => {
-  const { data: session } = useSession();
-
   return (
     <Draggable>
       <Card
         data-testid="draggable-component"
-        className=" mt-5 rounded-2xl shadow-md relative overflow-hidden"
+        className="w-full rounded-2xl shadow-md relative overflow-hidden border-separate border-orange-500 h-[240px] md:h-[200px] flex flex-col items-center justify-center "
       >
-        <div className="bg-gradient-to-r from-purple-400 via-purple-300 to-purple-500 mix-blend-multiply filter blur-3xl opacity-80 absolute inset-0"></div>
-        <div className="relative z-20 flex flex-col items-center justify-center p-5 bg-opacity-80 text-black">
-          <DashboardAlert />
-          <p className="text-3xl xl:text-4xl font-bold text-center">
-            Hello {session?.user?.name}
-          </p>
+        <div className="bg-gradient-to-r from-purple-200 to-purple-100  mix-blend-multiply filter blur-3xl opacity-80 absolute inset-0"></div>
+        <div className="relative z-20 flex flex-col items-center justify-center  bg-opacity-80 text-black">
           <Scoring />
         </div>
       </Card>

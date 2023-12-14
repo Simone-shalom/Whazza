@@ -15,7 +15,7 @@ describe("DashboardInfo component", () => {
     render(<DashboardInfo />);
 
     // Check if the component renders properly
-    expect(screen.getByText("Hello Test User")).toBeInTheDocument();
+    expect(screen.getByText("Scoring system")).toBeInTheDocument();
   });
 
   it("allows dragging of the component", () => {

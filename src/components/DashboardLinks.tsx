@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import PrizesButton from "./PrizesButton";
 import Link from "next/link";
 import { Card } from "./ui/card";
-import UserPoints from "./UserPoints";
 import BadgesButton from "./BadgesButton";
 import LogoutBtn from "./LogoutBtn";
 import { PrizesModal } from "./modals/PrizesModal";
@@ -32,18 +31,26 @@ export const DashboardLinks = ({
 }: DashboardLinksProps) => {
   return (
     <Draggable>
-      <Card className="mt-5 rounded-2xl shadow-md relative overflow-hidden">
-        <div className="bg-gradient-to-r from-yellow-300 via-yellow-300 to-yellow-400 mix-blend-multiply filter blur-xl opacity-60 absolute inset-0"></div>
-        <div className="relative z-20 flex flex-col md:flex-row gap-8 pt-5">
+      <Card className="w-full rounded-2xl flex flex-col items-center justify-center shadow-md relative overflow-hidden border-separate border-orange-500 h-[300px] md:h-[200px]">
+        <div className="bg-gradient-to-r from-purple-200 to-purple-100  mix-blend-multiply filter blur-xl opacity-60 absolute inset-0"></div>
+        {hasSub ? (
+          <div className="rounded-md  px-4 py-2 max-w-xl bg-orange-700  font-semibold text-white">
+            You have a subscription!
+          </div>
+        ) : (
+          <div className="flex flex-col justify-center items-center rounded-lg pb-5 gap-4 ">
+            <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 opacity-70  font-semibold text-white">
+              You are on free mode!
+            </div>
+          </div>
+        )}
+        <div className="relative z-20 flex flex-col items-center justify-center md:flex-row md:gap-8 pt-5">
           <main className="w-full md:w-1/2 flex flex-col items-center">
             {hasSub ? (
               <div className="flex flex-col gap-4 w-full items-center justify-center pb-5">
-                <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700  font-semibold text-white">
-                  You have a subscription!
-                </div>
                 <Button
-                  variant="secondary"
-                  className="opacity-80 max-w-xl hover:scale-110 transition duration-500"
+                  variant="outline"
+                  className="opacity-90 max-w-xl hover:scale-110 transition duration-500 border-orange-500"
                 >
                   <Link href={String(customerPortal)}>Manage subscription</Link>
                 </Button>
@@ -51,12 +58,9 @@ export const DashboardLinks = ({
               </div>
             ) : (
               <div className="flex flex-col justify-center items-center rounded-lg pb-5 gap-4 ">
-                <div className="rounded-md px-4 py-2 max-w-xl bg-orange-700 opacity-70  font-semibold text-white">
-                  You are on free mode!
-                </div>
                 <Button
                   variant="secondary"
-                  className="opacity-90 max-w-xl hover:scale-110 transition duration-500"
+                  className="opacity-90 max-w-xl hover:scale-110 transition duration-500 border-orange-500"
                 >
                   <Link href={String(checkoutLink)}>
                     Get subscription, checkout now!
@@ -67,7 +71,6 @@ export const DashboardLinks = ({
             )}
           </main>
           <div className="w-full md:w-1/2 flex flex-col items-center gap-4 pb-5">
-            <UserPoints userPoints={totalPoints} />
             <BadgesButton sub={hasSub} />
             <LogoutBtn />
             <PrizesModal
