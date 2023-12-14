@@ -31,8 +31,8 @@ export const DashboardLinks = ({
 }: DashboardLinksProps) => {
   return (
     <Draggable>
-      <Card className="w-full rounded-2xl flex flex-col items-center justify-center shadow-md relative overflow-hidden border-separate border-orange-500 h-[300px] md:h-[200px]">
-        <div className="bg-gradient-to-r from-purple-200 to-purple-100  mix-blend-multiply filter blur-xl opacity-60 absolute inset-0"></div>
+      <div className="w-full rounded-2xl flex flex-col items-center justify-center shadow-2xl relative overflow-hidden border-separate border-orange-500 h-[300px] md:h-[200px]">
+        <div className="  mix-blend-multiply filter blur-xl opacity-60 absolute inset-0"></div>
         {hasSub ? (
           <div className="rounded-md  px-4 py-2 max-w-xl bg-orange-700  font-semibold text-white">
             You have a subscription!
@@ -81,7 +81,7 @@ export const DashboardLinks = ({
             <BadgesModal badges={extendedBadges} />
           </div>
         </div>
-      </Card>
+      </div>
     </Draggable>
   );
 };
