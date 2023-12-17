@@ -18,7 +18,7 @@
  - [Zustand](https://zustand-demo.pmnd.rs/) - state manager
  - [Stripe](https://stripe.com/) - subscriptions
  - [Framer-Motion](https://www.framer.com/motion/) - animations
- - [Jest](https://jestjs.io/) - unit testing *in future
+ - [Jest](https://jestjs.io/) - testing 
 
 
 ## Functionalities:
@@ -45,7 +45,7 @@
 
 ### Creating events
   User can create new events for whole community
-<img width="559" alt="image" src="https://github.com/Simone-shalom/Whazza/assets/117103936/652d111c-1e71-414c-a422-f203756049ee">
+<img width="1279" alt="image" src="https://github.com/Simone-shalom/Whazza/assets/117103936/091b7dfc-8f57-4e64-9635-00b8e1fa255f">
 
 
 ### SEO && Performance
